@@ -134,3 +134,5 @@ Devin, Replit e cia. mapeados).
 
 ⭐ **Se isso resolve um problema seu, deixa a estrela** — e abre uma issue contando qual squad você montou.
 Validado em produção num projeto fintech real (jul/2026) antes de virar produto.
+
+Licença: [MIT](LICENSE).
