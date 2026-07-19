@@ -17,6 +17,16 @@ os três leem o mesmo documento.
 3. **Contrato/critérios verificáveis** — formatos, exemplos, Given/When/Then ou checklist.
 4. **Definição de pronto** — comandos/verificações objetivas + resultado esperado.
 
+## Protocolo de clarificação (orçamento de perguntas — padrão spec-kit)
+
+Ao especificar, varra a spec contra estas categorias: escopo · dados/entidades · UX/estados ·
+não-funcionais · integrações · casos de borda · terminologia. Para cada lacuna REAL:
+- **Máximo 5 perguntas por sessão**, UMA por vez, priorizadas por Impacto × Incerteza.
+- Formato múltipla-escolha com **recomendação** ("Recomendo A porque...") — decisão humana barata.
+- Cada resposta é **integrada na seção certa da spec** (requisito vago vira métrica; termo
+  conflitante é normalizado — substituído, não duplicado) E logada em "§Clarificações / Sessão".
+- **Default razoável não vira pergunta** — vira registro em "Premissas assumidas" (auditável).
+
 ## Diante de ambiguidade (a regra que separa squad bom de squad perigoso)
 
 - Ambiguidade DENTRO da spec → **PARE e devolva a pergunta** com sua recomendação. Nunca escolha

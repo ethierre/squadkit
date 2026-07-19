@@ -20,8 +20,29 @@ no relatório de quem produziu.
 - Máximo 3 ciclos → escala ao humano com o histórico (pode ser problema de spec, não de execução).
 - Revisor NÃO conserta o entregável (vira conflito de interesse e mata o loop de aprendizado).
 
+## Camadas cegas (para entregas grandes — padrão BMAD)
+
+Quando a entrega é grande, rode lentes INDEPENDENTES, cada uma em contexto fresco (subagente sem o
+histórico do autor — o revisor "fresco" não herda o viés de confirmação):
+1. **Caçador adversarial** — assuma que há um defeito e ache-o.
+2. **Caçador de casos de borda** — vazio/nulo/limite/concorrência/erro de rede.
+3. **Gap de verificação** — o que foi declarado mas NÃO tem evidência executada?
+4. **Auditor de aceitação** — cada CA-n da spec: coberto ou não? (tabela de cobertura)
+
+## Convergência pós-entrega (tipos de gap — padrão spec-kit)
+
+Compare o ENTREGUE contra o DECLARADO e classifique: `faltante` (prometido, não existe) ·
+`parcial` (existe pela metade) · `contradiz` (faz diferente da spec) · **`não-pedido`** (scope
+creep — existe sem requisito; é o gap que critérios de aceite não pegam, porque testam o que
+deveria existir, não o que não deveria). Registro append-only; nunca reescreva o histórico.
+
+## Severidade calibrada
+
+P0 (quebra/perde dado/viola segurança-legal) e P1 (contrato violado, CA falho) **bloqueiam**.
+P2/P3 (estilo, melhoria) vão como notas — não seguram a entrega nem viram ciclo extra.
+
 ## O que sempre checar, além da rubrica do domínio
 
 Aderência à spec · critérios de verificação intactos (anti-burla) · honestidade de dado ·
-escopo respeitado (nada de "melhoria" não pedida) · segredo/PII no entregável · gates de ação
-irreversível preservados.
+escopo respeitado (convergência acima pega o `não-pedido`) · segredo/PII no entregável · gates de
+ação irreversível preservados.

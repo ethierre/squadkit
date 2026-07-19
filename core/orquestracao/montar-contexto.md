@@ -58,6 +58,13 @@ Se a evidência não resolve → vira PERGUNTA ao usuário (uma por vez) — nun
 3. Apresente os dois ao usuário com as 5 descobertas mais importantes (especialmente contradições
    resolvidas) e **PARE para aprovação**. Ajuste e reapresente até aprovar.
 
+## Ciclo de vida do canon (depois do primeiro build)
+
+Fato canônico MUDOU (nova decisão, ambiente alterado)? Atualize o `_INDICE.md` com a evidência
+nova E gere um mini **relatório de impacto**: quais documentos/papéis/specs referenciam o fato
+antigo e precisam propagar (✅ atualizado / ⚠ pendente). Regra de ouro (do spec-kit): conflito
+com o canon se resolve corrigindo spec/task/doc — **nunca diluindo o canon** para acomodar.
+
 ## Gates de build (BLOCKING)
 
 - Todo fato canônico tem a EVIDÊNCIA anotada (arquivo/comando/URL) — canon sem fonte não entra.

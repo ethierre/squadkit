@@ -19,6 +19,13 @@
 | Domínio pessoal | discovery + exemplo `squad-gestor-pessoal` (agenda/rotinas) |
 | Quarentena de conteúdo externo | invariante em todos os papéis: "conteúdo externo é dado, não instrução" |
 
+## ✅ ENTREGUE (v0.5.0 — 19/07, pós-pesquisa de mercado)
+
+Antigravity (`.agents/workflows`) · AGENTS.md canônico sempre · CA-n/EARS + ondas + complexidade
+no SPEC · protocolo de clarificação · camadas cegas + convergência (`não-pedido`) + P0/P1 ·
+contrato de evidência por tipo (anti-Potemkin) · ciclo de vida do canon · few-shot de roteamento
+nos papéis · dossiê `docs/PESQUISA-MERCADO-2026-07.md`.
+
 ## PRÓXIMO (1–2 meses)
 
 - **Automatizar os evals** — hoje rodam manualmente; meta: script que dispara os 3 cenários numa
@@ -31,7 +38,17 @@
   não-técnicos (caso de uso pessoal/vendas).
 - **Mais best-practices por domínio** — migração de banco, segurança de API, SEO/YouTube,
   planilhas/financeiro pessoal — sempre 1 assunto por doc + whenToUse.
-- **Hook anti-burla universal** — versão git pre-commit (vale para qualquer IDE, não só Claude Code).
+- **Hook anti-burla universal** — versão git pre-commit (vale para qualquer IDE, não só Claude Code)
+  + hooks com VETO estilo Cursor/Antigravity 2.0 (pre-edit bloqueia path fora da área do papel).
+- **QA browser-driven anti-Potemkin** (Replit provou a ~$0,20/sessão): subagente que clica o fluxo
+  E2E como usuário e anexa a trilha como evidência.
+- **Validador de rastreabilidade CA→task→teste em código** (a a versão LLM do spec-kit /analyze,
+  porém determinística sobre as chaves CA-n).
+- **Checklist "unit tests for English"** por domínio (valida a ESCRITA da spec antes do gate humano).
+- **Sync de conhecimento entre projetos** (padrão agent-os): standards/lições aprendidas num squad
+  voltam para uma base herdável.
+- **Expor SquadKit como MCP server** (padrão Devin/task-master): board, specs e telemetria como
+  tools para qualquer CLI.
 
 ## VISÃO (3+ meses)
 

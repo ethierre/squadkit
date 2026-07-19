@@ -3,19 +3,23 @@
 Monte um **time de papéis de IA sob medida** — de dev sênior/arquiteto a copy de YouTube, de
 análise de vendas a agenda pessoal — operando numa esteira **spec-driven** com **harness
 engineering** (evidência executada, anti-burla, gates humanos). Funciona na **IA que você já usa**:
-Claude Code, Cursor, Codex/OpenAI, VS Code Copilot, DeepSeek ou qualquer chat.
+Claude Code, Cursor, **Google Antigravity**, Codex/OpenAI, VS Code Copilot, DeepSeek ou qualquer
+chat — com **AGENTS.md** (padrão Linux Foundation, 28+ ferramentas) instalado sempre como camada
+canônica.
 
-Validado em produção (piloto 7Risk/7Comm, jul/2026). Inspirações estudadas a fundo:
-[OpenSquad](https://github.com/renatoasse/opensquad) (composição dinâmica em 4 fases, checkpoints)
-e BMAD-METHOD (personas + planejamento → story files) — com o diferencial de manter o enforcement
-FORA do prompt onde possível (hooks, validadores em código, evals).
+Validado em produção (piloto 7Risk/7Comm, jul/2026) e calibrado por **pesquisa de mercado com
+código na mão** — 6 repositórios clonados e analisados (OpenSquad, github/spec-kit, agent-os,
+contains-studio/agents, BMAD-METHOD, task-master) + 12 produtos comerciais (Antigravity, Kiro,
+Cursor, Devin, Factory, Replit…): ver [docs/PESQUISA-MERCADO-2026-07.md](docs/PESQUISA-MERCADO-2026-07.md).
+Conclusão da pesquisa: o mercado é forte a montante (spec/rastreabilidade), mas **ninguém resolve
+confiança na execução** — evidência executada, anti-burla em código e evals são o fosso deste produto.
 
 ## Comece aqui (3 passos)
 
 ```powershell
 # 1. Instale na pasta do seu projeto (pwsh = PowerShell 7+, funciona em Win/macOS/Linux)
 pwsh -File instalar-squad.ps1 -Projeto "MeuProjeto" -Destino "C:\meuprojeto" `
-     -Perfil sob-medida -Ide claude,cursor    # IDEs: claude · cursor · codex · vscode · generico
+     -Perfil sob-medida -Ide claude,antigravity   # claude · cursor · antigravity · codex · vscode · generico
 
 # 2. Abra sua IA na pasta e rode:  /montar-contexto   ← SEMPRE primeiro
 #    (entrevista + ingestão dos seus docs + caça a contradições → fatos canônicos)

@@ -70,12 +70,16 @@ Cada etapa só roda se o papel existir (fallbacks acima). Artefato de cada etapa
    erra com confiança. (Se o projeto sincroniza skills dos repos: rode o sync antes.)
 1. **PO** valida a história (ou fallback). DEVOLVIDA/lacunas → apresente ao humano e **PARE**.
 2. **SPEC** — `squad-arquiteto` gera `specs\SPEC-<id>.md`. Apresente ao humano e **PARE** (gate).
-3. **DESPACHO** — para cada task do §7 sem dependência pendente, um Agent call para o dev da área
-   (front/back/dados/mobile/infra→devops), todos no MESMO bloco (paralelo). O prompt leva: id da
-   task, caminho do SPEC (+ SPEC-UX se houver), branch a criar. Task que cruza áreas: devs em
-   PARALELO contra o mesmo contrato — não existe "fullstack".
+3. **DESPACHO POR ONDAS** — o §7 do SPEC define as ondas (grafo de dependências): toda a onda 1
+   em PARALELO (um papel por task), onda N+1 só quando a N fecha o review. O prompt de cada task
+   leva: id, caminho do SPEC (+ SPEC-UX se houver), CAs cobertos, branch. Task que cruza áreas:
+   devs em PARALELO contra o mesmo contrato — não existe "fullstack". Complexidade >7 volta ao
+   arquiteto para fatiar antes.
 4. **REVIEW** — `squad-arquiteto` revisa cada diff contra o SDD (re-executa a rubrica; não confia
-   no relatório do dev). REPROVADO → apontamentos ao MESMO agente dev via SendMessage → re-review do delta.
+   no relatório do dev; entrega grande → camadas cegas e convergência com gap `não-pedido` — ver
+   `best-practices\revisao.md`). Evidência conforme o **contrato de evidência** por tipo de entrega
+   (`best-practices\evidencia-e-harness.md`). REPROVADO (só P0/P1 bloqueiam) → apontamentos ao
+   MESMO agente dev via SendMessage → re-review do delta.
 5. **QA** — `squad-qa` roda definição de pronto (§10) + critérios (§5) + regressão. Bugs → BUGS.md tipado.
 6. **ROTEAMENTO DE BUG** — campo **Área** do bug → SendMessage ao MESMO agente dev da task original.
    Correção → re-review do delta → re-teste do caso que falhou.

@@ -78,6 +78,8 @@ Para cada papel aprovado:
 
 ### Gates de build (BLOCKING — não relate sucesso sem passar)
 
+- Todo papel gerado tem a seção "Quando me acionar" com ≥2 exemplos ✅ e ≥1 contra-exemplo ❌
+  (few-shot de roteamento — é o que faz o orquestrador despachar certo).
 - Rode o validador determinístico se disponível:
   `pwsh -File squad\scripts\validar-squad.ps1` (ou `powershell -File ...`) — e COLE a saída.
   Sem o script, verifique manualmente: frontmatter válido (name/description/tools) + seções

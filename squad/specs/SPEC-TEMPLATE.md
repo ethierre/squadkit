@@ -28,20 +28,30 @@ projeto = referenciar (documento + seção + campos consumidos), não recopiar.>
 
 ## 4. Regras de negócio e casos de borda
 
-## 5. Critérios de aceite (Given/When/Then)
+## 5. Critérios de aceite (numerados — rastreabilidade CA-n → task → teste)
 
-- **Dado** … **Quando** … **Então** …
+- **CA-1** · **Dado** … **Quando** … **Então** …
+- **CA-2** · (para requisito de comportamento contínuo, prefira formato EARS: "ENQUANTO/QUANDO
+  [condição], O SISTEMA DEVE [comportamento mensurável]" — mecanicamente testável)
+
+Regra: adjetivo vago ("rápido", "amigável") não é critério — quantifique ou corte. Todo CA deve
+aparecer em ≥1 task (§7) e ≥1 verificação (§10); CA órfão = spec incompleta.
 
 ## 6. Plano de testes
 
 <derivado do §5: unitários por task, contrato vs payloads do §3, regressão>
 
-## 7. Tasks técnicas
+## 7. Tasks técnicas (com ondas de execução e complexidade)
 
-| Task | Área | Repo | Agente | Branch | Depende de |
-|---|---|---|---|---|---|
-| T-<id>-1 | back | <repo> | squad-dev-back | squad/<id>-<slug> | — |
-| T-<id>-2 | front | <repo> | squad-dev-front | squad/<id>-<slug> | T-<id>-1 (o CONTRATO §3, não a implementação) |
+| Task | Área | Agente | CAs cobertos | Depende de | Onda | Complexidade (1-10) |
+|---|---|---|---|---|---|---|
+| T-<id>-1 | back | squad-dev-back | CA-1, CA-2 | — | 1 | |
+| T-<id>-2 | front | squad-dev-front | CA-3 | T-<id>-1 (o CONTRATO §3, não a implementação) | 1 | |
+
+- **Onda** = tasks sem dependência entre si rodam EM PARALELO (onda 1); a onda N+1 só começa
+  quando a N fecha. Derive as ondas do grafo de dependências, não de intuição.
+- **Complexidade > 7 = fatiar ANTES de despachar** (o arquiteto quebra em sub-tasks aqui mesmo).
+- Branch única da entrega: `squad/<id>-<slug>`.
 
 ## 8. Componentes impactados
 
@@ -59,7 +69,13 @@ projeto = referenciar (documento + seção + campos consumidos), não recopiar.>
 | <ex.: build> | <comando> | <saída esperada> |
 | <ex.: ausência de mock/regressão> | <grep/verificação objetiva> | <esperado> |
 
-## 11. Armadilhas conhecidas
+## 11. Clarificações (log de sessões)
+
+_(respostas do humano às perguntas abertas são INTEGRADAS na seção certa acima E logadas aqui:
+`### Sessão AAAA-MM-DD` · pergunta → resposta → seção atualizada. Default razoável assumido sem
+perguntar vira registro em "Premissas assumidas" — auditável, não silencioso.)_
+
+## 12. Armadilhas conhecidas
 
 <testes existentes que podem quebrar (exigem liberação humana), ilhas fora de escopo, refs
 defasadas nos cards, campos que o backend ainda não serve (→ empty-state), conflitos com branches abertas>

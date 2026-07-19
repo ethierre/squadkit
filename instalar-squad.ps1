@@ -4,7 +4,9 @@
 #   pwsh -File instalar-squad.ps1 -Projeto "APPAI" -Destino "C:\appai" `
 #        [-Perfil produto | -Papeis pm,arquiteto,...] [-Ide claude,cursor] `
 #        [-Slug appai] [-BranchIntegracao main] [-PastaClones _repos] [-Board "GitLab Issues"]
-# IDEs suportadas: claude (Claude Code) · cursor · codex (OpenAI/compat) · vscode (Copilot) · generico (qualquer IA)
+# IDEs suportadas: claude (Claude Code) · cursor · antigravity (Google) · codex (OpenAI) ·
+#   vscode (Copilot) · generico (qualquer IA). O AGENTS.md (padrao agents.md) e instalado SEMPRE
+#   na raiz - e a camada canonica lida por 28+ ferramentas.
 param(
     [Parameter(Mandatory = $true)][string]$Projeto,
     [Parameter(Mandatory = $true)][string]$Destino,
@@ -76,9 +78,11 @@ foreach ($papel in $Papeis) {
     $instalados += $papel
 }
 
-# 3) adapters por IDE (generico vai sempre)
+# 3) adapters por IDE (generico + AGENTS.md canonico vao SEMPRE)
 Copy-Item (Join-Path (Join-Path $src 'adapters') (Join-Path 'generico' 'INICIAR.md')) (Join-Path (Join-Path $Destino 'squad') 'INICIAR.md') -ErrorAction SilentlyContinue
 if (Test-Path (Join-Path (Join-Path $Destino 'squad') 'INICIAR.md')) { $copiados += (Join-Path (Join-Path $Destino 'squad') 'INICIAR.md') }
+$agmd = Join-Path $Destino 'AGENTS.md'
+if (-not (Test-Path $agmd)) { Copy-Item (Join-Path (Join-Path $src 'adapters') (Join-Path 'codex' 'AGENTS.md')) $agmd; $copiados += $agmd }
 foreach ($i in $Ide) {
     switch ($i) {
         'claude' {
@@ -95,10 +99,15 @@ foreach ($i in $Ide) {
             }
         }
         'cursor'  { Copy-Arvore (Join-Path (Join-Path $src 'adapters') (Join-Path 'cursor' 'rules')) (Join-Path (Join-Path $Destino '.cursor') 'rules') }
-        'codex'   { $d = Join-Path $Destino 'AGENTS.md'; if (-not (Test-Path $d)) { Copy-Item (Join-Path (Join-Path $src 'adapters') (Join-Path 'codex' 'AGENTS.md')) $d; $copiados += $d } }
+        'codex'   { } # coberto pelo AGENTS.md canonico (sempre instalado)
+        'antigravity' {
+            Copy-Arvore (Join-Path (Join-Path $src 'adapters') (Join-Path 'antigravity' 'workflows')) (Join-Path (Join-Path $Destino '.agents') 'workflows')
+            $ag = Join-Path (Join-Path $Destino '.agents') 'agents.md'
+            if (-not (Test-Path $ag)) { New-Item -ItemType Directory -Force -Path (Split-Path $ag -Parent) | Out-Null; Copy-Item (Join-Path (Join-Path $src 'adapters') (Join-Path 'antigravity' 'agents.md')) $ag; $copiados += $ag }
+        }
         'vscode'  { $d = Join-Path (Join-Path $Destino '.github') 'copilot-instructions.md'; if (-not (Test-Path $d)) { New-Item -ItemType Directory -Force -Path (Split-Path $d -Parent) | Out-Null; Copy-Item (Join-Path (Join-Path $src 'adapters') (Join-Path 'vscode' 'copilot-instructions.md')) $d; $copiados += $d } }
         'generico' { }
-        default   { Write-Host ('  AVISO: IDE desconhecida: ' + $i + ' (suportadas: claude, cursor, codex, vscode, generico)') -ForegroundColor Yellow }
+        default   { Write-Host ('  AVISO: IDE desconhecida: ' + $i + ' (suportadas: claude, cursor, antigravity, codex, vscode, generico)') -ForegroundColor Yellow }
     }
 }
 

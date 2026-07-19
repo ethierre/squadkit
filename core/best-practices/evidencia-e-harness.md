@@ -21,6 +21,18 @@
 - Em tela/relatório: dado sem fonte = **empty-state honesto** ("sem dado ainda"), nunca valor fake.
 - Projeção tem premissas explícitas; benchmark tem fonte citada; "resultado" só de dado real.
 
+## Contrato de evidência por tipo de entrega (o gate humano revisa ISTO, não prosa)
+
+| Entrega | Evidência mínima anexada |
+|---|---|
+| Backend/API | saída real da suíte de testes + transcript de chamada real (curl/cliente) |
+| Frontend/tela | testes + **screenshot ou gravação do fluxo clicado** (walkthrough — não confie em UI "Potemkin": parece funcionar, não funciona) |
+| Dados/migração | consulta de verificação + resultado real (contagens/totais batendo) |
+| Análise/relatório | consulta/fórmula reproduzível + conferência de sanidade com valores |
+| Conteúdo | peça final + fontes citadas de cada claim/número |
+| Infra/devops | lint/plan/dry-run + plano de rollback |
+| Rotina/operação | checklist executado com valores das conferências |
+
 ## Fronteiras
 
 - **Ação irreversível é do humano**: publicar, enviar, pagar, deletar, aplicar em produção, mergear —

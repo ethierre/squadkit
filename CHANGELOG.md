@@ -1,5 +1,25 @@
 # Changelog — SquadKit
 
+## 0.5.0 — 2026-07-19 · Antigravity + padrão AGENTS.md + upgrades da pesquisa de mercado
+
+- **Google Antigravity** suportado (`-Ide antigravity`): `.agents/workflows/` (montar-contexto,
+  montar-squad, squad, fechar-sprint como slash-workflows) + `.agents/agents.md`; Artifacts do
+  Antigravity mapeados ao contrato de evidência.
+- **AGENTS.md canônico instalado SEMPRE** (padrão agents.md / Linux Foundation — lido por Codex,
+  Antigravity, Copilot, Windsurf, Devin e 25+ ferramentas).
+- **Pesquisa de mercado** (6 repos clonados + 12 produtos): `docs/PESQUISA-MERCADO-2026-07.md`.
+- SPEC upgrades: critérios **CA-n numerados** (rastreabilidade CA→task→teste) com formato **EARS**;
+  §7 com **ondas de execução** (grafo de deps → paralelismo) e **complexidade 1-10** (>7 fatia
+  antes); §11 log de clarificações.
+- **Protocolo de clarificação** (máx 5 perguntas, múltipla-escolha com recomendação, respostas
+  re-integradas na spec; defaults viram premissas auditáveis).
+- Review: **camadas cegas paralelas** (adversarial/borda/gap-de-verificação/auditor de aceitação),
+  **convergência com gap `não-pedido`** (pega scope creep) e severidade calibrada (só P0/P1 bloqueia).
+- **Contrato de evidência por tipo de entrega** (front = fluxo clicado/screenshot — anti-"Potemkin UI").
+- **Ciclo de vida do canon**: mudança de fato canônico gera relatório de impacto; "conflito se
+  resolve corrigindo a spec, nunca diluindo o canon".
+- ROLE-TEMPLATE: seção "Quando me acionar" (few-shot ✅/❌ de roteamento) — exigida no build.
+
 ## 0.4.0 — 2026-07-19 · Multi-CLI + contexto-primeiro + verificável em código
 
 - **Multi-CLI/IDE**: core neutro em `core\` (fonte única) + adapters para Claude Code (skills,
