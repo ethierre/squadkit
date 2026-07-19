@@ -1,0 +1,22 @@
+# Catálogo de best-practices — RAG manual barato (ideia validada no OpenSquad).
+# O /montar-squad lê SÓ este índice e carrega apenas os docs cujo whenToUse casa com os
+# papéis/domínio do squad. Adicione entradas novas mantendo o padrão (1 assunto por doc).
+praticas:
+  - id: escolher-modelos
+    arquivo: escolher-modelos.md
+    whenToUse: "SEMPRE na Fase 2 do /montar-squad (sugestão de 3 modelos por papel) e quando o usuário perguntar qual modelo/IA usar para uma tarefa"
+  - id: spec-driven
+    arquivo: spec-driven.md
+    whenToUse: "todo papel que PRODUZ algo (dev, copy, análise, operações) — como trabalhar contra spec e o que fazer diante de ambiguidade"
+  - id: evidencia-e-harness
+    arquivo: evidencia-e-harness.md
+    whenToUse: "todo papel executor e todo revisor — o que conta como evidência, anti-burla, honestidade de dado"
+  - id: revisao
+    arquivo: revisao.md
+    whenToUse: "papéis revisores (arquiteto em software; revisor dedicado em conteúdo/análise) — rubrica, vereditos, loops"
+  - id: analise-de-dados
+    arquivo: analise-de-dados.md
+    whenToUse: "papéis de análise (analista de vendas, dados, métricas, relatórios) — método, sanidade, hipótese vs conclusão"
+  - id: conteudo-criativo
+    arquivo: conteudo-criativo.md
+    whenToUse: "papéis de conteúdo (copy, social, vídeo, marketing) — brief, voz, honestidade de claim, direitos"

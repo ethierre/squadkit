@@ -1,0 +1,17 @@
+---
+description: Squad {{PROJETO}} — esteira multi-agent spec-driven. Aplicar quando o usuário pedir squad, montar-contexto, montar-squad, fechar-sprint, ou processar demandas/tasks/histórias do {{PROJETO}}.
+alwaysApply: false
+---
+
+Este projeto opera com o Squad {{PROJETO}}. As instruções-fonte (compartilhadas entre IDEs) estão em:
+
+- `squad/_core/orquestracao/montar-contexto.md` — PRIMEIRO passo (base de conhecimento)
+- `squad/_core/orquestracao/montar-squad.md` — desenhar/adaptar o time de papéis
+- `squad/_core/orquestracao/esteira.md` — operação do dia a dia (spec → execução → review → entrega)
+- `squad/_core/orquestracao/fechar-sprint.md` — fechamento de ciclo + telemetria
+
+Como executar papéis no Cursor: não há subagentes — TROQUE DE PERSONA: leia
+`squad/_equipe/squad-<papel>.md`, assuma o papel integralmente, execute, produza o relatório no
+formato do papel e volte ao orquestrador. Um papel por vez, anunciando a troca.
+Regras invioláveis (harness): evidência executada, honestidade de dado, dono único de artefato,
+ação irreversível é do humano, spec antes de produção. Detalhes em `squad/_core/best-practices/`.

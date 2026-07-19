@@ -1,0 +1,10 @@
+{
+  "sob-medida": ["arquiteto"],
+  "enxuto": ["arquiteto", "dev-back", "dev-front", "qa"],
+  "dev-completo": ["po", "arquiteto", "dev-front", "dev-back", "dev-dados", "qa", "devops", "seguranca"],
+  "produto": ["analista", "pm", "po", "ux", "arquiteto", "dev-front", "dev-back", "qa"],
+  "plataforma": ["gerente", "arquiteto", "devops", "dev-back", "qa", "seguranca"],
+  "concepcao": ["analista", "pm", "po", "ux", "arquiteto"],
+  "growth": ["pm", "marketing", "ux", "docs"],
+  "completo": ["analista", "pm", "po", "gerente", "arquiteto", "ux", "dev-front", "dev-back", "dev-dados", "dev-mobile", "qa", "devops", "seguranca", "marketing", "docs"]
+}

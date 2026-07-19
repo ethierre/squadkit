@@ -1,0 +1,3 @@
+# Excecoes a regra anti-burla (SO o humano responsavel edita este arquivo).
+# 1 caminho (ou trecho de caminho) por linha - o hook libera edicao de teste existente que case com a linha.
+# Linhas iniciadas com # sao ignoradas. Remover a linha depois que a edicao aprovada for feita.
