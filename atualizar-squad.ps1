@@ -12,6 +12,11 @@ param(
 $ErrorActionPreference = 'Stop'
 $src = $PSScriptRoot
 
+# resolve ~ e caminho relativo -> absoluto
+if ($Destino -like '~*') { $Destino = Join-Path $HOME ($Destino.Substring(1).TrimStart('\', '/')) }
+if (-not [IO.Path]::IsPathRooted($Destino)) { $Destino = Join-Path (Get-Location).Path $Destino }
+$Destino = [IO.Path]::GetFullPath($Destino)
+
 # 1) parametros: manifesto primeiro, flags sobrepoe
 $manPath = Join-Path (Join-Path $Destino 'squad') '.squadkit.json'
 if (Test-Path $manPath) {

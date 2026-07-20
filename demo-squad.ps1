@@ -9,6 +9,11 @@ param(
 $ErrorActionPreference = 'Stop'
 $src = $PSScriptRoot
 
+# resolve ~ e caminho relativo -> absoluto (o demo usa $Destino direto nos Copy-Item de seed)
+if ($Destino -like '~*') { $Destino = Join-Path $HOME ($Destino.Substring(1).TrimStart('\', '/')) }
+if (-not [IO.Path]::IsPathRooted($Destino)) { $Destino = Join-Path (Get-Location).Path $Destino }
+$Destino = [IO.Path]::GetFullPath($Destino)
+
 Write-Host '=== SquadKit DEMO ===' -ForegroundColor Cyan
 & (Join-Path $src 'instalar-squad.ps1') -Projeto 'Frete Rapido (demo)' -Slug fretedemo -Destino $Destino -Perfil enxuto -Ide $Ide -Board 'nenhum (demo)' | Out-Host
 

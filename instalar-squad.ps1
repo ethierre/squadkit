@@ -47,6 +47,13 @@ if ($Interativo) {
 }
 if (-not $Projeto -or -not $Destino) { throw 'Informe -Projeto e -Destino (ou rode com -Interativo para a instalacao guiada).' }
 
+# resolve ~ e caminho relativo -> absoluto (PowerShell NAO expande ~ em string de parametro;
+# sem isto, "-Destino ~\x" vira uma pasta literal chamada "~")
+if ($Destino -like '~*') { $Destino = Join-Path $HOME ($Destino.Substring(1).TrimStart('\', '/')) }
+if (-not [IO.Path]::IsPathRooted($Destino)) { $Destino = Join-Path (Get-Location).Path $Destino }
+$Destino = [IO.Path]::GetFullPath($Destino)
+if ($PastaClones -like '~*') { $PastaClones = Join-Path $HOME ($PastaClones.Substring(1).TrimStart('\', '/')) }
+
 # via "powershell -File", listas com virgula chegam como string unica -> normaliza
 $Ide = @($Ide | ForEach-Object { $_ -split ',' } | ForEach-Object { $_.Trim().ToLower() } | Where-Object { $_ })
 if ($Papeis) { $Papeis = @($Papeis | ForEach-Object { $_ -split ',' } | ForEach-Object { $_.Trim() } | Where-Object { $_ }) }
