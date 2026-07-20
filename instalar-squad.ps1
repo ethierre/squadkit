@@ -206,6 +206,8 @@ Write-Host ("  arquivos copiados: " + $copiados.Count + " | com placeholders res
 Write-Host ''
 Write-Host 'PROXIMOS PASSOS:'
 Write-Host '  1. Abra sua IA na pasta do projeto (qualquer IDE instalada; outra IA: squad\INICIAR.md)'
+Write-Host '     Claude Code: inicie uma sessao NOVA na pasta para os papeis carregarem como subagentes'
+Write-Host '     (so uma vez, apos instalar; durante a operacao NAO feche o chat entre papeis).'
 Write-Host '  2. PRIMEIRO: rode montar-contexto (base de conhecimento + fatos canonicos)'
 Write-Host '  3. DEPOIS: rode montar-squad (o time se molda ao contexto; modelos = sua escolha)'
 Write-Host '  4. Teste de fumaca com 1 demanda real e feche com fechar-sprint (telemetria+dashboard)'
