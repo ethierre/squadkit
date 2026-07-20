@@ -48,15 +48,38 @@ Para CADA contradição: resolva pela evidência mais forte (código > board > d
 antigo) e registre no quadro de FATOS CANÔNICOS: tema · o que vale · onde os docs divergem.
 Se a evidência não resolve → vira PERGUNTA ao usuário (uma por vez) — nunca escolha em silêncio.
 
-## Fase 4 — GERAÇÃO → GATE HUMANO
+## Fase 4 — GERAÇÃO → RESUMO DE ENTENDIMENTO → GATE HUMANO
 
 1. **`squad\contexto\_INDICE.md`**: regras de manuseio (segredos = acesso-sim/entregável-nunca;
    como ler .docx; VIVO vs HISTORICO) · **⭐ FATOS CANÔNICOS** (a tabela da Fase 3) · documentos
    VIVOS (1 linha cada: o quê/quando ler) · HISTÓRICOS · fontes fora da pasta (caminho absoluto/URL).
 2. **`squad\contexto\HISTORICO.md`**: o que já foi feito e POR QUÊ (por sprint/fase/mês), estado
    atual VERIFICADO, para onde vai (metas/roadmap), dívidas e pendências transversais.
-3. Apresente os dois ao usuário com as 5 descobertas mais importantes (especialmente contradições
-   resolvidas) e **PARE para aprovação**. Ajuste e reapresente até aprovar.
+3. **Apresente o RESUMO DE ENTENDIMENTO ao usuário** — NESTE formato, obrigatório:
+
+```
+📋 RESUMO DE ENTENDIMENTO — <projeto>
+
+🎯 O que entendi que é o projeto: <1 parágrafo: o quê, para quem, objetivo, momento atual>
+🧭 O que você quer do squad: <1-3 linhas, da entrevista>
+
+📚 O que eu li:
+| Arquivo/fonte | Como li | Classificação |
+(integral / parcial-sumário / não li + POR QUÊ)
+
+⭐ Fatos canônicos (os N mais importantes): <tema → o que vale → evidência>
+⚖️ Decisões vigentes detectadas: <regras/convenções que o squad vai respeitar>
+🔀 Contradições que resolvi: <doc A dizia X, doc B dizia Y → vale Z porque evidência>
+⚠️ Riscos/pendências que encontrei: <lista curta>
+❓ O que ficou sem resposta: <perguntas abertas, com minha recomendação>
+
+👉 CONFIRMA que é isso, ou quer alterar/adicionar algo?
+   (aponte qualquer item — eu corrijo o índice/histórico e reapresento)
+```
+
+4. **PARE e espere a resposta.** Correção do usuário SOBRESCREVE qualquer inferência (ele é a
+   evidência máxima) — aplique no `_INDICE`/`HISTORICO`, registre a mudança e REAPRESENTE o
+   resumo atualizado. Repita até o "confirmo" explícito. Só então o contexto está pronto.
 
 ## Ciclo de vida do canon (depois do primeiro build)
 
