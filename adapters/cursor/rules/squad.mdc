@@ -3,7 +3,8 @@ description: Squad {{PROJETO}} — esteira multi-agent spec-driven. Aplicar quan
 alwaysApply: false
 ---
 
-Este projeto opera com o Squad {{PROJETO}}. As instruções-fonte (compartilhadas entre IDEs) estão em:
+Este projeto opera com o Squad {{PROJETO}}. 🌐 Idioma de saída: **{{IDIOMA}}** (responda e escreva
+artefatos neste idioma). As instruções-fonte (compartilhadas entre IDEs) estão em:
 
 - `squad/_core/orquestracao/montar-contexto.md` — PRIMEIRO passo (base de conhecimento)
 - `squad/_core/orquestracao/montar-squad.md` — desenhar/adaptar o time de papéis

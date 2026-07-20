@@ -17,6 +17,7 @@ param(
     [string]$Perfil = 'dev-completo',
     [string[]]$Papeis,
     [string[]]$Ide = @('claude'),
+    [string]$Idioma = 'Portugues (Brasil)',   # idioma de SAIDA dos agentes (respostas + artefatos)
     [switch]$Interativo   # onboarding guiado: perguntas em vez de flags (usuario nao-tecnico)
 )
 
@@ -26,20 +27,22 @@ $ErrorActionPreference = 'Stop'
 if ($Interativo) {
     Write-Host ''
     Write-Host '=== SquadKit - instalacao guiada ===' -ForegroundColor Cyan
-    if (-not $Projeto) { $Projeto = Read-Host '1/6 Nome do projeto ou do trabalho (ex: APPAI, Canal Youtube, Financas da Casa)' }
-    if (-not $Destino) { $Destino = Read-Host '2/6 Pasta onde instalar (ex: C:\meuprojeto - sera criada se nao existir)' }
+    if (-not $Projeto) { $Projeto = Read-Host '1/7 Nome do projeto ou do trabalho (ex: APPAI, Canal Youtube, Financas da Casa)' }
+    if (-not $Destino) { $Destino = Read-Host '2/7 Pasta onde instalar (ex: C:\meuprojeto - sera criada se nao existir)' }
     $perfisDisp = ((Get-Content (Join-Path $PSScriptRoot 'perfis.json') -Raw | ConvertFrom-Json).PSObject.Properties.Name) -join ' | '
     Write-Host ('    Perfis: ' + $perfisDisp)
     Write-Host '    Dica: "sob-medida" deixa a IA desenhar o time para voce (recomendado se tem duvida).'
-    $r = Read-Host '3/6 Perfil do squad [Enter = sob-medida]'
+    $r = Read-Host '3/7 Perfil do squad [Enter = sob-medida]'
     $Perfil = if ($r) { $r } else { 'sob-medida' }
     Write-Host '    IDEs: claude | cursor | antigravity | codex | vscode | generico (pode listar varias com virgula)'
-    $r = Read-Host '4/6 Qual IA/editor voce usa? [Enter = claude]'
+    $r = Read-Host '4/7 Qual IA/editor voce usa? [Enter = claude]'
     $Ide = @($(if ($r) { $r } else { 'claude' }))
-    $r = Read-Host '5/6 Se tem repositorios git: branch de integracao [Enter = develop; irrelevante fora de software]'
+    $r = Read-Host '5/7 Se tem repositorios git: branch de integracao [Enter = develop; irrelevante fora de software]'
     if ($r) { $BranchIntegracao = $r }
-    $r = Read-Host '6/6 Onde voce acompanha tarefas? (ex: Azure DevOps, GitLab, Trello, Planilha) [Enter = Azure DevOps]'
+    $r = Read-Host '6/7 Onde voce acompanha tarefas? (ex: Azure DevOps, GitLab, Trello, Planilha) [Enter = Azure DevOps]'
     if ($r) { $Board = $r }
+    $r = Read-Host '7/7 Em que idioma os agentes devem RESPONDER e escrever? (ex: Portugues, English, Espanol) [Enter = Portugues (Brasil)]'
+    if ($r) { $Idioma = $r }
     Write-Host ''
 }
 if (-not $Projeto -or -not $Destino) { throw 'Informe -Projeto e -Destino (ou rode com -Interativo para a instalacao guiada).' }
@@ -148,6 +151,7 @@ foreach ($i in $Ide) {
 $pwshExe = if ($PSVersionTable.Platform -eq 'Unix') { 'pwsh' } else { 'powershell.exe' }
 $pares = @(
     , @('{{PWSH}}', $pwshExe)
+    , @('{{IDIOMA}}', $Idioma)
     , @('{{PROJETO}}', $Projeto)
     , @('{{projeto}}', $Slug)
     , @('{{RAIZ_JSON}}', ($Destino.TrimEnd('\', '/')).Replace('\', '\\'))
@@ -173,14 +177,15 @@ foreach ($f in $copiados) {
 $manifesto = @{
     projeto = $Projeto; slug = $Slug; raiz = $Destino.TrimEnd('\', '/')
     branch = $BranchIntegracao; clones = $PastaClones.TrimEnd('\', '/'); board = $Board
-    ides = $Ide; papeis = $instalados; diffMaximo = 400
+    ides = $Ide; papeis = $instalados; diffMaximo = 400; idioma = $Idioma
     instaladoEm = (Get-Date -Format 'yyyy-MM-dd HH:mm')
 } | ConvertTo-Json
 [IO.File]::WriteAllText((Join-Path (Join-Path $Destino 'squad') '.squadkit.json'), $manifesto, (New-Object Text.UTF8Encoding($false)))
 
 Write-Host ''
 Write-Host ("Squad '" + $Projeto + "' instalado em " + $Destino) -ForegroundColor Green
-Write-Host ("  IDEs: " + ($Ide -join ', ') + " | perfil: " + $Perfil + " | papeis: " + ($instalados -join ', '))
+Write-Host ("  IDEs: " + ($Ide -join ', ') + " | perfil: " + $Perfil + " | idioma: " + $Idioma)
+Write-Host ("  papeis: " + ($instalados -join ', '))
 Write-Host ("  arquivos copiados: " + $copiados.Count + " | com placeholders resolvidos: " + $trocados)
 Write-Host ''
 Write-Host 'PROXIMOS PASSOS:'

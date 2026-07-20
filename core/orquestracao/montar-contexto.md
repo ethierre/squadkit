@@ -1,5 +1,8 @@
 # /montar-contexto — a porta de entrada do squad (rode ANTES do /montar-squad)
 
+> 🌐 **Idioma de interação: {{IDIOMA}}.** Entreviste, pergunte e escreva o índice/histórico neste
+> idioma (mesmo que os documentos do projeto estejam em outro).
+
 Você (a IA que o usuário está usando — Claude Code, Cursor, Codex, ou outra) vai construir a BASE
 DE CONHECIMENTO do projeto {{PROJETO}}. É ela que faz o squad acertar: agente com contexto ruim
 erra com confiança. Saída: `squad\contexto\_INDICE.md` (mapa + fatos canônicos) e

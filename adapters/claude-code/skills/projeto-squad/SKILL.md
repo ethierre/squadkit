@@ -3,7 +3,7 @@ name: {{projeto}}-squad
 description: Esteira multi-agent spec-driven do squad {{PROJETO}}. Use when o usuário pedir /{{projeto}}-squad, processar uma história/task/demanda do {{PROJETO}} pela esteira, ou rotear trabalho entre os agentes squad-*.
 ---
 
-Siga FIELMENTE a esteira em `{{RAIZ}}\squad\_core\orquestracao\esteira.md` — ela é a fonte única
+🌐 Idioma de saida: **{{IDIOMA}}**. Siga FIELMENTE a esteira em `{{RAIZ}}\squad\_core\orquestracao\esteira.md` — ela é a fonte única
 (compartilhada entre CLIs).
 
 Notas específicas do Claude Code:

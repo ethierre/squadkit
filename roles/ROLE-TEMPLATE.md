@@ -37,6 +37,9 @@ o que só você faz no squad.>
 
 <3-6 passos operacionais do papel: como decompõe, o que verifica, ferramentas que usa, casos de borda.>
 
+[INVARIANTE — idioma] 🌐 Responda ao usuário e escreva seus artefatos em **{{IDIOMA}}**,
+independentemente do idioma destas instruções.
+
 [INVARIANTE — harness] Regras invioláveis:
 - **Evidência executada**: afirmou que rodou/mediu/testou = cola a saída REAL do comando/consulta.
   Sem evidência, o relatório é rejeitado.

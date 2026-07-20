@@ -1,5 +1,18 @@
 # Changelog — SquadKit
 
+## 0.8.0 — 2026-07-20 · README bilíngue + pacote de idioma
+
+- **README bilíngue**: `README.md` (inglês, principal — máxima visibilidade no GitHub) +
+  `README.pt-BR.md`, com seletor de idioma no topo de cada (o GitHub renderiza o README.md; o
+  seletor de links é a convenção universal, GitHub não alterna sozinho).
+- **Pacote de idioma** (`-Idioma`): o usuário escolhe em que idioma os agentes RESPONDEM e escrevem
+  os artefatos (specs, relatórios, board) — default `Portugues (Brasil)`, aceita qualquer
+  (English, Espanol…). Separa idioma de SAÍDA do idioma dos arquivos-fonte: os agentes leem
+  instruções em qualquer idioma e respondem no escolhido. Placeholder `{{IDIOMA}}` resolvido na
+  instalação e injetado na esteira, montar-contexto/squad, fechar-sprint, ROLE-TEMPLATE (invariante)
+  e nos pontos de entrada dos adapters (AGENTS.md, INICIAR.md, cursor, vscode, skills Claude).
+  `-Interativo` pergunta o idioma (7/7); gravado no manifesto e preservado pelo atualizar-squad.
+
 ## 0.7.2 — 2026-07-19 · Evals automatizados (promptfoo) + dossiê Paperclip
 
 - **Evals golden automatizados**: `evals\promptfoo\promptfooconfig.yaml` — os 3 cenários (bug

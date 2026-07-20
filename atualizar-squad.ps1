@@ -22,6 +22,8 @@ if (Test-Path $manPath) {
     if (-not $PastaClones) { $PastaClones = $man.clones }
     if (-not $Board) { $Board = $man.board }
 }
+$Idioma = if ((Test-Path $manPath) -and $man.PSObject.Properties['idioma']) { $man.idioma } else { 'Portugues (Brasil)' }
+$pwshExe = if ($PSVersionTable.Platform -eq 'Unix') { 'pwsh' } else { 'powershell.exe' }
 foreach ($p in @(@('Projeto', $Projeto), @('Slug', $Slug), @('BranchIntegracao', $BranchIntegracao), @('PastaClones', $PastaClones), @('Board', $Board))) {
     if (-not $p[1]) { throw ('Parametro ausente: -' + $p[0] + ' (instalacao sem manifesto squad\.squadkit.json - informe os parametros originais da instalacao)') }
 }
@@ -35,6 +37,8 @@ $pares = @(
     , @('{{BRANCH}}', $BranchIntegracao)
     , @('{{CLONES}}', $PastaClones.TrimEnd('\', '/'))
     , @('{{BOARD}}', $Board)
+    , @('{{IDIOMA}}', $Idioma)
+    , @('{{PWSH}}', $pwshExe)
 )
 $n = 0
 foreach ($t in @(@('core', 'squad\_core'), @('scripts', 'squad\scripts'), @('roles', 'squad\_catalogo\roles'), @('exemplos', 'squad\_catalogo\exemplos'))) {
@@ -58,7 +62,7 @@ if ((Test-Path $manPath) -and $man -and $man.PSObject.Properties['diffMaximo']) 
 $novo = @{
     projeto = $Projeto; slug = $Slug; raiz = $Destino.TrimEnd('\', '/')
     branch = $BranchIntegracao; clones = $PastaClones.TrimEnd('\', '/'); board = $Board
-    diffMaximo = $diffMax
+    diffMaximo = $diffMax; idioma = $Idioma
     atualizadoEm = (Get-Date -Format 'yyyy-MM-dd HH:mm')
 } | ConvertTo-Json
 [IO.File]::WriteAllText($manPath, $novo, (New-Object Text.UTF8Encoding($false)))

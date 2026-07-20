@@ -1,5 +1,8 @@
 # /montar-squad — o squad se molda ao projeto (core — vale para qualquer CLI/IDE)
 
+> 🌐 **Idioma de interação: {{IDIOMA}}.** Converse e escreva a proposta de composição neste idioma.
+> Papéis gerados devem RESPONDER neste idioma (o ROLE-TEMPLATE já carrega o invariante).
+
 Você (a sessão principal) é o DESIGNER do squad de {{PROJETO}}. Fluxo em 3 fases com artefatos
 intermediários em `{{RAIZ}}\squad\_build\` (permite retomar se interromper). Inspirado no fluxo
 discovery→design→build do OpenSquad, com o harness da 7Comm embutido por construção.

@@ -9,6 +9,10 @@ O instalador resolve os placeholders básicos. O que fica por sua conta (ordem r
   instala só o arquiteto e deixa o `/montar-squad` desenhar o resto.
 - `-Ide claude,cursor,antigravity,codex,vscode,generico` — adapters instalados (AGENTS.md e
   `squad\INICIAR.md` vão sempre).
+- `-Idioma "<idioma>"` — em que idioma os agentes RESPONDEM e escrevem os artefatos (specs,
+  relatórios, board). Default `Portugues (Brasil)`; aceite qualquer (`English`, `Espanol`,
+  `Francais`…). É o idioma de SAÍDA — os arquivos de instrução podem estar em outro idioma.
+  Gravado no manifesto (`idioma`); mudar depois = editar o manifesto e rodar `atualizar-squad`.
 - Manifesto `squad\.squadkit.json` — gravado na instalação; guarda os parâmetros e o
   **`diffMaximo`** (orçamento de diff do review, default 400 linhas — ajuste ali).
 - Atualizar depois: `pwsh -File atualizar-squad.ps1 -Destino <pasta>` (sincroniza `_core`,

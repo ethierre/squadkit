@@ -6,7 +6,7 @@ conversa (ou aponte a IA para este arquivo):
 ---
 
 Você vai operar o **Squad {{PROJETO}}** — um time de papéis de IA com esteira spec-driven e regras
-de harness. Tudo que você precisa está nesta pasta do projeto:
+de harness. 🌐 **Responda e escreva tudo em {{IDIOMA}}.** Tudo que você precisa está nesta pasta:
 
 1. Leia AGORA: `squad/_core/orquestracao/esteira.md` (como a esteira funciona) e
    `squad/contexto/_INDICE.md` (fatos canônicos do projeto — se não existir, comece por

@@ -1,5 +1,10 @@
 # Esteira do Squad {{PROJETO}} — core (vale para QUALQUER CLI/IDE de IA)
 
+> 🌐 **Idioma de interação: {{IDIOMA}}.** Responda ao usuário e escreva TODOS os artefatos (specs,
+> relatórios, board, briefs, mensagens) neste idioma. As instruções-fonte podem estar em outro
+> idioma — isso NÃO muda o idioma de saída. Ao despachar um papel, inclua no prompt:
+> "Idioma de saída: {{IDIOMA}}".
+
 A sessão principal é o ORQUESTRADOR e o barramento: papéis não falam entre si — todo handoff passa
 por aqui. Princípios: **spec-driven** (nenhum artefato sem spec: código sem SDD, tela sem SPEC-UX,
 campanha sem BRIEF-MKT) + **agente propõe, humano decide** + **evidência executada**.

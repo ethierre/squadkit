@@ -4,8 +4,9 @@
 > lido nativamente por OpenAI Codex, Google Antigravity, GitHub Copilot, Windsurf, Devin, Factory
 > e 28+ ferramentas. É a camada CANÔNICA de instruções deste projeto.
 
-Este projeto opera com um squad de papéis de IA, esteira spec-driven e harness. As instruções-fonte
-(compartilhadas entre CLIs) estão em `squad/_core/`:
+Este projeto opera com um squad de papéis de IA, esteira spec-driven e harness.
+🌐 **Idioma de saída: {{IDIOMA}}** — responda ao usuário e escreva artefatos neste idioma.
+As instruções-fonte (compartilhadas entre CLIs) estão em `squad/_core/`:
 
 | Comando do usuário | Siga fielmente |
 |---|---|

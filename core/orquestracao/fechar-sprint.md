@@ -1,5 +1,7 @@
 # /fechar-sprint — fechamento de ciclo (memória viva + telemetria)
 
+> 🌐 **Idioma de interação: {{IDIOMA}}.** Retrospectiva, histórico e lições neste idioma.
+
 Rode ao fim de cada sprint/ciclo (ou quando o usuário pedir). Objetivo: o próximo ciclo começa
 sabendo tudo que este aprendeu — sem depender da memória de ninguém.
 

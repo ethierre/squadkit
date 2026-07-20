@@ -1,167 +1,172 @@
+<!-- LANG-SWITCH --> **English** · [Português 🇧🇷](README.pt-BR.md)
+
 # 🛸 SquadKit
 
-**Monte um squad de agentes de IA que se molda ao SEU trabalho — e que você pode auditar.**
-Dev, criador de conteúdo, analista, gestor ou organizando a vida pessoal: mesmo produto, papéis diferentes.
-Funciona na IA que você já usa — Claude Code, Cursor, Google Antigravity, Codex, VS Code Copilot ou qualquer chat.
+**Assemble a squad of AI agents that molds itself to YOUR work — and that you can audit.**
+Developer, content creator, analyst, manager, or organizing your personal life: same product, different roles.
+Works in the AI you already use — Claude Code, Cursor, Google Antigravity, Codex, VS Code Copilot, or any chat.
+Agents **reply in your language** (configurable: English, Portuguese, Spanish…).
 
 ---
 
-## O problema
+## The problem
 
-Todo mundo já viu um agente de IA:
+Everyone has seen an AI agent:
 
-- 🤥 **dizer "testei e passou" sem ter rodado nada** — e você descobrir em produção;
-- 🎲 **inventar um número, um requisito ou um compromisso** com toda a confiança do mundo;
-- 🧠 **esquecer tudo** entre uma sessão e outra — cada chat começa do zero;
-- 📄 ler dois documentos que se contradizem e **escolher o errado em silêncio**;
-- 🎭 produzir uma tela linda que **parece funcionar mas não funciona** (UI Potemkin).
+- 🤥 **claim "I tested it and it passed" without running anything** — and you find out in production;
+- 🎲 **make up a number, a requirement, or a commitment** with total confidence;
+- 🧠 **forget everything** between sessions — every chat starts from zero;
+- 📄 read two documents that contradict each other and **silently pick the wrong one**;
+- 🎭 ship a beautiful screen that **looks like it works but doesn't** (Potemkin UI).
 
-Prompts melhores não resolvem isso. **Engenharia resolve.**
+Better prompts don't fix this. **Engineering does.**
 
-## A solução
+## The solution
 
-O SquadKit instala no seu projeto um **time de papéis de IA** (arquiteto, devs, QA, copy, analista…
-ou papéis gerados sob medida) operando numa **esteira spec-driven** com **harness engineering** —
-regras que não dependem da boa vontade do modelo:
+SquadKit installs a **team of AI roles** into your project (architect, devs, QA, copywriter,
+analyst… or roles generated on demand) running on a **spec-driven pipeline** with
+**harness engineering** — rules that don't depend on the model's goodwill:
 
-| Pilar | O que significa na prática |
+| Pillar | What it means in practice |
 |---|---|
-| 📋 **Spec-driven** | Nada se produz de pedido solto: código ← spec com contratos, campanha ← brief, análise ← pedido estruturado. Ambiguidade **para e pergunta** (máx. 5 perguntas, com recomendação) — nunca inventa |
-| 🔒 **Harness** | "Verde" só com a **saída real do comando colada**; teste/checklist **não se enfraquece para passar** (hook bloqueia); dado sem fonte = hipótese rotulada; **publicar/pagar/mergear/deploy é SEMPRE humano** |
-| 🧪 **Verificável em código** | Validadores determinísticos, **evals golden** (o reviewer pega bug plantado? o dev para diante de ambiguidade?), telemetria e dashboard — o squad é testado como se testa software |
+| 📋 **Spec-driven** | Nothing is produced from a loose request: code ← spec with contracts, campaign ← brief, analysis ← structured request. Ambiguity **stops and asks** (max 5 questions, with a recommendation) — it never guesses |
+| 🔒 **Harness** | "Green" only with the **real command output pasted in**; a test/checklist **is never weakened to pass** (a hook blocks it); data without a source = labeled hypothesis; **publishing/paying/merging/deploying is ALWAYS human** |
+| 🧪 **Verifiable in code** | Deterministic validators, **golden evals** (does the reviewer catch a planted bug? does the dev stop at ambiguity?), telemetry and dashboard — the squad is tested the way software is tested |
 
-E o diferencial que nenhum player do mercado tem (pesquisamos [com o código na mão](docs/PESQUISA-MERCADO-2026-07.md)):
-**confiança na execução**. spec-kit (GitHub), Kiro (AWS), BMAD e afins são ótimos em spec e rastreabilidade —
-mas os gates deles são instruções em prompt fiscalizadas pelo mesmo LLM que produz. Aqui o enforcement
-é **externo** (hooks, scripts, evals).
+And the differentiator no player on the market has (we researched it [with the code in hand](docs/PESQUISA-MERCADO-2026-07.md)):
+**trust in execution**. spec-kit (GitHub), Kiro (AWS), BMAD and the like are great at spec and
+traceability — but their gates are prompt instructions policed by the same LLM that produces the
+work. Here the enforcement is **external** (hooks, scripts, evals).
 
-## ⚡ Experimente em 5 minutos (sem configurar nada)
+## ⚡ Try it in 5 minutes (zero setup)
 
-> **Pré-requisitos** (2 min): [git](https://git-scm.com/downloads) e PowerShell — nativo no
-> Windows; no macOS/Linux instale o [PowerShell 7 (`pwsh`)](https://learn.microsoft.com/powershell/scripting/install/installing-powershell).
-> Não é técnico? Peça à sua própria IA: *"instale git e pwsh na minha máquina"* — é o primeiro
-> teste dela. 😉
+> **Prerequisites** (2 min): [git](https://git-scm.com/downloads) and PowerShell — native on
+> Windows; on macOS/Linux install [PowerShell 7 (`pwsh`)](https://learn.microsoft.com/powershell/scripting/install/installing-powershell).
+> Not technical? Ask your own AI: *"install git and pwsh on my machine"* — that's its first test. 😉
 
 ```powershell
 git clone https://github.com/ethierre/squadkit && pwsh -File squadkit/demo-squad.ps1
 ```
-Instala um squad de exemplo com spec validada, roda os gates determinísticos na hora e te entrega
-o roteiro: abra sua IA na pasta e diga **"executar T-DEMO-1"** — veja pré-voo, evidência executada,
-explain-back e review funcionando de verdade. Roteiro em `DEMO.md`.
+Installs an example squad with a validated spec, runs the deterministic gates on the spot, and hands
+you the script: open your AI in the folder and say **"executar T-DEMO-1"** — watch the pre-flight,
+executed evidence, explain-back and review work for real. Walkthrough in `DEMO.md`.
 
-## 🚀 Fluxo completo de uso (3 comandos + operação)
+## 🚀 Full workflow (3 commands + operation)
 
 ```mermaid
 flowchart LR
-    A["1· instalar-squad.ps1"] --> B["2· /montar-contexto<br/>docs + entrevista →<br/>FATOS CANÔNICOS"]
-    B --> C["3· /montar-squad<br/>papéis sob medida +<br/>você escolhe os modelos"]
-    C --> D["4· operar a esteira<br/>spec → execução →<br/>review → SEU merge"]
-    D --> E["5· /fechar-sprint<br/>telemetria + memória viva"]
-    E -->|próximo ciclo| D
+    A["1· install"] --> B["2· /montar-contexto<br/>docs + interview →<br/>CANONICAL FACTS"]
+    B --> C["3· /montar-squad<br/>tailored roles +<br/>you pick the models"]
+    C --> D["4· run the pipeline<br/>spec → execution →<br/>review → YOUR merge"]
+    D --> E["5· /fechar-sprint<br/>telemetry + living memory"]
+    E -->|next cycle| D
 ```
 
-### 1. Instale (1 comando — Windows/macOS/Linux)
+### 1. Install (1 command — Windows/macOS/Linux)
 
 ```powershell
 git clone https://github.com/ethierre/squadkit
-pwsh -File squadkit/instalar-squad.ps1 -Projeto "MeuProjeto" -Destino "C:\meuprojeto" `
-     -Perfil sob-medida -Ide claude,antigravity
+pwsh -File squadkit/instalar-squad.ps1 -Projeto "MyProject" -Destino "C:\myproject" `
+     -Perfil sob-medida -Ide claude,antigravity -Idioma "English"
 # IDEs: claude · cursor · antigravity · codex · vscode · generico
-# Perfis: sob-medida ⭐ · enxuto · dev-completo · produto · plataforma · concepcao · growth · completo
+# Profiles: sob-medida (tailored) ⭐ · enxuto (lean) · dev-completo · produto · plataforma · concepcao · growth · completo
+# -Idioma: which language agents reply in (any). Or run -Interativo (guided questions).
 ```
 
-O **AGENTS.md** (padrão Linux Foundation, lido por 28+ ferramentas) vai sempre; sua IA sem
-integração? `squad/INICIAR.md` — cole no chat e funciona.
+The **AGENTS.md** (Linux Foundation standard, read by 28+ tools) is always installed; AI without
+integration? `squad/INICIAR.md` — paste it into the chat and it works. (Command/flag names are in
+Portuguese — the source language — but agents interact in the language you choose.)
 
-**Atualizar uma instalação existente** (quando o SquadKit evoluir): `git pull` no clone e
-`pwsh -File squadkit/atualizar-squad.ps1 -Destino "C:\meuprojeto"` — sincroniza `_core`, scripts e
-catálogo (lendo o manifesto `squad/.squadkit.json`) sem tocar no seu contexto, equipe ou board.
+**Update an existing install** (as SquadKit evolves): `git pull` in the clone and
+`pwsh -File squadkit/atualizar-squad.ps1 -Destino "C:\myproject"` — syncs `_core`, scripts and
+catalog (reading the `squad/.squadkit.json` manifest) without touching your context, team, or board.
 
-### 2. `/montar-contexto` — a base de conhecimento (SEMPRE primeiro)
+### 2. `/montar-contexto` — the knowledge base (ALWAYS first)
 
-Jogue seus documentos em `squad/contexto/` e rode. O agente entrevista você (máx. 8 perguntas),
-lê tudo, **caça contradições entre os documentos** e monta os **FATOS CANÔNICOS** — cada um com
-evidência. É o que faz o squad não errar: doc de maio diz X, doc de julho diz Y, o código diz Z —
-o squad passa a saber qual vale.
+Drop your documents into `squad/contexto/` and run it. The agent interviews you (max 8 questions),
+reads everything, **hunts for contradictions between documents** and builds the **CANONICAL FACTS**
+— each with evidence. This is what keeps the squad from erring: the May doc says X, the July doc
+says Y, the code says Z — the squad now knows which one wins.
 
-### 3. `/montar-squad` — o time se molda ao contexto
+### 3. `/montar-squad` — the team molds to the context
 
-O designer propõe a composição (papéis do catálogo de 16 + papéis **gerados sob medida** — gestor
-de tráfego? especialista OCR? operações de farmácia?), **você aprova** e, para cada papel, recebe
-**3 sugestões de modelo** (🏆 desempenho · 💰 custo · ⚖️ custo-benefício, via leaderboards) —
-**você escolhe**, inclusive fora da lista.
+The designer proposes the composition (roles from the catalog of 16 + roles **generated on demand**
+— traffic manager? OCR specialist? pharmacy operations?), **you approve**, and for each role you get
+**3 model suggestions** (🏆 performance · 💰 cost · ⚖️ cost-benefit, via leaderboards) —
+**you choose**, including outside the list.
 
-### 4. Opere a esteira
+### 4. Run the pipeline
 
 ```
-/meuprojeto-squad US42          ← história completa (PO → spec → devs em ondas → review → QA)
-/meuprojeto-squad executar T-7  ← task já planejada (spec → dev → review → aguarda SEU merge)
-/meuprojeto-squad bug "..."     ← triagem → rota expressa
+/myproject-squad US42          ← full story (PO → spec → devs in waves → review → QA)
+/myproject-squad executar T-7  ← already-planned task (spec → dev → review → awaits YOUR merge)
+/myproject-squad bug "..."     ← triage → express route
 ```
 
-O squad **prepara e prova** (diff + evidência executada + veredito de review); **você aperta o
-botão** (merge, publicar, enviar, pagar — sempre humano). Bug do QA volta tipado para o papel
-certo, com contexto vivo.
+The squad **prepares and proves** (diff + executed evidence + review verdict); **you press the
+button** (merge, publish, send, pay — always human). A QA bug goes back typed to the right role,
+with live context.
 
-### 5. `/fechar-sprint` — memória viva
+### 5. `/fechar-sprint` — living memory
 
-Valida board vs realidade, registra telemetria (ciclos de review, bugs — só dado real), atualiza
-o histórico e os fatos canônicos, extrai lições **com evidência** e gera o `dashboard.html`.
-O próximo ciclo começa sabendo tudo que este aprendeu.
+Validates board vs reality, records telemetry (review cycles, bugs — real data only), updates the
+history and canonical facts, extracts lessons **with evidence**, and generates the `dashboard.html`.
+The next cycle starts knowing everything this one learned.
 
-## Para quem é
+## Who it's for
 
-| Você é… | Seu squad |
+| You are… | Your squad |
 |---|---|
-| 👨‍💻 Time de software | po, arquiteto, dev-front/back/dados, qa, devops, seguranca ([exemplo real: OCR/IDP](exemplos/aidc7/)) |
-| 🎬 Criador de conteúdo | copy, revisor, media-manager, gestor de tráfego ([exemplos](exemplos/youtube/)) |
-| 📊 Analista/operações | analista de vendas, operações com checklist versionado ([exemplos](exemplos/pbm-farma/)) |
-| 🏠 Vida pessoal | gestor de agenda/rotinas — com "confirmar/pagar é você quem faz" ([exemplo](exemplos/pessoal/)) |
-| 🧩 Qualquer outro | `-Perfil sob-medida` + `/montar-squad` gera os papéis do zero, com o harness embutido |
+| 👨‍💻 Software team | po, architect, dev-front/back/data, qa, devops, security ([real example: OCR/IDP](exemplos/aidc7/)) |
+| 🎬 Content creator | copywriter, reviewer, media-manager, traffic manager ([examples](exemplos/youtube/)) |
+| 📊 Analyst/operations | sales analyst, operations with versioned checklist ([examples](exemplos/pbm-farma/)) |
+| 🏠 Personal life | schedule/routine manager — with "confirming/paying is on you" ([example](exemplos/pessoal/)) |
+| 🧩 Anything else | `-Perfil sob-medida` + `/montar-squad` generates the roles from scratch, with the harness built in |
 
-## Por dentro
+## Under the hood
 
 ```
-core/            montar-contexto · montar-squad · esteira · fechar-sprint (fonte única, qualquer IDE)
-                 + best-practices com whenToUse (modelos, spec, evidência, revisão, dados, conteúdo)
-roles/           16 papéis prontos + ROLE-TEMPLATE (meta-template com invariantes de harness)
-adapters/        claude-code · cursor · antigravity · codex/AGENTS.md · vscode · genérico
-scripts/         validar-squad · validar-spec · validar-diff · dashboard · instalar-hook-git
-evals/           cenários golden: bug plantado · spec ambígua · dado sem fonte
-squad/           memória em ARQUIVOS com dono único: board, decisões, bugs, specs, telemetria
+core/            montar-contexto · montar-squad · pipeline · fechar-sprint (single source, any IDE)
+                 + best-practices with whenToUse (models, spec, evidence, review, data, content)
+roles/           16 ready-made roles + ROLE-TEMPLATE (meta-template with harness invariants)
+adapters/        claude-code · cursor · antigravity · codex/AGENTS.md · vscode · generic
+scripts/         validate-squad · validate-spec · validate-diff · dashboard · install-git-hook
+evals/           golden scenarios: planted bug · ambiguous spec · sourceless data
+squad/           file-based memory with a single owner: board, decisions, bugs, specs, telemetry
 ```
 
-Specs com critérios **CA-n em formato EARS** (rastreabilidade CA→task→teste), **ondas de execução**
-por grafo de dependências, complexidade >7 fatia antes de despachar, **rédea por task**
-(assistida/supervisionada/autônoma — autonomia proporcional à consequência, método Karpathy),
-**orçamento de diff** com reprova automática (`validar-diff.ps1`), **explain-back** obrigatório
-(o dev explica o diff em 5 linhas), review com **camadas cegas** e convergência que pega
-**scope creep** (`não-pedido`). Guarda de git em 3 IDEs (detector de `--no-verify`).
+Specs with **CA-n criteria in EARS format** (CA→task→test traceability), **execution waves** by
+dependency graph, complexity >7 splits before dispatch, **rein per task**
+(assisted/supervised/autonomous — autonomy proportional to consequence, the Karpathy method),
+**diff budget** with automatic rejection (`validar-diff.ps1`), mandatory **explain-back**
+(the dev explains the diff in 5 lines), review with **blind layers** and convergence that catches
+**scope creep** (`unrequested`). Git guard across 3 IDEs (detects `--no-verify`).
 
-## Glossário de 30 segundos
+## 30-second glossary
 
-**Esteira** = o fluxo padrão spec → execução → review → sua aprovação · **Spec/SDD** = o documento
-que define O QUE fazer e como verificar (nada se produz sem um) · **Harness** = as regras impostas
-por código, não por confiança · **Fatos canônicos** = a lista do que VALE quando documentos se
-contradizem · **Rédea** = quanta autonomia cada tarefa dá ao agente · **Explain-back** = o agente
-explica o que fez em 5 linhas antes de você revisar.
+**Pipeline** = the standard flow spec → execution → review → your approval · **Spec/SDD** = the
+document defining WHAT to do and how to verify it (nothing ships without one) · **Harness** = rules
+enforced by code, not by trust · **Canonical facts** = the list of what WINS when documents
+contradict each other · **Rein** = how much autonomy each task grants the agent · **Explain-back** =
+the agent explains what it did in 5 lines before you review.
 
-## FAQ rápido
+## Quick FAQ
 
-**Precisa de API key própria?** Não — usa a IA/assinatura que você já tem (Claude Code, Cursor, etc.).
-**Funciona fora de software?** Sim — a esteira é a mesma; muda o entregável (peça, relatório, plano).
-**O agente pode publicar/mergear/pagar sozinho?** Nunca. Ação irreversível é gate humano, por construção.
-**E se meus documentos se contradizem?** É exatamente para isso que existe o `/montar-contexto`.
+**Do I need my own API key?** No — it uses the AI/subscription you already have (Claude Code, Cursor, etc.).
+**Does it work outside software?** Yes — the pipeline is the same; only the deliverable changes (a piece, a report, a plan).
+**What language do agents reply in?** Whatever you choose (`-Idioma`) — internal files may be in another language.
+**Can the agent publish/merge/pay on its own?** Never. Irreversible action is a human gate, by construction.
+**What if my documents contradict each other?** That's exactly what `/montar-contexto` is for.
 
-## Roadmap & pesquisa
+## Roadmap & research
 
-[ROADMAP.md](ROADMAP.md) · [CHANGELOG.md](CHANGELOG.md) · [Pesquisa de mercado com código na mão](docs/PESQUISA-MERCADO-2026-07.md)
-(spec-kit, BMAD, task-master, contains-studio, OpenSquad clonados e analisados; Antigravity, Kiro,
-Devin, Replit e cia. mapeados).
+[ROADMAP.md](ROADMAP.md) · [CHANGELOG.md](CHANGELOG.md) · [Market research with code in hand](docs/PESQUISA-MERCADO-2026-07.md)
+(spec-kit, BMAD, task-master, contains-studio, OpenSquad, Paperclip cloned and analyzed; Antigravity,
+Kiro, Devin, Replit et al. mapped).
 
 ---
 
-⭐ **Se isso resolve um problema seu, deixa a estrela** — e abre uma issue contando qual squad você montou.
-Validado em produção num projeto fintech real (jul/2026) antes de virar produto.
+⭐ **If this solves a problem of yours, drop a star** — and open an issue telling us which squad you built.
+Validated in production on a real fintech project (Jul 2026) before becoming a product.
 
-Licença: [MIT](LICENSE).
+License: [MIT](LICENSE). Docs are bilingual (EN/PT-BR); command names are in Portuguese, the source language.
