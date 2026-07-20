@@ -9,14 +9,28 @@ A sessão principal é o ORQUESTRADOR e o barramento: papéis não falam entre s
 por aqui. Princípios: **spec-driven** (nenhum artefato sem spec: código sem SDD, tela sem SPEC-UX,
 campanha sem BRIEF-MKT) + **agente propõe, humano decide** + **evidência executada**.
 
+## FLUXO CONTÍNUO — a esteira roda inteira numa ÚNICA conversa ⭐
+
+**NUNCA peça ao humano para fechar o chat, reabrir, ou iniciar uma sessão nova para um papel pegar
+a task.** Isso quebra a esteira. O orquestrador (você, a sessão atual) conduz o fluxo de ponta a
+ponta, um papel passando para o outro, SEM interrupção: arquiteto termina a SPEC → você já despacha
+o dev → dev termina → você já manda ao arquiteto revisar. Orgânico. O humano só entra nos GATES
+(aprovar SPEC, aprovar merge) — respondendo no mesmo chat, sem reabrir nada.
+
+A ÚNICA vez que "sessão nova" é necessária: logo após o `/montar-squad` CRIAR papéis NOVOS em
+`.claude\agents\` (o Claude Code só os registra como subagentes no início de uma sessão). Isso é na
+montagem, NÃO na operação. Durante a operação, os papéis já existem — despache-os direto.
+
 ## Como executar um papel (por CLI)
 
 Os papéis vivem em `squad\_equipe\squad-<papel>.md` (fonte neutra).
-- **Claude Code**: os papéis também estão em `.claude\agents\` — despache como SUBAGENTE (contexto
-  isolado, paralelismo real; devolva bug ao MESMO agente para manter o contexto vivo).
-- **Cursor / Codex / VS Code / outro chat**: TROQUE DE PERSONA — leia o arquivo do papel, assuma-o
-  integralmente ("— como squad-<papel> —"), execute a tarefa, produza o relatório no formato do
-  papel, e VOLTE ao orquestrador. Um papel por vez; anuncie cada troca ao usuário.
+- **Claude Code (CLI e VS Code)**: os papéis também estão em `.claude\agents\` — despache como
+  SUBAGENTE (Task/Agent) na MESMA sessão, um após o outro; devolva bug ao MESMO agente para manter
+  o contexto vivo. Paralelize os independentes (mesma onda) num só bloco.
+- **Cursor / Codex / outro chat sem subagente nativo**: TROQUE DE PERSONA na mesma conversa — leia
+  o arquivo do papel, assuma-o ("— como squad-<papel> —"), execute, produza o relatório, e VOLTE a
+  ser o orquestrador para o próximo papel. Um por vez, anunciando a troca. **Tudo na mesma sessão** —
+  trocar de persona ≠ trocar de chat.
 - **Modelo por papel**: quem define é o USUÁRIO em `squad\MODELOS.md` (sugerimos 3 opções por
   papel; ele escolhe, inclusive fora das sugestões). Se a CLI permitir trocar modelo por
   tarefa, respeite o mapa; se não, siga com o modelo da sessão.
@@ -38,8 +52,9 @@ papéis instalados; para os ausentes, use o fallback:
 | squad-qa-browser | validação E2E de browser vira item do roteiro humano pós-merge |
 | squad-devops / seguranca / marketing / docs | trabalho da área vira pendência explícita para o humano |
 
-Catálogo completo em `squad\_catalogo\roles\` (instalado no projeto) (dá para adicionar um papel depois: copiar o .md
-para `.claude\agents\`, resolver os placeholders e abrir sessão nova).
+Catálogo completo em `squad\_catalogo\roles\` (instalado no projeto). Para adicionar um papel depois:
+copie o .md para `.claude\agents\`, resolva os placeholders — e aí sim uma sessão nova o registra
+como subagente (isto é manutenção do squad, não faz parte de rodar uma task).
 
 ## Memória compartilhada (arquivos com dono único — em {{RAIZ}}\squad\)
 
@@ -57,6 +72,18 @@ para `.claude\agents\`, resolver os placeholders e abrir sessão nova).
 | docs\ (fora de repo) | squad-docs |
 
 Todo agente lê tudo ao iniciar. Você atualiza o SPRINT.md a CADA transição de fase.
+
+## Modo de entrega: COM ou SEM repositório git ⭐
+
+Nem todo squad é software com repo. O dev detecta o modo ANTES de entregar
+(`git rev-parse --is-inside-work-tree` + `git remote`):
+- **Repo git COM remote** (projeto de software): cria branch `squad/<task>`, commita, faz **push**;
+  entrega = branch + diff; o "merge" é o humano/time. É o fluxo completo dos passos abaixo.
+- **Sem repo, ou repo SEM remote** (a DEMO, análise de dados, conteúdo, vida pessoal, planilhas):
+  **NÃO tente branch/commit/push** — isso falha e polui. O dev escreve os arquivos DIRETO na pasta
+  de trabalho e entrega = lista de arquivos + o que mudou; o "merge" é o humano revisar e manter os
+  arquivos. Todos os outros gates de harness continuam iguais (evidência executada, review, etc.).
+Na dúvida, é sem-repo. Onde os passos abaixo dizem "branch/push", leia "entregar os arquivos" no modo sem-repo.
 
 ## Fase de CONCEPÇÃO (ideia → backlog) — quando pm/analista/po/ux instalados
 
@@ -105,22 +132,23 @@ Cada etapa só roda se o papel existir (fallbacks acima). Artefato de cada etapa
 5. **QA** — `squad-qa` roda definição de pronto (§10) + critérios (§5) + regressão. Bugs → BUGS.md tipado.
 6. **ROTEAMENTO DE BUG** — campo **Área** do bug → SendMessage ao MESMO agente dev da task original.
    Correção → re-review do delta → re-teste do caso que falhou.
-7. **FECHAMENTO** — SPRINT.md final; pacote: branch pushada + diff + evidências + veredito.
-   **NUNCA merge** — push permitido APENAS de branch `squad/*`; merge é manual do humano.
-   `squad-docs` (se instalado) documenta a entrega após o merge. Registre a linha da task em
+7. **FECHAMENTO** — SPRINT.md final; pacote: (repo) branch pushada + diff + evidências + veredito;
+   (sem-repo) arquivos entregues + evidências + veredito. **NUNCA merge/aplicação final** — no repo,
+   push só de branch `squad/*` e o merge é manual do humano; sem-repo, o humano revisa e mantém.
+   `squad-docs` (se instalado) documenta após o aceite. Registre a linha da task em
    `squad\telemetria.csv` (data,task,papel,ciclos_review,bugs_encontrados,resultado — real ou vazio).
 
 ## Modo EXECUTAR (`/{{projeto}}-squad executar <TASK>`) — task de sprint já planejada
 
-Fluxo encurtado: SEM passo de PO e SEM QA pré-merge.
+Fluxo encurtado, TUDO na mesma conversa (sem fechar/reabrir): SEM passo de PO e SEM QA pré-merge.
 1. ARQUITETO valida a task (doc da sprint × cards do board {{BOARD}} × código real no clone local)
    e escreve o SPEC (ambiguidades = perguntas no topo com recomendação; não travam a esteira).
-2. DEV da área lê card + doc + SPEC → desenvolve na branch `squad/<task>` → testes locais verdes
-   (evidência real) → **push da branch**.
-3. ARQUITETO revisa o push contra TODOS os critérios de aceite → REPROVADO volta ao dev (loop) →
-   APROVADO = autoriza o merge.
-4. Entrega ao humano: branch + diff + evidências + veredito. **Merge é manual do humano.**
-5. QA é acionado PELO HUMANO após o merge.
+2. Você já despacha o DEV da área: lê card + doc + SPEC → desenvolve (branch `squad/<task>` + push
+   se for repo; senão arquivos direto) → testes locais verdes (evidência real).
+3. Você já manda o ARQUITETO revisar contra TODOS os critérios → REPROVADO volta ao MESMO dev (loop) →
+   APROVADO = autoriza o merge/aceite.
+4. Entrega ao humano: branch+diff (ou arquivos) + evidências + veredito. **Merge/aceite é do humano.**
+5. QA é acionado PELO HUMANO após o merge/aceite.
 
 ## Demanda avulsa (`/{{projeto}}-squad bug <descrição>` ou pedido livre)
 

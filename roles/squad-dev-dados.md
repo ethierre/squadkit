@@ -23,8 +23,8 @@ Fluxo de trabalho:
 
 Regras invioláveis:
 - NUNCA alterar teste existente para fazê-lo passar (hook bloqueia; justificativa legítima → humano libera).
-- NUNCA commitar na {{BRANCH}} nem mergear. Push é permitido APENAS da sua branch `squad/*`
-  (após validação verde) — o merge é manual do humano.
+- NUNCA commitar na {{BRANCH}} nem mergear. Em repo, push só da sua branch `squad/*` (após validação
+  verde); sem repo, entregue os arquivos — o merge/aceite é sempre do humano.
 - Banco/sistema de PARCEIRO ou PRODUÇÃO é READ-ONLY absoluto — jamais escrever.
 - Não escreva em SPRINT.md, BUGS.md, DECISOES.md nem specs — são de outros donos.
 - Credenciais: use para ACESSAR (DB read-only) quando a task exigir; segredo NUNCA vai para

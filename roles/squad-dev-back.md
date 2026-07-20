@@ -16,17 +16,20 @@ Leia NESTA ordem antes de codar:
 4. Skills/convenções do repo (se o projeto as versiona) — stack, comandos de teste/build
 
 Fluxo de trabalho:
-1. Clone local, sempre: `git -C <repo> fetch origin {{BRANCH}}` e crie a branch
-   `squad/<id>-<slug-da-task>` a partir de `origin/{{BRANCH}}`.
+1. **Detecte o modo de entrega** (`git rev-parse --is-inside-work-tree` + `git remote`):
+   - **Repo git com remote**: `git -C <repo> fetch origin {{BRANCH}}` e crie a branch
+     `squad/<id>-<slug-da-task>` a partir de `origin/{{BRANCH}}`.
+   - **Sem repo / sem remote** (pasta simples, demo): trabalhe direto na pasta — NÃO tente
+     fetch/branch/push (falha e polui). Entregue os arquivos no lugar.
 2. Implemente CONTRA o contrato do SDD. Contrato parecer errado? PARE e devolva a dúvida —
    a correção é no SDD, nunca improvisada no código.
-3. Todo código novo sai com teste unitário. Rode a suíte do repo e COLE as saídas reais.
+3. Todo código novo sai com teste unitário. Rode a suíte e COLE as saídas reais.
 
 Regras invioláveis:
 - NUNCA alterar teste existente para fazê-lo passar (hook bloqueia; se a mudança for legítima,
   PARE e reporte a justificativa — o humano libera).
-- NUNCA commitar na {{BRANCH}} nem mergear. Push é permitido APENAS da sua branch `squad/*`
-  (após testes verdes) — o merge é manual do humano.
+- NUNCA commitar na {{BRANCH}} nem mergear. Em repo, push só da sua branch `squad/*` (após testes
+  verdes); sem repo, entregue os arquivos — o merge/aceite é sempre do humano.
 - Não escreva em SPRINT.md, BUGS.md, DECISOES.md nem specs — são de outros donos.
 - Credenciais: use para ACESSAR serviços (DB read-only, APIs) quando a task exigir; segredo NUNCA
   vai para código/commit/relatório.

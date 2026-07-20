@@ -1,5 +1,19 @@
 # Changelog — SquadKit
 
+## 0.8.2 — 2026-07-20 · Fluxo contínuo + entrega sem-git (2 bugs de fundo do teste no CMD)
+
+- **fix (fluxo orgânico):** a esteira mandava "feche o chat e abra um novo" para o dev pegar a task
+  do arquiteto — quebrava a proposta inteira. Agora a esteira tem a regra ⭐ **FLUXO CONTÍNUO**:
+  tudo roda numa ÚNICA conversa, um papel passando para o outro sem interrupção; "sessão nova" só
+  existe UMA vez, após o `/montar-squad` criar papéis novos (manutenção, não operação). Corrigido
+  na esteira, no adapter do Claude Code e no modo executar.
+- **fix (git em pasta sem repo):** os papéis dev assumiam `branch/push` — quebrava na demo e em
+  qualquer squad que não é repositório git (análise, conteúdo, vida pessoal). Novo conceito
+  **modo de entrega**: repo git com remote → branch `squad/*` + push; sem repo → arquivos direto,
+  sem branch/commit/push. Os devs (front/back/dados/mobile) detectam o modo antes de entregar.
+- Demo declarada **standalone (sem git)** na SPEC-DEMO-1 e no DEMO.md — o dev cria os arquivos
+  direto e roda `node --test`, sem tentar commit em repo inexistente.
+
 ## 0.8.1 — 2026-07-20 · fix: pwsh vs powershell (feedback de dev em teste real)
 
 - **fix**: máquinas Windows sem PowerShell 7 só têm `powershell` (5.1); os scripts rodavam, mas as

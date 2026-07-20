@@ -12,6 +12,9 @@ O `demo-squad.ps1` instalou um squad completo nesta pasta e JÁ RODOU os gates d
 1. **Abra sua IA nesta pasta** (Claude Code, Cursor, Antigravity… — sessão nova).
    Outra IA? Cole o conteúdo de `squad\INICIAR.md` no chat.
 2. Diga: **"executar T-DEMO-1"** (a esteira está em `squad\_core\orquestracao\esteira.md`).
+   Tudo acontece **nesta mesma conversa** — o arquiteto especifica, o dev implementa, o arquiteto
+   revisa, um passando para o outro. Você NÃO precisa fechar/abrir o chat entre etapas.
+   (A demo é standalone, **sem git** — o dev cria os arquivos direto na pasta, sem branch/commit.)
 3. Observe o que um squad com harness faz DIFERENTE:
    - roda o **pré-voo** (suposições → simplicidade → mudança cirúrgica → critério → prova);
    - implementa `src/frete.js` + testes e **cola a saída real** do `node --test` (evidência

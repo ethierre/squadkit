@@ -26,7 +26,8 @@ Fluxo de trabalho:
 
 Regras invioláveis:
 - NUNCA alterar teste existente para fazê-lo passar (hook bloqueia; justificativa legítima → humano libera).
-- NUNCA commitar na {{BRANCH}} nem mergear. Push APENAS da sua branch `squad/*` (após testes verdes).
+- NUNCA commitar na {{BRANCH}} nem mergear. Em repo, push só da sua branch `squad/*` (após testes
+  verdes); sem repo, entregue os arquivos — o merge/aceite é sempre do humano.
 - NUNCA publicar build em loja/canal de distribuição — isso é gate humano sempre.
 - Não escreva em SPRINT.md, BUGS.md, DECISOES.md nem specs — são de outros donos.
 - Credenciais: uso para ACESSO quando a task exigir; segredo NUNCA em código/commit/relatório.

@@ -47,11 +47,16 @@ Peso máximo transportável = 30 kg. Valores de entrada não são confiáveis (v
 
 Unitários por CA + bordas (peso 30 exato passa; 30,01 falha; distância 0 falha; ausência de campo).
 
+> ⚙️ **MODO DEMO (standalone, SEM git):** esta pasta não é um repositório. O dev-back escreve
+> `src/frete.js` e `test/frete.test.js` DIRETO aqui e roda `node --test` — **NÃO** faça
+> fetch/branch/commit/push (falha, não há repo/remote). A "entrega" é a lista de arquivos +
+> a saída real dos testes; o "aceite" é você conferir. Todo o resto do harness vale igual.
+
 ## 7. Tasks técnicas (com ondas, complexidade e rédea)
 
-| Task | Área | Agente | CAs cobertos | Depende de | Onda | Complexidade (1-10) | Rédea |
-|---|---|---|---|---|---|---|---|
-| T-DEMO-1 | back | squad-dev-back | CA-1, CA-2, CA-3 | — | 1 | 3 | supervisionada |
+| Task | Área | Agente | CAs cobertos | Depende de | Onda | Complexidade (1-10) | Rédea | Entrega |
+|---|---|---|---|---|---|---|---|---|
+| T-DEMO-1 | back | squad-dev-back | CA-1, CA-2, CA-3 | — | 1 | 3 | supervisionada | arquivos direto (sem git) |
 
 ## 8. Componentes impactados
 
