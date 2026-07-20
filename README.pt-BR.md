@@ -71,6 +71,10 @@ Instala um squad de exemplo, roda os gates determinísticos na hora e semeia uma
 - **Cursor / Antigravity:** abra a pasta, use o chat do agente
 - **Qualquer outra IA (chat web):** cole o conteúdo de `squadkit-demo/squad/INICIAR.md`
 
+> **Claude Code:** os papéis viram subagentes só no **início** da sessão. Se você instalou com uma
+> sessão do Claude já aberta, reinicie-a **uma vez** para eles carregarem. Durante a operação você
+> nunca fecha/reabre — a esteira inteira roda numa conversa só.
+
 **Passo 3 — no chat da IA, execute:**
 Digite **`executar T-DEMO-1`** → veja o pré-voo, a evidência executada, o explain-back e o review
 funcionando de verdade. Depois **`fechar sprint`** (gera `squad/dashboard.html`). Roteiro: `DEMO.md`.

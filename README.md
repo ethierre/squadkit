@@ -70,6 +70,10 @@ in `squadkit-demo/`.
 - **Cursor / Antigravity:** open the folder, use the agent chat
 - **Any other AI (web chat):** paste the contents of `squadkit-demo/squad/INICIAR.md`
 
+> **Claude Code:** the roles become subagents only at the **start** of a session. If you installed
+> with a Claude session already open, restart it **once** so they load. During operation you never
+> close/reopen — the whole pipeline runs in one conversation.
+
 **Step 3 — in the AI's chat, run it:**
 Type **`executar T-DEMO-1`** → watch the pre-flight, executed evidence, explain-back and review work
 for real. Then **`fechar sprint`** (generates `squad/dashboard.html`). Full walkthrough: `DEMO.md`.
