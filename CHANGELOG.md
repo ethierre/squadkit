@@ -1,5 +1,17 @@
 # Changelog — SquadKit
 
+## 0.5.1 — 2026-07-19 · Correções do primeiro teste de usuário em projeto real
+
+- **fix:** `validar-squad.ps1` e `dashboard.ps1` derivam a raiz da PRÓPRIA localização
+  (`<raiz>\squad\scripts\`) em vez do diretório atual — rodar de outro cwd validava o squad
+  errado (bug reportado em instalação real); ambos imprimem a raiz em uso.
+- **novo:** `atualizar-squad.ps1` — sincroniza `_core` + scripts + catálogo de instalações
+  existentes (manifesto `squad/.squadkit.json`, gravado pelo instalador; instalações antigas
+  aceitam os parâmetros via flags). Nunca toca contexto, equipe, board ou adapters.
+- **novo:** `montar-contexto` termina com **📋 Resumo de Entendimento** obrigatório (o que é o
+  projeto, inventário de leitura, fatos canônicos, decisões, contradições, riscos, perguntas) +
+  loop de confirmação — correção do usuário sobrescreve inferência.
+
 ## 0.5.0 — 2026-07-19 · Antigravity + padrão AGENTS.md + upgrades da pesquisa de mercado
 
 - **Google Antigravity** suportado (`-Ide antigravity`): `.agents/workflows/` (montar-contexto,

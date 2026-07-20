@@ -134,6 +134,14 @@ foreach ($f in $copiados) {
     }
 }
 
+# 5) manifesto da instalacao (usado pelo atualizar-squad.ps1)
+$manifesto = @{
+    projeto = $Projeto; slug = $Slug; raiz = $Destino.TrimEnd('\', '/')
+    branch = $BranchIntegracao; clones = $PastaClones.TrimEnd('\', '/'); board = $Board
+    ides = $Ide; papeis = $instalados; instaladoEm = (Get-Date -Format 'yyyy-MM-dd HH:mm')
+} | ConvertTo-Json
+[IO.File]::WriteAllText((Join-Path (Join-Path $Destino 'squad') '.squadkit.json'), $manifesto, (New-Object Text.UTF8Encoding($false)))
+
 Write-Host ''
 Write-Host ("Squad '" + $Projeto + "' instalado em " + $Destino) -ForegroundColor Green
 Write-Host ("  IDEs: " + ($Ide -join ', ') + " | perfil: " + $Perfil + " | papeis: " + ($instalados -join ', '))

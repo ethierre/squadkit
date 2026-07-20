@@ -1,6 +1,10 @@
 # dashboard.ps1 - gera squad\dashboard.html a partir de squad\SPRINT.md + squad\telemetria.csv.
 # Uso: pwsh -File dashboard.ps1 [-Raiz <pasta do projeto>]   (powershell 5.1 e pwsh 7+)
-param([string]$Raiz = (Get-Location).Path)
+# Sem -Raiz, deriva a raiz da PROPRIA localizacao (instalado em <raiz>\squad\scripts\).
+param([string]$Raiz)
+
+if (-not $Raiz) { $Raiz = [IO.Path]::GetFullPath((Join-Path $PSScriptRoot '..\..')) }
+Write-Host ("Raiz do squad: " + $Raiz)
 
 $sprintPath = Join-Path $Raiz 'squad\SPRINT.md'
 $telePath   = Join-Path $Raiz 'squad\telemetria.csv'

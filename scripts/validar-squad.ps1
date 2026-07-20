@@ -1,8 +1,12 @@
 # validar-squad.ps1 - validacao deterministica dos papeis do squad (gate de codigo, nao de prompt).
 # Uso: pwsh -File validar-squad.ps1 [-Raiz <pasta do projeto>]   (funciona em powershell 5.1 e pwsh 7+)
+# Sem -Raiz, deriva a raiz da PROPRIA localizacao (o script e instalado em <raiz>\squad\scripts\)
+# - nunca do diretorio atual, que pode ser outro projeto.
 # Exit 0 = OK · Exit 1 = erros encontrados
-param([string]$Raiz = (Get-Location).Path)
+param([string]$Raiz)
 
+if (-not $Raiz) { $Raiz = [IO.Path]::GetFullPath((Join-Path $PSScriptRoot '..\..')) }
+Write-Host ("Raiz do squad: " + $Raiz)
 $erros = @(); $avisos = @()
 $dirs = @((Join-Path $Raiz 'squad\_equipe'), (Join-Path $Raiz '.claude\agents')) | Where-Object { Test-Path $_ }
 if (-not $dirs) { Write-Host 'ERRO: nenhuma pasta de papeis encontrada (squad\_equipe ou .claude\agents)'; exit 1 }

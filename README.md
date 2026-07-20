@@ -59,6 +59,10 @@ pwsh -File squadkit/instalar-squad.ps1 -Projeto "MeuProjeto" -Destino "C:\meupro
 O **AGENTS.md** (padrão Linux Foundation, lido por 28+ ferramentas) vai sempre; sua IA sem
 integração? `squad/INICIAR.md` — cole no chat e funciona.
 
+**Atualizar uma instalação existente** (quando o SquadKit evoluir): `git pull` no clone e
+`pwsh -File squadkit/atualizar-squad.ps1 -Destino "C:\meuprojeto"` — sincroniza `_core`, scripts e
+catálogo (lendo o manifesto `squad/.squadkit.json`) sem tocar no seu contexto, equipe ou board.
+
 ### 2. `/montar-contexto` — a base de conhecimento (SEMPRE primeiro)
 
 Jogue seus documentos em `squad/contexto/` e rode. O agente entrevista você (máx. 8 perguntas),
