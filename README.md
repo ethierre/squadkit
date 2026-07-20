@@ -48,12 +48,27 @@ work. Here the enforcement is **external** (hooks, scripts, evals).
 > **Command note:** examples use `pwsh`. **On Windows without PowerShell 7, use `powershell`
 > instead of `pwsh`** — the scripts run the same on the native 5.1.
 
+> 🧭 **Two places you type things — this trips everyone up at first:**
+> **① the terminal** (CMD / PowerShell / the VS Code terminal) → only to INSTALL (the commands below).
+> **② inside your AI's chat** (Claude Code, the Claude-for-VS-Code panel, Cursor…) → to OPERATE the
+> squad (`executar T-DEMO-1`, `/montar-contexto`…). Installing ≠ operating.
+
+**Step 1 — in the terminal, install the demo:**
 ```powershell
 git clone https://github.com/ethierre/squadkit && pwsh -File squadkit/demo-squad.ps1
 ```
-Installs an example squad with a validated spec, runs the deterministic gates on the spot, and hands
-you the script: open your AI in the folder and say **"executar T-DEMO-1"** — watch the pre-flight,
-executed evidence, explain-back and review work for real. Walkthrough in `DEMO.md`.
+Installs an example squad, runs the deterministic gates on the spot, and seeds a ready-to-run task
+(`squadkit-demo/`). *(Windows without PowerShell 7: swap `pwsh` → `powershell`.)*
+
+**Step 2 — open your AI INSIDE the demo folder:**
+- **Claude Code (terminal / CMD):** `cd squadkit-demo` then run `claude`
+- **Claude Code for VS Code:** File → Open Folder → `squadkit-demo`, open the Claude panel, start a **new chat**
+- **Cursor / Antigravity:** open the folder, use the agent chat
+- **Any other AI (web chat):** paste the contents of `squadkit-demo/squad/INICIAR.md`
+
+**Step 3 — in the AI's chat, run it:**
+Type **`executar T-DEMO-1`** → watch the pre-flight, executed evidence, explain-back and review work
+for real. Then **`fechar sprint`** (generates `squad/dashboard.html`). Full walkthrough: `DEMO.md`.
 
 ## 🚀 Full workflow (3 commands + operation)
 
@@ -85,13 +100,17 @@ The **AGENTS.md** (Linux Foundation standard, read by 28+ tools) is always insta
 integration? `squad/INICIAR.md` — paste it into the chat and it works. (Command/flag names are in
 Portuguese — the source language — but agents interact in the language you choose.)
 
+Then **open your AI inside the project folder** (same as Step 2 of the demo above:
+`cd C:\myproject` + `claude`, or Open Folder in VS Code) — steps 2–5 below are all typed **in the
+AI's chat**, not the terminal.
+
 **Update an existing install** (as SquadKit evolves): `git pull` in the clone and
 `pwsh -File squadkit/atualizar-squad.ps1 -Destino "C:\myproject"` — syncs `_core`, scripts and
 catalog (reading the `squad/.squadkit.json` manifest) without touching your context, team, or board.
 
 ### 2. `/montar-contexto` — the knowledge base (ALWAYS first)
 
-Drop your documents into `squad/contexto/` and run it. The agent interviews you (max 8 questions),
+Drop your documents into `squad/contexto/` and run it (in the AI's chat). The agent interviews you (max 8 questions),
 reads everything, **hunts for contradictions between documents** and builds the **CANONICAL FACTS**
 — each with evidence. This is what keeps the squad from erring: the May doc says X, the July doc
 says Y, the code says Z — the squad now knows which one wins.

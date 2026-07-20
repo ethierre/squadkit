@@ -49,12 +49,27 @@ mas os gates deles são instruções em prompt fiscalizadas pelo mesmo LLM que p
 > **Nota sobre o comando:** os exemplos usam `pwsh`. **No Windows sem o PowerShell 7, use
 > `powershell` no lugar de `pwsh`** — os scripts rodam igual no 5.1 nativo.
 
+> 🧭 **Dois lugares onde você digita coisas — é aqui que todo mundo se perde no início:**
+> **① o terminal** (CMD / PowerShell / o terminal do VS Code) → só para INSTALAR (os comandos abaixo).
+> **② dentro do chat da sua IA** (Claude Code, o painel do Claude no VS Code, Cursor…) → para OPERAR
+> o squad (`executar T-DEMO-1`, `/montar-contexto`…). Instalar ≠ operar.
+
+**Passo 1 — no terminal, instale a demo:**
 ```powershell
 git clone https://github.com/ethierre/squadkit && pwsh -File squadkit/demo-squad.ps1
 ```
-Instala um squad de exemplo com spec validada, roda os gates determinísticos na hora e te entrega
-o roteiro: abra sua IA na pasta e diga **"executar T-DEMO-1"** — veja pré-voo, evidência executada,
-explain-back e review funcionando de verdade. Roteiro em `DEMO.md`.
+Instala um squad de exemplo, roda os gates determinísticos na hora e semeia uma task pronta
+(`squadkit-demo/`). *(Windows sem PowerShell 7: troque `pwsh` → `powershell`.)*
+
+**Passo 2 — abra sua IA DENTRO da pasta da demo:**
+- **Claude Code (terminal / CMD):** `cd squadkit-demo` e rode `claude`
+- **Claude Code for VS Code:** File → Open Folder → `squadkit-demo`, abra o painel do Claude, inicie uma **conversa nova**
+- **Cursor / Antigravity:** abra a pasta, use o chat do agente
+- **Qualquer outra IA (chat web):** cole o conteúdo de `squadkit-demo/squad/INICIAR.md`
+
+**Passo 3 — no chat da IA, execute:**
+Digite **`executar T-DEMO-1`** → veja o pré-voo, a evidência executada, o explain-back e o review
+funcionando de verdade. Depois **`fechar sprint`** (gera `squad/dashboard.html`). Roteiro: `DEMO.md`.
 
 ## 🚀 Fluxo completo de uso (3 comandos + operação)
 
@@ -85,13 +100,17 @@ pwsh -File squadkit/instalar-squad.ps1 -Projeto "MeuProjeto" -Destino "C:\meupro
 O **AGENTS.md** (padrão Linux Foundation, lido por 28+ ferramentas) vai sempre; sua IA sem
 integração? `squad/INICIAR.md` — cole no chat e funciona.
 
+Depois **abra sua IA dentro da pasta do projeto** (igual ao Passo 2 da demo acima:
+`cd C:\meuprojeto` + `claude`, ou Open Folder no VS Code) — os passos 2–5 abaixo são todos
+digitados **no chat da IA**, não no terminal.
+
 **Atualizar uma instalação existente** (quando o SquadKit evoluir): `git pull` no clone e
 `pwsh -File squadkit/atualizar-squad.ps1 -Destino "C:\meuprojeto"` — sincroniza `_core`, scripts e
 catálogo (lendo o manifesto `squad/.squadkit.json`) sem tocar no seu contexto, equipe ou board.
 
 ### 2. `/montar-contexto` — a base de conhecimento (SEMPRE primeiro)
 
-Jogue seus documentos em `squad/contexto/` e rode. O agente entrevista você (máx. 8 perguntas),
+Jogue seus documentos em `squad/contexto/` e rode (no chat da IA). O agente entrevista você (máx. 8 perguntas),
 lê tudo, **caça contradições entre os documentos** e monta os **FATOS CANÔNICOS** — cada um com
 evidência. É o que faz o squad não errar: doc de maio diz X, doc de julho diz Y, o código diz Z —
 o squad passa a saber qual vale.
