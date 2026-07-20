@@ -1,5 +1,9 @@
 # Personalização por projeto — o que ajustar depois de instalar
 
+> **Comando PowerShell:** os exemplos usam `pwsh` (PowerShell 7). No **Windows sem PS7, troque por
+> `powershell`** (o 5.1 nativo roda os scripts igual). No macOS/Linux é sempre `pwsh`. O instalador
+> já grava o comando certo do seu SO nas mensagens e nos hooks.
+
 O instalador resolve os placeholders básicos. O que fica por sua conta (ordem recomendada):
 
 ## 0. Os botões do instalador (referência rápida)

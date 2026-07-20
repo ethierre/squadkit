@@ -1,5 +1,14 @@
 # Changelog — SquadKit
 
+## 0.8.1 — 2026-07-20 · fix: pwsh vs powershell (feedback de dev em teste real)
+
+- **fix**: máquinas Windows sem PowerShell 7 só têm `powershell` (5.1); os scripts rodavam, mas as
+  mensagens impressas e os hooks usavam `pwsh` hardcoded → quebravam. Agora o instalador **detecta
+  o SO** (`$env:OS`) e usa `powershell` no Windows / `pwsh` no macOS/Linux — tanto no `{{PWSH}}` dos
+  hooks quanto nas linhas de "próximos passos" impressas. Testado sob 5.1: imprime `powershell`.
+- Docs (README EN/PT, PERSONALIZACAO, DEMO.md): nota explícita "no Windows sem PS7, use `powershell`
+  no lugar de `pwsh`".
+
 ## 0.8.0 — 2026-07-20 · README bilíngue + pacote de idioma
 
 - **README bilíngue**: `README.md` (inglês, principal — máxima visibilidade no GitHub) +

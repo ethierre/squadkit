@@ -25,6 +25,12 @@ O `demo-squad.ps1` instalou um squad completo nesta pasta e JÁ RODOU os gates d
 ## Próximo passo real
 
 ```powershell
-pwsh -File <clone-do-squadkit>\instalar-squad.ps1 -Interativo
+# Windows (PowerShell 5.1 nativo):
+powershell -File <clone-do-squadkit>\instalar-squad.ps1 -Interativo
+# macOS/Linux (ou Windows com PowerShell 7):
+pwsh -File <clone-do-squadkit>/instalar-squad.ps1 -Interativo
 ```
 E comece SEMPRE pelo `/montar-contexto` — squad sem contexto erra com confiança.
+
+> 💡 Onde você vê `pwsh` nos exemplos: no Windows sem o PowerShell 7, use `powershell` no lugar —
+> os scripts rodam igual no 5.1 nativo.

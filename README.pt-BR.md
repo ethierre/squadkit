@@ -41,9 +41,13 @@ mas os gates deles são instruções em prompt fiscalizadas pelo mesmo LLM que p
 ## ⚡ Experimente em 5 minutos (sem configurar nada)
 
 > **Pré-requisitos** (2 min): [git](https://git-scm.com/downloads) e PowerShell — nativo no
-> Windows; no macOS/Linux instale o [PowerShell 7 (`pwsh`)](https://learn.microsoft.com/powershell/scripting/install/installing-powershell).
+> Windows (o 5.1 já serve, não precisa instalar nada); no macOS/Linux instale o
+> [PowerShell 7 (`pwsh`)](https://learn.microsoft.com/powershell/scripting/install/installing-powershell).
 > Não é técnico? Peça à sua própria IA: *"instale git e pwsh na minha máquina"* — é o primeiro
 > teste dela. 😉
+>
+> **Nota sobre o comando:** os exemplos usam `pwsh`. **No Windows sem o PowerShell 7, use
+> `powershell` no lugar de `pwsh`** — os scripts rodam igual no 5.1 nativo.
 
 ```powershell
 git clone https://github.com/ethierre/squadkit && pwsh -File squadkit/demo-squad.ps1

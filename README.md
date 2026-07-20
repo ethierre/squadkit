@@ -41,8 +41,12 @@ work. Here the enforcement is **external** (hooks, scripts, evals).
 ## ⚡ Try it in 5 minutes (zero setup)
 
 > **Prerequisites** (2 min): [git](https://git-scm.com/downloads) and PowerShell — native on
-> Windows; on macOS/Linux install [PowerShell 7 (`pwsh`)](https://learn.microsoft.com/powershell/scripting/install/installing-powershell).
+> Windows (5.1 works, no install needed); on macOS/Linux install
+> [PowerShell 7 (`pwsh`)](https://learn.microsoft.com/powershell/scripting/install/installing-powershell).
 > Not technical? Ask your own AI: *"install git and pwsh on my machine"* — that's its first test. 😉
+>
+> **Command note:** examples use `pwsh`. **On Windows without PowerShell 7, use `powershell`
+> instead of `pwsh`** — the scripts run the same on the native 5.1.
 
 ```powershell
 git clone https://github.com/ethierre/squadkit && pwsh -File squadkit/demo-squad.ps1

@@ -147,8 +147,10 @@ foreach ($i in $Ide) {
 }
 
 # 4) placeholders (pares ordenados: hashtable colidiria PROJETO/projeto por case-insensitividade)
-# {{PWSH}} = executavel de PowerShell do SO (hooks precisam dele; macOS/Linux exigem pwsh instalado)
-$pwshExe = if ($PSVersionTable.Platform -eq 'Unix') { 'pwsh' } else { 'powershell.exe' }
+# {{PWSH}} = executavel de PowerShell do SO. Windows: 'powershell' (5.1 nativo, sempre existe -
+# roda os scripts igual; nao exige PS7). macOS/Linux: 'pwsh' (unico disponivel).
+$ehWindows = ($env:OS -eq 'Windows_NT')
+$pwshExe = if ($ehWindows) { 'powershell' } else { 'pwsh' }
 $pares = @(
     , @('{{PWSH}}', $pwshExe)
     , @('{{IDIOMA}}', $Idioma)
@@ -194,5 +196,5 @@ Write-Host '  2. PRIMEIRO: rode montar-contexto (base de conhecimento + fatos ca
 Write-Host '  3. DEPOIS: rode montar-squad (o time se molda ao contexto; modelos = sua escolha)'
 Write-Host '  4. Teste de fumaca com 1 demanda real e feche com fechar-sprint (telemetria+dashboard)'
 Write-Host '  5. Projetos com codigo: ative o anti-burla universal em cada repositorio de trabalho:'
-Write-Host '     pwsh -File squad\scripts\instalar-hook-git.ps1 -Repo <caminho-do-clone>'
+Write-Host ('     ' + $pwshExe + ' -File squad\scripts\instalar-hook-git.ps1 -Repo <caminho-do-clone>')
 Write-Host '  Detalhes: PERSONALIZACAO.md do template.'
