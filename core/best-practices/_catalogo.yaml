@@ -20,3 +20,18 @@ praticas:
   - id: conteudo-criativo
     arquivo: conteudo-criativo.md
     whenToUse: "papéis de conteúdo (copy, social, vídeo, marketing) — brief, voz, honestidade de claim, direitos"
+  - id: qualidade-de-spec
+    arquivo: qualidade-de-spec.md
+    whenToUse: "arquiteto/especificador antes do gate humano de toda SPEC — checklist que valida a ESCRITA da spec (clareza, gaps, ambiguidade, rastreabilidade)"
+  - id: migracao-de-banco
+    arquivo: migracao-de-banco.md
+    whenToUse: "papéis de dados/devops ao criar ou revisar migração de banco — numeração, imutabilidade, reversão, compatibilidade, locks"
+  - id: seguranca-de-api
+    arquivo: seguranca-de-api.md
+    whenToUse: "dev-back e reviewer em qualquer endpoint/API — authz por recurso, validação de borda, segredos, P0/P1 de segurança"
+  - id: seo-youtube
+    arquivo: seo-youtube.md
+    whenToUse: "papéis de conteúdo digital (YouTube, blog, social) — CTR×retenção, metadados, intenção de busca, honestidade de promessa"
+  - id: financas-planilhas-pessoais
+    arquivo: financas-planilhas-pessoais.md
+    whenToUse: "squads de vida pessoal/organização — planilhas financeiras, conferência com evidência, privacidade, rotina de revisão"

@@ -26,8 +26,20 @@ no SPEC · protocolo de clarificação · camadas cegas + convergência (`não-p
 contrato de evidência por tipo (anti-Potemkin) · ciclo de vida do canon · few-shot de roteamento
 nos papéis · dossiê `docs/PESQUISA-MERCADO-2026-07.md`.
 
+## ✅ ENTREGUE (v0.6.0 — 19/07)
+
+Validador CA→task→teste em código · hook anti-burla universal (git pre-commit, qualquer IDE) ·
+onboarding guiado `-Interativo` · checklist "unit tests for English" como gate ·
++5 best-practices (banco, segurança de API, SEO/YouTube, finanças pessoais, qualidade de spec).
+
 ## PRÓXIMO (1–2 meses)
 
+- **Telemetria de custo real** (pesquisa em andamento: como cada CLI expõe tokens/custo).
+- **QA browser-driven anti-Potemkin** (pesquisa em andamento: Playwright-MCP × browser-use ×
+  capacidades nativas por IDE).
+- **Hooks com VETO por IDE** (pesquisa em andamento: matriz Cursor/Antigravity 2.0/Claude Code).
+- **Sync de conhecimento entre projetos** (padrão agent-os): standards/lições de um squad voltam
+  para uma base herdável.
 - **Automatizar os evals** — hoje rodam manualmente; meta: script que dispara os 3 cenários numa
   sessão headless e confere a rubrica (CI do repo: papel alterado → evals verdes ou MR bloqueado).
 - **Nível 2 — CI como orquestrador** (GitLab/GitHub Actions): label na issue dispara o agente

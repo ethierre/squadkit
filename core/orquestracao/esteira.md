@@ -69,7 +69,12 @@ Cada etapa só roda se o papel existir (fallbacks acima). Artefato de cada etapa
    inteira. **Índice não existe? PARE e rode `/montar-contexto` primeiro** — squad sem contexto
    erra com confiança. (Se o projeto sincroniza skills dos repos: rode o sync antes.)
 1. **PO** valida a história (ou fallback). DEVOLVIDA/lacunas → apresente ao humano e **PARE**.
-2. **SPEC** — `squad-arquiteto` gera `specs\SPEC-<id>.md`. Apresente ao humano e **PARE** (gate).
+2. **SPEC** — `squad-arquiteto` gera `specs\SPEC-<id>.md` e, ANTES do gate humano: (a) gera o
+   checklist de qualidade da ESCRITA (`specs\CHECKLIST-<id>.md`, ver
+   `best-practices\qualidade-de-spec.md`) e resolve os itens abertos; (b) roda o validador
+   determinístico `pwsh -File squad\scripts\validar-spec.ps1 -Spec specs\SPEC-<id>.md`
+   (rastreabilidade CA→task→verificação) e COLA a saída. Só então apresente ao humano e
+   **PARE** (gate) — ele recebe uma spec auditada, não um rascunho.
 3. **DESPACHO POR ONDAS** — o §7 do SPEC define as ondas (grafo de dependências): toda a onda 1
    em PARALELO (um papel por task), onda N+1 só quando a N fecha o review. O prompt de cada task
    leva: id, caminho do SPEC (+ SPEC-UX se houver), CAs cobertos, branch. Task que cruza áreas:

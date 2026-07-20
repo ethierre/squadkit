@@ -1,5 +1,22 @@
 # Changelog — SquadKit
 
+## 0.6.0 — 2026-07-19 · Harness a montante: rastreabilidade, hook universal, onboarding e 5 best-practices
+
+- **Validador de rastreabilidade em código** (`validar-spec.ps1` v2): cobertura CA→task→verificação
+  determinística sobre as chaves CA-n — CA sem task = reprovado; task citando CA inexistente =
+  reprovado; CA sem verificação no §10 = aviso; imprime cobertura X/Y. (A versão determinística do
+  `/analyze` do spec-kit.)
+- **Hook anti-burla UNIVERSAL** (`instalar-hook-git.ps1`): git pre-commit que bloqueia commit
+  modificando teste rastreado (allowlist humana respeitada; teste novo passa) — vale para QUALQUER
+  IDE/CLI, não só Claude Code. Testado ponta a ponta.
+- **Onboarding guiado** (`instalar-squad.ps1 -Interativo`): 6 perguntas em linguagem simples no
+  lugar de flags — para usuário não-técnico (vida pessoal, vendas, conteúdo).
+- **Gate de qualidade de spec na esteira**: antes do gate humano, o arquiteto gera o checklist da
+  ESCRITA (`qualidade-de-spec.md` — "unit tests for English", ≥80% itens com rastreabilidade) e
+  roda o validador — o humano recebe spec auditada, não rascunho.
+- **+5 best-practices** (catálogo whenToUse, total 11): migração de banco, segurança de API
+  (P0/P1), SEO/YouTube, finanças/planilhas pessoais, qualidade de spec.
+
 ## 0.5.1 — 2026-07-19 · Correções do primeiro teste de usuário em projeto real
 
 - **fix:** `validar-squad.ps1` e `dashboard.ps1` derivam a raiz da PRÓPRIA localização

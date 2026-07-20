@@ -8,18 +8,42 @@
 #   vscode (Copilot) · generico (qualquer IA). O AGENTS.md (padrao agents.md) e instalado SEMPRE
 #   na raiz - e a camada canonica lida por 28+ ferramentas.
 param(
-    [Parameter(Mandatory = $true)][string]$Projeto,
-    [Parameter(Mandatory = $true)][string]$Destino,
+    [string]$Projeto,
+    [string]$Destino,
     [string]$Slug,
     [string]$BranchIntegracao = 'develop',
     [string]$PastaClones,
     [string]$Board = 'Azure DevOps',
     [string]$Perfil = 'dev-completo',
     [string[]]$Papeis,
-    [string[]]$Ide = @('claude')
+    [string[]]$Ide = @('claude'),
+    [switch]$Interativo   # onboarding guiado: perguntas em vez de flags (usuario nao-tecnico)
 )
 
 $ErrorActionPreference = 'Stop'
+
+# Onboarding guiado
+if ($Interativo) {
+    Write-Host ''
+    Write-Host '=== SquadKit - instalacao guiada ===' -ForegroundColor Cyan
+    if (-not $Projeto) { $Projeto = Read-Host '1/6 Nome do projeto ou do trabalho (ex: APPAI, Canal Youtube, Financas da Casa)' }
+    if (-not $Destino) { $Destino = Read-Host '2/6 Pasta onde instalar (ex: C:\meuprojeto - sera criada se nao existir)' }
+    $perfisDisp = ((Get-Content (Join-Path $PSScriptRoot 'perfis.json') -Raw | ConvertFrom-Json).PSObject.Properties.Name) -join ' | '
+    Write-Host ('    Perfis: ' + $perfisDisp)
+    Write-Host '    Dica: "sob-medida" deixa a IA desenhar o time para voce (recomendado se tem duvida).'
+    $r = Read-Host '3/6 Perfil do squad [Enter = sob-medida]'
+    $Perfil = if ($r) { $r } else { 'sob-medida' }
+    Write-Host '    IDEs: claude | cursor | antigravity | codex | vscode | generico (pode listar varias com virgula)'
+    $r = Read-Host '4/6 Qual IA/editor voce usa? [Enter = claude]'
+    $Ide = @($(if ($r) { $r } else { 'claude' }))
+    $r = Read-Host '5/6 Se tem repositorios git: branch de integracao [Enter = develop; irrelevante fora de software]'
+    if ($r) { $BranchIntegracao = $r }
+    $r = Read-Host '6/6 Onde voce acompanha tarefas? (ex: Azure DevOps, GitLab, Trello, Planilha) [Enter = Azure DevOps]'
+    if ($r) { $Board = $r }
+    Write-Host ''
+}
+if (-not $Projeto -or -not $Destino) { throw 'Informe -Projeto e -Destino (ou rode com -Interativo para a instalacao guiada).' }
+
 # via "powershell -File", listas com virgula chegam como string unica -> normaliza
 $Ide = @($Ide | ForEach-Object { $_ -split ',' } | ForEach-Object { $_.Trim().ToLower() } | Where-Object { $_ })
 if ($Papeis) { $Papeis = @($Papeis | ForEach-Object { $_ -split ',' } | ForEach-Object { $_.Trim() } | Where-Object { $_ }) }
