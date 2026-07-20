@@ -1,14 +1,13 @@
-# sync-skills.ps1 — OPCIONAL: sincroniza .claude/skills dos repos do projeto (Git, ref {{BRANCH}})
-# para {{RAIZ}}\squad\skills-cache\. So faz sentido se os repos versionam skills (padrao 7Risk).
-# Se nao usar: apague este script e as mencoes na SKILL da esteira.
-# AJUSTAR NA INSTALACAO: $gitlab (URL da API) e a lista $repos (ids/nomes).
+# sync-skills.ps1 — EXEMPLO OPCIONAL: sincroniza .claude/skills dos repos do projeto (GitLab API,
+# ref {{BRANCH}}) para {{RAIZ}}\squad\skills-cache\. So faz sentido se os repos versionam skills.
+# Copie para squad\scripts\ e AJUSTE: $gitlab (URL da sua instancia) e a lista $repos (ids/nomes).
 param(
     [string]$Ref = '{{BRANCH}}',
     [string]$CacheDir = '{{RAIZ}}\squad\skills-cache'
 )
 
 $ErrorActionPreference = 'Stop'
-$gitlab = 'https://gitlab.7comm.com.br/api/v4'   # <- AJUSTAR se outro host
+$gitlab = 'https://gitlab.example.com/api/v4'   # <- AJUSTAR para a URL da sua instancia GitLab
 
 # PAT: env var tem precedencia; fallback = extrair do remote de um clone local (nunca hardcodar aqui)
 $tok = $env:GITLAB_PAT_SQUAD
