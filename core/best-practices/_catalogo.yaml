@@ -20,6 +20,9 @@ praticas:
   - id: conteudo-criativo
     arquivo: conteudo-criativo.md
     whenToUse: "papéis de conteúdo (copy, social, vídeo, marketing) — brief, voz, honestidade de claim, direitos"
+  - id: engenharia-agentica
+    arquivo: engenharia-agentica.md
+    whenToUse: "TODO papel executor antes de implementar qualquer task (pré-voo das 5 Karpathy Guidelines: suposições, simplicidade, mudança cirúrgica, critério verificável, prova) e o orquestrador ao calibrar a rédea/autonomia por task"
   - id: design-distintivo
     arquivo: design-distintivo.md
     whenToUse: "OBRIGATÓRIA p/ squad-ux, squad-dev-front e squad-dev-mobile em qualquer tela nova ou redesign — anti-template de IA, tokens primeiro, elemento-assinatura, copy como design; canônico do projeto sempre vence"

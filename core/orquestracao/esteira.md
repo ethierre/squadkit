@@ -77,9 +77,10 @@ Cada etapa só roda se o papel existir (fallbacks acima). Artefato de cada etapa
    **PARE** (gate) — ele recebe uma spec auditada, não um rascunho.
 3. **DESPACHO POR ONDAS** — o §7 do SPEC define as ondas (grafo de dependências): toda a onda 1
    em PARALELO (um papel por task), onda N+1 só quando a N fecha o review. O prompt de cada task
-   leva: id, caminho do SPEC (+ SPEC-UX se houver), CAs cobertos, branch. Task que cruza áreas:
-   devs em PARALELO contra o mesmo contrato — não existe "fullstack". Complexidade >7 volta ao
-   arquiteto para fatiar antes.
+   leva: id, caminho do SPEC (+ SPEC-UX se houver), CAs cobertos, branch, e a instrução de rodar
+   o **pré-voo** (`best-practices\engenharia-agentica.md`: suposições → simplicidade → mudança
+   cirúrgica → critério → prova) antes de produzir. Task que cruza áreas: devs em PARALELO contra
+   o mesmo contrato — não existe "fullstack". Complexidade >7 volta ao arquiteto para fatiar antes.
 4. **REVIEW** — `squad-arquiteto` revisa cada diff contra o SDD (re-executa a rubrica; não confia
    no relatório do dev; entrega grande → camadas cegas e convergência com gap `não-pedido` — ver
    `best-practices\revisao.md`). Evidência conforme o **contrato de evidência** por tipo de entrega

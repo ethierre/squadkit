@@ -1,5 +1,16 @@
 # Changelog — SquadKit
 
+## 0.6.2 — 2026-07-19 · Método Karpathy (engenharia agêntica) como pré-voo
+
+- **`engenharia-agentica.md`** (best-practice, injetada em TODO executor): as 5 Karpathy
+  Guidelines como pré-voo obrigatório antes de produzir — suposições à mesa, restrição de
+  simplicidade (teste do engenheiro sênior), mudança cirúrgica (toda linha do diff rastreia ao
+  pedido), critério verificável antes de começar, execute-e-prove. + Rédea (autonomia
+  proporcional à consequência) e anti-padrões nomeados para o reviewer citar.
+- Esteira: o despacho de toda task agora instrui o pré-voo.
+- ROADMAP: seção "novas funcionalidades candidatas" (níveis de rédea, orçamento de diff,
+  explain-back, modo demo, coletar-custo, adapters de hook, guia Playwright MCP).
+
 ## 0.6.1 — 2026-07-19 · Design distintivo + papel qa-browser + 2 dossiês de pesquisa
 
 - **`design-distintivo.md`** (best-practice OBRIGATÓRIA de ux/dev-front/dev-mobile): anti-template

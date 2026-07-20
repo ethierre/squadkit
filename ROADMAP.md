@@ -70,6 +70,23 @@ onboarding guiado `-Interativo` · checklist "unit tests for English" como gate 
 - **Expor SquadKit como MCP server** (padrão Devin/task-master): board, specs e telemetria como
   tools para qualquer CLI.
 
+## NOVAS FUNCIONALIDADES CANDIDATAS (v0.7+ — ideias avaliadas, ordem de valor)
+
+1. **Níveis de rédea por task** (Karpathy: autonomia proporcional à consequência): `assistida`
+   (humano aprova o PLANO antes do código) · `supervisionada` (esteira padrão) · `autônoma`
+   (rotina de baixo risco roda direto). Campo no §7 do SPEC + comportamento no despacho.
+2. **Orçamento de diff**: task cujo diff excede N linhas (config por projeto) → reprova
+   automática e volta ao arquiteto para fatiar — enforcement do "mudança cirúrgica" em código.
+3. **Explain-back**: o relatório do dev abre com 5 linhas explicando O QUE o diff faz e POR QUÊ —
+   preserva compreensão humana (o custo invisível do 20/80 do Karpathy é ninguém entender o código).
+4. **`coletar-custo.ps1`** no fechar-sprint (desenho pronto — dossiê de telemetria).
+5. **Adapters de hook** para `.cursor/hooks.json` e `.agents/hooks.json` + detector de
+   `--no-verify` no hook Claude/VS Code (desenho pronto — dossiê hooks).
+6. **Guia de setup Playwright MCP por IDE** para o `squad-qa-browser` + hook Stop que bloqueia
+   encerrar QA sem os arquivos de evidência.
+7. **Modo demo/showcase**: 1 comando que instala squad de exemplo + roda 1 task fake ponta a
+   ponta — para o dev avaliar o produto em 5 minutos (conversão de estrela em uso).
+
 ## VISÃO (3+ meses)
 
 - Agent SDK / Managed Agents com o SDD como rubrica de *Outcome* (o harness itera até a entrega
