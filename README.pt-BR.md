@@ -78,6 +78,10 @@ pwsh -File squadkit/instalar-squad.ps1 -Projeto "MeuProjeto" -Destino "C:\meupro
 # -Idioma: em que idioma os agentes respondem (qualquer um). Ou rode -Interativo (perguntas guiadas).
 ```
 
+> **Usando VS Code?** São dois setups diferentes: **Claude Code for VS Code** (a extensão da
+> Anthropic) → use `-Ide claude` (ela lê a mesma pasta `.claude/` — skills viram slash commands,
+> agents viram subagents). **GitHub Copilot** → use `-Ide vscode`. Não são a mesma integração.
+
 O **AGENTS.md** (padrão Linux Foundation, lido por 28+ ferramentas) vai sempre; sua IA sem
 integração? `squad/INICIAR.md` — cole no chat e funciona.
 

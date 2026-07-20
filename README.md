@@ -77,6 +77,10 @@ pwsh -File squadkit/instalar-squad.ps1 -Projeto "MyProject" -Destino "C:\myproje
 # -Idioma: which language agents reply in (any). Or run -Interativo (guided questions).
 ```
 
+> **Using VS Code?** Two different setups: **Claude Code for VS Code** (the Anthropic extension) →
+> use `-Ide claude` (it reads the same `.claude/` folder — skills become slash commands, agents
+> become subagents). **GitHub Copilot** → use `-Ide vscode`. They're not the same integration.
+
 The **AGENTS.md** (Linux Foundation standard, read by 28+ tools) is always installed; AI without
 integration? `squad/INICIAR.md` — paste it into the chat and it works. (Command/flag names are in
 Portuguese — the source language — but agents interact in the language you choose.)
