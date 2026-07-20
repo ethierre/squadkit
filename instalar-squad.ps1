@@ -62,6 +62,13 @@ if (-not $PastaClones) { $PastaClones = Join-Path $Destino ('_repos' + $Slug) }
 elseif (-not [IO.Path]::IsPathRooted($PastaClones)) { $PastaClones = Join-Path $Destino $PastaClones }
 
 $src = $PSScriptRoot
+# guard-rail: nao instalar DENTRO do proprio clone do SquadKit (erro comum) - o -Destino
+# tem de ser a pasta do SEU projeto, separada do template.
+$srcFull = [IO.Path]::GetFullPath($src)
+$sep = [IO.Path]::DirectorySeparatorChar
+if ($Destino -eq $srcFull -or $Destino.StartsWith($srcFull + $sep, [StringComparison]::OrdinalIgnoreCase)) {
+    throw ("O -Destino nao pode ser a pasta do proprio SquadKit (" + $srcFull + "). Escolha a pasta do SEU projeto, ex.: -Destino ""D:\Coding\meu-projeto"".")
+}
 New-Item -ItemType Directory -Force -Path $Destino | Out-Null
 $copiados = @()
 
