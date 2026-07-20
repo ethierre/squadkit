@@ -1,5 +1,11 @@
 # Evals — testando o SQUAD como se testa código
 
+> **Automatizados (novo):** os 3 cenários também existem como suíte
+> [promptfoo](https://promptfoo.dev) com matriz de modelos —
+> `npx promptfoo@latest eval -c evals/promptfoo/promptfooconfig.yaml` (requer API key do provider).
+> Padrão aprendido da análise do Paperclip: prompt-eval + assert determinístico, multi-modelo.
+> Os cenários manuais abaixo continuam valendo para rodar dentro da própria CLI, sem key.
+
 Skills e papéis regridem quando editados. Estes cenários golden verificam os comportamentos de
 harness que NÃO podem quebrar. Rode-os **sempre que alterar** um papel do catálogo, o
 ROLE-TEMPLATE ou uma orquestração do core.

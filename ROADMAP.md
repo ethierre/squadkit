@@ -40,8 +40,13 @@ enforcement em 3 camadas documentado).
    migração/auth/pagamento → assistida) e o humano confirma no gate do SDD.
 4. **Sync de conhecimento entre projetos** (padrão agent-os) — standards/lições de um squad voltam
    para uma base herdável.
-5. **Automatizar os evals** — script que dispara os 3 cenários numa sessão headless e confere a
-   rubrica (CI: papel alterado → evals verdes ou MR bloqueado).
+5. ~~Automatizar os evals~~ → ✅ suíte promptfoo em `evals\promptfoo\` (v0.7.2, padrão Paperclip);
+   falta plugar no CI do repo (papel alterado → evals verdes ou MR bloqueado).
+5b. **Padrões de enforcement do Paperclip** ([dossiê](docs/PESQUISA-PAPERCLIP-2026-07.md)):
+   aprovação de review ligada ao **hash do diff** (mudou pós-aprovação → re-aprovar) ·
+   consent-gate para mudança de spec/papel (diff exibido + aprovação de turno anterior + uso único) ·
+   trust-tiers de evidência (fonte low-trust quarentenada) · budget hard-stop de custo por escopo
+   (no coletar-custo) · guardas regex de prompt-injection nos validadores.
 6. **Nível CI — esteira como pipeline** (GitLab/GitHub Actions): label na issue dispara o agente
    headless; N demandas em paralelo, auditável.
 7. **PATH-shim de git** (camada anti-bypass extra universal) + CI backstop de exemplo.

@@ -1,5 +1,16 @@
 # Changelog — SquadKit
 
+## 0.7.2 — 2026-07-19 · Evals automatizados (promptfoo) + dossiê Paperclip
+
+- **Evals golden automatizados**: `evals\promptfoo\promptfooconfig.yaml` — os 3 cenários (bug
+  plantado, spec ambígua, dado sem fonte) rodam contra os papéis REAIS via promptfoo, com matriz
+  de modelos e asserts determinísticos (`npx promptfoo eval`). Cenários manuais continuam valendo.
+- **`docs/PESQUISA-PAPERCLIP-2026-07.md`**: análise de código (~4k arquivos) do Paperclip —
+  categoria adjacente (control plane de "empresas" de agentes, servidor+DB), enforcement 9/10
+  (o melhor visto: HMAC em aprovações, consent-gate anti-replay, trust-tiers, budget hard-stop);
+  não é spec-driven e o rigor dentro do run é BYO — o vão que o SquadKit preenche. Joias
+  transferíveis registradas no ROADMAP (hash do diff na aprovação, consent-gate, trust-tiers).
+
 ## 0.7.1 — 2026-07-19 · Checkup adversarial completo (auditoria de ~89 arquivos, contexto fresco)
 
 - **fix ALTO**: `HISTORICO-SPRINTS.md` → **`HISTORICO.md`** unificado em 6 arquivos (papéis
