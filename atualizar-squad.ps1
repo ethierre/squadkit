@@ -52,10 +52,13 @@ foreach ($t in @(@('core', 'squad\_core'), @('scripts', 'squad\scripts'), @('rol
     }
 }
 
-# 3) atualiza o manifesto
+# 3) atualiza o manifesto (preservando diffMaximo e outros campos existentes)
+$diffMax = 400
+if ((Test-Path $manPath) -and $man -and $man.PSObject.Properties['diffMaximo']) { $diffMax = [int]$man.diffMaximo }
 $novo = @{
     projeto = $Projeto; slug = $Slug; raiz = $Destino.TrimEnd('\', '/')
     branch = $BranchIntegracao; clones = $PastaClones.TrimEnd('\', '/'); board = $Board
+    diffMaximo = $diffMax
     atualizadoEm = (Get-Date -Format 'yyyy-MM-dd HH:mm')
 } | ConvertTo-Json
 [IO.File]::WriteAllText($manPath, $novo, (New-Object Text.UTF8Encoding($false)))

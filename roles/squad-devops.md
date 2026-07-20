@@ -31,5 +31,6 @@ Regras invioláveis:
 - Não escreva em SPRINT.md, BUGS.md, DECISOES.md nem specs — são de outros donos. Runbooks seus
   vivem no repo ou em `{{RAIZ}}\squad\docs\`.
 
-Formato de saída: Task/Branch (pushada?) · O que mudou · Evidência (lint/plan/build reais) ·
+Formato de saída: **🧠 Explain-back (5 linhas, abre o relatório: o que a mudança faz, por quê,
+risco residual)** · Task/Branch (pushada?) · O que mudou · Evidência (lint/plan/build reais) ·
 Plano de rollback · Pendências/bloqueios (incl. o que precisa de gate humano para aplicar).

@@ -21,8 +21,10 @@ de trabalho) — leia a working tree com Read/Grep. NUNCA inspecione via `git sh
 
 - Copie `{{RAIZ}}\squad\specs\SPEC-TEMPLATE.md` para `specs\SPEC-<id>.md` e preencha TODAS as seções.
 - Contratos (§3) são o coração: payloads/DDL/exemplos. Contrato já congelado = referenciar, não recopiar.
-- Tasks (§7): por área, com dependências. Áreas dependem do CONTRATO, nunca da implementação
-  umas das outras — é isso que permite despacho em paralelo.
+- Tasks (§7): por área, com dependências, ondas, complexidade (>7 = fatie você mesmo) e **rédea**
+  (assistida = área irreversível/sensível; autônoma = só rotina de baixo risco já validada;
+  padrão = supervisionada). Áreas dependem do CONTRATO, nunca da implementação umas das outras —
+  é isso que permite despacho em paralelo.
 - Definição de pronto (§10): comandos exatos + resultado esperado — é a rubrica do reviewer e do QA.
 - VALIDE a task antes: doc da sprint × cards do board × código real. Cards costumam ter refs de linha
   defasadas — o código manda. Lacunas viram perguntas no topo do SDD com sua recomendação.

@@ -122,12 +122,20 @@ foreach ($i in $Ide) {
                 $copiados = $copiados | ForEach-Object { $_.Replace($skillDe, $skillPara) }
             }
         }
-        'cursor'  { Copy-Arvore (Join-Path (Join-Path $src 'adapters') (Join-Path 'cursor' 'rules')) (Join-Path (Join-Path $Destino '.cursor') 'rules') }
+        'cursor'  {
+            Copy-Arvore (Join-Path (Join-Path $src 'adapters') (Join-Path 'cursor' 'rules')) (Join-Path (Join-Path $Destino '.cursor') 'rules')
+            Copy-Arvore (Join-Path (Join-Path $src 'adapters') (Join-Path 'cursor' 'hooks')) (Join-Path (Join-Path $Destino '.cursor') 'hooks')
+            $ch = Join-Path (Join-Path $Destino '.cursor') 'hooks.json'
+            if (-not (Test-Path $ch)) { Copy-Item (Join-Path (Join-Path $src 'adapters') (Join-Path 'cursor' 'hooks.json')) $ch; $copiados += $ch }
+        }
         'codex'   { } # coberto pelo AGENTS.md canonico (sempre instalado)
         'antigravity' {
             Copy-Arvore (Join-Path (Join-Path $src 'adapters') (Join-Path 'antigravity' 'workflows')) (Join-Path (Join-Path $Destino '.agents') 'workflows')
+            Copy-Arvore (Join-Path (Join-Path $src 'adapters') (Join-Path 'antigravity' 'hooks')) (Join-Path (Join-Path $Destino '.agents') 'hooks')
             $ag = Join-Path (Join-Path $Destino '.agents') 'agents.md'
             if (-not (Test-Path $ag)) { New-Item -ItemType Directory -Force -Path (Split-Path $ag -Parent) | Out-Null; Copy-Item (Join-Path (Join-Path $src 'adapters') (Join-Path 'antigravity' 'agents.md')) $ag; $copiados += $ag }
+            $ah = Join-Path (Join-Path $Destino '.agents') 'hooks.json'
+            if (-not (Test-Path $ah)) { Copy-Item (Join-Path (Join-Path $src 'adapters') (Join-Path 'antigravity' 'hooks.json')) $ah; $copiados += $ah }
         }
         'vscode'  { $d = Join-Path (Join-Path $Destino '.github') 'copilot-instructions.md'; if (-not (Test-Path $d)) { New-Item -ItemType Directory -Force -Path (Split-Path $d -Parent) | Out-Null; Copy-Item (Join-Path (Join-Path $src 'adapters') (Join-Path 'vscode' 'copilot-instructions.md')) $d; $copiados += $d } }
         'generico' { }
@@ -162,7 +170,8 @@ foreach ($f in $copiados) {
 $manifesto = @{
     projeto = $Projeto; slug = $Slug; raiz = $Destino.TrimEnd('\', '/')
     branch = $BranchIntegracao; clones = $PastaClones.TrimEnd('\', '/'); board = $Board
-    ides = $Ide; papeis = $instalados; instaladoEm = (Get-Date -Format 'yyyy-MM-dd HH:mm')
+    ides = $Ide; papeis = $instalados; diffMaximo = 400
+    instaladoEm = (Get-Date -Format 'yyyy-MM-dd HH:mm')
 } | ConvertTo-Json
 [IO.File]::WriteAllText((Join-Path (Join-Path $Destino 'squad') '.squadkit.json'), $manifesto, (New-Object Text.UTF8Encoding($false)))
 

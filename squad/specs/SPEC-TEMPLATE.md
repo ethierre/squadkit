@@ -41,16 +41,22 @@ aparecer em ≥1 task (§7) e ≥1 verificação (§10); CA órfão = spec incom
 
 <derivado do §5: unitários por task, contrato vs payloads do §3, regressão>
 
-## 7. Tasks técnicas (com ondas de execução e complexidade)
+## 7. Tasks técnicas (com ondas, complexidade e rédea)
 
-| Task | Área | Agente | CAs cobertos | Depende de | Onda | Complexidade (1-10) |
-|---|---|---|---|---|---|---|
-| T-<id>-1 | back | squad-dev-back | CA-1, CA-2 | — | 1 | |
-| T-<id>-2 | front | squad-dev-front | CA-3 | T-<id>-1 (o CONTRATO §3, não a implementação) | 1 | |
+| Task | Área | Agente | CAs cobertos | Depende de | Onda | Complexidade (1-10) | Rédea |
+|---|---|---|---|---|---|---|---|
+| T-<id>-1 | back | squad-dev-back | CA-1, CA-2 | — | 1 | | supervisionada |
+| T-<id>-2 | front | squad-dev-front | CA-3 | T-<id>-1 (o CONTRATO §3, não a implementação) | 1 | | supervisionada |
 
 - **Onda** = tasks sem dependência entre si rodam EM PARALELO (onda 1); a onda N+1 só começa
   quando a N fecha. Derive as ondas do grafo de dependências, não de intuição.
 - **Complexidade > 7 = fatiar ANTES de despachar** (o arquiteto quebra em sub-tasks aqui mesmo).
+- **Rédea** (autonomia proporcional à consequência — método Karpathy):
+  `assistida` = toca área irreversível/sensível (migração destrutiva, auth, pagamento, dado de
+  cliente) → o dev entrega o PLANO primeiro e o humano aprova ANTES do código;
+  `supervisionada` = padrão (spec → dev → review → gate humano no merge);
+  `autônoma` = rotina de baixo risco já validada (regressão congelada, atualização por checklist)
+  → roda direto, humano vê o relatório. Na dúvida, supervisionada.
 - Branch única da entrega: `squad/<id>-<slug>`.
 
 ## 8. Componentes impactados

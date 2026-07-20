@@ -81,9 +81,18 @@ Cada etapa só roda se o papel existir (fallbacks acima). Artefato de cada etapa
    o **pré-voo** (`best-practices\engenharia-agentica.md`: suposições → simplicidade → mudança
    cirúrgica → critério → prova) antes de produzir. Task que cruza áreas: devs em PARALELO contra
    o mesmo contrato — não existe "fullstack". Complexidade >7 volta ao arquiteto para fatiar antes.
+   **Rédea por task (coluna do §7)**: `assistida` → o dev entrega SÓ o plano (arquivos a tocar,
+   abordagem, riscos) e você apresenta ao humano — código só depois do OK; `supervisionada` →
+   fluxo normal; `autônoma` → executa e reporta (sem parada intermediária; o gate de merge humano
+   continua valendo). Task sem rédea declarada = supervisionada.
 4. **REVIEW** — `squad-arquiteto` revisa cada diff contra o SDD (re-executa a rubrica; não confia
    no relatório do dev; entrega grande → camadas cegas e convergência com gap `não-pedido` — ver
-   `best-practices\revisao.md`). Evidência conforme o **contrato de evidência** por tipo de entrega
+   `best-practices\revisao.md`). Gates mecânicos ANTES da leitura: (a) **orçamento de diff** —
+   `pwsh -File squad\scripts\validar-diff.ps1 -Repo <clone> -Branch <branch>` (limite no manifesto
+   `squad\.squadkit.json`, campo `diffMaximo`); estourou = REPROVA automática, volta ao arquiteto
+   para fatiar; (b) **explain-back presente e fiel** — o relatório do dev abre com as 5 linhas
+   explicando o diff; explain-back que não bate com o diff real é red flag de compreensão (P1).
+   Evidência conforme o **contrato de evidência** por tipo de entrega
    (`best-practices\evidencia-e-harness.md`). REPROVADO (só P0/P1 bloqueiam) → apontamentos ao
    MESMO agente dev via SendMessage → re-review do delta.
 5. **QA** — `squad-qa` roda definição de pronto (§10) + critérios (§5) + regressão. Bugs → BUGS.md tipado.

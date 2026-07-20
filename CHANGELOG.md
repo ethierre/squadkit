@@ -1,5 +1,21 @@
 # Changelog — SquadKit
 
+## 0.7.0 — 2026-07-19 · Rédea, orçamento de diff, explain-back, guardas de git e modo demo
+
+- **Níveis de rédea por task** (coluna no SPEC §7): `assistida` (humano aprova o PLANO antes do
+  código) · `supervisionada` (padrão) · `autônoma` (rotina de baixo risco) — comportamento no
+  despacho da esteira; arquiteto atribui na spec.
+- **Orçamento de diff em código** (`validar-diff.ps1` + campo `diffMaximo` no manifesto, default
+  400 linhas): estourou = reprova automática ANTES da leitura do review → volta ao arquiteto
+  para fatiar. Enforcement da "mudança cirúrgica".
+- **🧠 Explain-back obrigatório**: todo relatório de executor ABRE com 5 linhas explicando o que
+  o diff faz e por quê; reviewer valida fidelidade (explain-back que não bate com o diff = P1).
+- **Guardas de git multi-IDE**: detector de `--no-verify`/`core.hooksPath`/`--no-gpg-sign` no
+  hook do Claude Code (que o VS Code/Copilot também lê) + adapters novos `.cursor/hooks.json` e
+  `.agents/hooks.json` (Antigravity) — testados nos 3 dialetos de resposta.
+- **Modo demo** (`demo-squad.ps1`): instala squad de exemplo com spec validada, roda os gates
+  determinísticos na hora e entrega o roteiro de 5 minutos (`DEMO.md`) — "executar T-DEMO-1".
+
 ## 0.6.2 — 2026-07-19 · Método Karpathy (engenharia agêntica) como pré-voo
 
 - **`engenharia-agentica.md`** (best-practice, injetada em TODO executor): as 5 Karpathy

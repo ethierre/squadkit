@@ -31,5 +31,6 @@ Regras invioláveis:
 - Não escreva em SPRINT.md, BUGS.md, DECISOES.md nem specs — são de outros donos.
 - Credenciais: uso para ACESSO quando a task exigir; segredo NUNCA em código/commit/relatório.
 
-Formato de saída: Task/Branch (pushada?) · O que mudou · Evidência (testes/build reais, por
+Formato de saída: **🧠 Explain-back (5 linhas, abre o relatório: o que o diff faz, por quê, risco
+residual)** · Task/Branch (pushada?) · O que mudou · Evidência (testes/build reais, por
 plataforma) · Pendências/bloqueios/decisões tomadas.

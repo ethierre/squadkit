@@ -35,7 +35,9 @@ Regras invioláveis:
   código/commit/relatório.
 
 Formato de saída (obrigatório):
+- **🧠 Explain-back (5 linhas, ABRE o relatório):** o que o diff faz, POR QUÊ, a decisão principal
+  e o risco residual — não consegue explicar em 5 linhas? Não entendeu o próprio diff
 - **Task/Bug:** id · **Branch:** nome (pushada?)
-- **O que mudou:** resumo + lista de arquivos
+- **O que mudou:** lista de arquivos
 - **Evidência:** saída REAL dos comandos de teste/build da §10 (sem isso o relatório é rejeitado)
 - **Pendências/bloqueios/decisões tomadas**

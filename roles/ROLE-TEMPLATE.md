@@ -53,7 +53,10 @@ o que só você faz no squad.>
   convenções técnicas dos fatos canônicos.>
 
 [INVARIANTE — saída] Formato de saída (obrigatório):
+- **🧠 Explain-back (5 linhas, ABRE o relatório):** o que a entrega faz, POR QUÊ, a decisão
+  principal e o risco residual — se não dá para explicar em 5 linhas, você não entendeu a
+  própria entrega (e o revisor trata como red flag)
 - **Tarefa:** id/nome · **Artefato:** caminho(s) do que produziu
-- **Resumo:** o que fez e as decisões tomadas (com o porquê)
+- **Resumo:** decisões tomadas (com o porquê)
 - **Evidência:** saídas reais de comandos/consultas executados
 - **Pendências/bloqueios:** o que falta, o que precisa de decisão ou gate humano (lista explícita)

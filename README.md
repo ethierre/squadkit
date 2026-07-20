@@ -35,6 +35,15 @@ E o diferencial que nenhum player do mercado tem (pesquisamos [com o código na 
 mas os gates deles são instruções em prompt fiscalizadas pelo mesmo LLM que produz. Aqui o enforcement
 é **externo** (hooks, scripts, evals).
 
+## ⚡ Experimente em 5 minutos (sem configurar nada)
+
+```powershell
+git clone https://github.com/ethierre/squadkit && pwsh -File squadkit/demo-squad.ps1
+```
+Instala um squad de exemplo com spec validada, roda os gates determinísticos na hora e te entrega
+o roteiro: abra sua IA na pasta e diga **"executar T-DEMO-1"** — veja pré-voo, evidência executada,
+explain-back e review funcionando de verdade. Roteiro em `DEMO.md`.
+
 ## 🚀 Fluxo completo de uso (3 comandos + operação)
 
 ```mermaid
@@ -118,8 +127,11 @@ squad/           memória em ARQUIVOS com dono único: board, decisões, bugs, s
 ```
 
 Specs com critérios **CA-n em formato EARS** (rastreabilidade CA→task→teste), **ondas de execução**
-por grafo de dependências, complexidade >7 fatia antes de despachar, review com **camadas cegas**
-e convergência que pega **scope creep** (`não-pedido`).
+por grafo de dependências, complexidade >7 fatia antes de despachar, **rédea por task**
+(assistida/supervisionada/autônoma — autonomia proporcional à consequência, método Karpathy),
+**orçamento de diff** com reprova automática (`validar-diff.ps1`), **explain-back** obrigatório
+(o dev explica o diff em 5 linhas), review com **camadas cegas** e convergência que pega
+**scope creep** (`não-pedido`). Guarda de git em 3 IDEs (detector de `--no-verify`).
 
 ## FAQ rápido
 

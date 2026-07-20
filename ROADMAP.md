@@ -70,22 +70,21 @@ onboarding guiado `-Interativo` · checklist "unit tests for English" como gate 
 - **Expor SquadKit como MCP server** (padrão Devin/task-master): board, specs e telemetria como
   tools para qualquer CLI.
 
-## NOVAS FUNCIONALIDADES CANDIDATAS (v0.7+ — ideias avaliadas, ordem de valor)
+## ✅ ENTREGUE (v0.7.0 — 19/07)
 
-1. **Níveis de rédea por task** (Karpathy: autonomia proporcional à consequência): `assistida`
-   (humano aprova o PLANO antes do código) · `supervisionada` (esteira padrão) · `autônoma`
-   (rotina de baixo risco roda direto). Campo no §7 do SPEC + comportamento no despacho.
-2. **Orçamento de diff**: task cujo diff excede N linhas (config por projeto) → reprova
-   automática e volta ao arquiteto para fatiar — enforcement do "mudança cirúrgica" em código.
-3. **Explain-back**: o relatório do dev abre com 5 linhas explicando O QUE o diff faz e POR QUÊ —
-   preserva compreensão humana (o custo invisível do 20/80 do Karpathy é ninguém entender o código).
-4. **`coletar-custo.ps1`** no fechar-sprint (desenho pronto — dossiê de telemetria).
-5. **Adapters de hook** para `.cursor/hooks.json` e `.agents/hooks.json` + detector de
-   `--no-verify` no hook Claude/VS Code (desenho pronto — dossiê hooks).
-6. **Guia de setup Playwright MCP por IDE** para o `squad-qa-browser` + hook Stop que bloqueia
+Níveis de rédea por task (assistida/supervisionada/autônoma no SPEC §7 + despacho) · orçamento de
+diff em código (`validar-diff.ps1` + `diffMaximo` no manifesto) · explain-back obrigatório em todo
+executor · guardas de git anti-`--no-verify` em 3 IDEs (Claude/VS Code, Cursor, Antigravity) ·
+modo demo de 5 minutos (`demo-squad.ps1`).
+
+## NOVAS FUNCIONALIDADES CANDIDATAS (v0.8+)
+
+1. **`coletar-custo.ps1`** no fechar-sprint (desenho pronto — dossiê de telemetria).
+2. **Guia de setup Playwright MCP por IDE** para o `squad-qa-browser` + hook Stop que bloqueia
    encerrar QA sem os arquivos de evidência.
-7. **Modo demo/showcase**: 1 comando que instala squad de exemplo + roda 1 task fake ponta a
-   ponta — para o dev avaliar o produto em 5 minutos (conversão de estrela em uso).
+3. **PATH-shim de git** (camada extra anti-bypass universal) + CI backstop de exemplo.
+4. **Rédea automática sugerida**: o arquiteto propõe a rédea por heurística (toca migração/auth/
+   pagamento → assistida) e o humano confirma no gate do SDD.
 
 ## VISÃO (3+ meses)
 

@@ -31,7 +31,9 @@ Regras invioláveis:
   código/commit/relatório.
 
 Formato de saída (obrigatório):
+- **🧠 Explain-back (5 linhas, ABRE o relatório):** o que a migração/transform faz, POR QUÊ, a
+  decisão principal e o risco residual
 - **Task/Bug:** id · **Repo:** nome · **Branch:** nome (pushada?)
-- **O que mudou:** resumo + arquivos (migrações com número)
+- **O que mudou:** arquivos (migrações com número)
 - **Evidência:** saída REAL da validação/testes (sem isso o relatório é rejeitado)
 - **Pendências/bloqueios/decisões tomadas**
