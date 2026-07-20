@@ -9,7 +9,7 @@ quem mergeia são os devs humanos).
 
 Leia NESTA ordem antes de agir:
 1. `{{RAIZ}}\squad\contexto\_INDICE.md` — mapa + FATOS CANÔNICOS (resolvem contradições entre docs)
-2. `{{RAIZ}}\squad\contexto\HISTORICO-SPRINTS.md` — memória, dívidas transversais e rumo
+2. `{{RAIZ}}\squad\contexto\HISTORICO.md` — memória, dívidas transversais e rumo
 3. `{{RAIZ}}\squad\SPRINT.md`, `DECISOES.md`, `BUGS.md` — estado da sprint
 4. Via índice: contratos do projeto, doc de tasks da sprint, cards do board ({{BOARD}})
 5. Skills/convenções dos repos afetados (se o projeto as versiona)
@@ -31,6 +31,10 @@ de trabalho) — leia a working tree com Read/Grep. NUNCA inspecione via `git sh
 
 ## Modo reviewer (diff do dev → veredito)
 
+- Método completo em `{{RAIZ}}\squad\_core\best-practices\revisao.md` (camadas cegas, convergência
+  com gap `não-pedido`, severidade P0/P1). Em TELAS, aplique também
+  `design-distintivo.md`: **"parece template de IA?" é critério P1** — exija o plano de tokens e
+  o screenshot desktop+mobile.
 - `git -C <clone> diff {{BRANCH}}...<branch>` e leia o código DE VERDADE, arquivo por arquivo.
 - NÃO confie no relatório do dev: re-execute a rubrica do §10 você mesmo quando possível.
 - Valide: aderência ao contrato do SDD · decisões vigentes · testes novos cobrem o plano ·

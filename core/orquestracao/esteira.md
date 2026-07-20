@@ -29,9 +29,11 @@ papéis instalados; para os ausentes, use o fallback:
 | squad-gerente | o orquestrador faz a triagem de demanda avulsa |
 | squad-ux | dev-front segue o design system dos fatos canônicos, sem spec UX dedicada |
 | squad-qa | reviewer (arquiteto) executa a rubrica §10 integralmente e registra a lacuna de QA |
+| squad-dev-mobile | tarefa mobile vira pendência explícita (não improvise em outro dev) |
+| squad-qa-browser | validação E2E de browser vira item do roteiro humano pós-merge |
 | squad-devops / seguranca / marketing / docs | trabalho da área vira pendência explícita para o humano |
 
-Catálogo completo em `roles\` do squad-template (dá para adicionar um papel depois: copiar o .md
+Catálogo completo em `squad\_catalogo\roles\` (instalado no projeto) (dá para adicionar um papel depois: copiar o .md
 para `.claude\agents\`, resolver os placeholders e abrir sessão nova).
 
 ## Memória compartilhada (arquivos com dono único — em {{RAIZ}}\squad\)
@@ -71,14 +73,14 @@ Cada etapa só roda se o papel existir (fallbacks acima). Artefato de cada etapa
 1. **PO** valida a história (ou fallback). DEVOLVIDA/lacunas → apresente ao humano e **PARE**.
 2. **SPEC** — `squad-arquiteto` gera `specs\SPEC-<id>.md` e, ANTES do gate humano: (a) gera o
    checklist de qualidade da ESCRITA (`specs\CHECKLIST-<id>.md`, ver
-   `best-practices\qualidade-de-spec.md`) e resolve os itens abertos; (b) roda o validador
+   `squad\_core\best-practices\qualidade-de-spec.md`) e resolve os itens abertos; (b) roda o validador
    determinístico `pwsh -File squad\scripts\validar-spec.ps1 -Spec specs\SPEC-<id>.md`
    (rastreabilidade CA→task→verificação) e COLA a saída. Só então apresente ao humano e
    **PARE** (gate) — ele recebe uma spec auditada, não um rascunho.
 3. **DESPACHO POR ONDAS** — o §7 do SPEC define as ondas (grafo de dependências): toda a onda 1
    em PARALELO (um papel por task), onda N+1 só quando a N fecha o review. O prompt de cada task
    leva: id, caminho do SPEC (+ SPEC-UX se houver), CAs cobertos, branch, e a instrução de rodar
-   o **pré-voo** (`best-practices\engenharia-agentica.md`: suposições → simplicidade → mudança
+   o **pré-voo** (`squad\_core\best-practices\engenharia-agentica.md`: suposições → simplicidade → mudança
    cirúrgica → critério → prova) antes de produzir. Task que cruza áreas: devs em PARALELO contra
    o mesmo contrato — não existe "fullstack". Complexidade >7 volta ao arquiteto para fatiar antes.
    **Rédea por task (coluna do §7)**: `assistida` → o dev entrega SÓ o plano (arquivos a tocar,
@@ -87,13 +89,13 @@ Cada etapa só roda se o papel existir (fallbacks acima). Artefato de cada etapa
    continua valendo). Task sem rédea declarada = supervisionada.
 4. **REVIEW** — `squad-arquiteto` revisa cada diff contra o SDD (re-executa a rubrica; não confia
    no relatório do dev; entrega grande → camadas cegas e convergência com gap `não-pedido` — ver
-   `best-practices\revisao.md`). Gates mecânicos ANTES da leitura: (a) **orçamento de diff** —
+   `squad\_core\best-practices\revisao.md`). Gates mecânicos ANTES da leitura: (a) **orçamento de diff** —
    `pwsh -File squad\scripts\validar-diff.ps1 -Repo <clone> -Branch <branch>` (limite no manifesto
    `squad\.squadkit.json`, campo `diffMaximo`); estourou = REPROVA automática, volta ao arquiteto
    para fatiar; (b) **explain-back presente e fiel** — o relatório do dev abre com as 5 linhas
    explicando o diff; explain-back que não bate com o diff real é red flag de compreensão (P1).
    Evidência conforme o **contrato de evidência** por tipo de entrega
-   (`best-practices\evidencia-e-harness.md`). REPROVADO (só P0/P1 bloqueiam) → apontamentos ao
+   (`squad\_core\best-practices\evidencia-e-harness.md`). REPROVADO (só P0/P1 bloqueiam) → apontamentos ao
    MESMO agente dev via SendMessage → re-review do delta.
 5. **QA** — `squad-qa` roda definição de pronto (§10) + critérios (§5) + regressão. Bugs → BUGS.md tipado.
 6. **ROTEAMENTO DE BUG** — campo **Área** do bug → SendMessage ao MESMO agente dev da task original.

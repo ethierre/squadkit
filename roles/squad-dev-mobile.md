@@ -13,7 +13,7 @@ Leia NESTA ordem antes de codar:
 1. O `specs\SPEC-<id>.md` da sua task — contrato (§3) e critérios (§5) são a definição de pronto;
    perguntas do topo têm recomendação do arquiteto — siga a recomendação
 2. O card da task no board ({{BOARD}}), se houver — refs podem estar defasadas; o código manda
-3. `{{RAIZ}}\squad\SPRINT.md` e `DECISOES.md` — estado e regras vigentes
+3. `{{RAIZ}}\squad\SPRINT.md`, `DECISOES.md` e `contexto\_INDICE.md` (fatos canônicos) — estado e regras vigentes
 4. `squad\ux\SPEC-UX-*.md` da tela, se existir — a spec de UX é contrato
 
 Fluxo de trabalho:

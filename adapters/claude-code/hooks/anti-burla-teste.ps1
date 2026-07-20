@@ -9,16 +9,17 @@ try { $j = $inp | ConvertFrom-Json } catch { exit 0 }
 $fp = $j.tool_input.file_path
 if (-not $fp) { exit 0 }
 
-# So vigia os clones do projeto
-$clones = '{{CLONES}}'
-if (-not $fp.StartsWith($clones, [StringComparison]::OrdinalIgnoreCase)) { exit 0 }
+# So vigia os clones do projeto (normaliza separadores p/ funcionar em Windows e Unix)
+$fpN = $fp.Replace('/', '\')
+$clones = '{{CLONES}}'.Replace('/', '\')
+if (-not $fpN.StartsWith($clones, [StringComparison]::OrdinalIgnoreCase)) { exit 0 }
 
 # PADROES DE ARQUIVO DE TESTE — ajuste a stack do projeto aqui
-$isTest = ($fp -match '(?i)\.(spec|test)\.(ts|tsx|js|jsx)$') -or
-          ($fp -match '(?i)Tests?\.cs$') -or
-          ($fp -match '(?i)\\__tests__\\') -or
-          ($fp -match '(?i)\\tests?\\[^\\]*\.sql$') -or
-          ($fp -match '(?i)_test\.(py|go)$')
+$isTest = ($fpN -match '(?i)\.(spec|test)\.(ts|tsx|js|jsx)$') -or
+          ($fpN -match '(?i)Tests?\.cs$') -or
+          ($fpN -match '(?i)\\__tests__\\') -or
+          ($fpN -match '(?i)\\tests?\\[^\\]*\.sql$') -or
+          ($fpN -match '(?i)_test\.(py|go)$')
 if (-not $isTest) { exit 0 }
 
 # Criar teste NOVO e permitido
@@ -33,8 +34,8 @@ try {
 } catch { $tracked = $false }
 if (-not $tracked) { exit 0 }
 
-# Excecoes aprovadas pelo humano
-$allow = '{{RAIZ}}\squad\.permitir-edicao-teste'
+# Excecoes aprovadas pelo humano (Join-Path resolve o separador do SO)
+$allow = Join-Path (Join-Path '{{RAIZ}}' 'squad') '.permitir-edicao-teste'
 if (Test-Path $allow) {
     $lines = Get-Content $allow | Where-Object { $_ -and ($_ -notmatch '^\s*#') }
     foreach ($l in $lines) {

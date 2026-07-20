@@ -31,8 +31,8 @@ Princípios de composição (não negociáveis):
 - **Uma responsabilidade clara por papel**, com artefato e pasta próprios (dono único).
 - **Todo squad tem um papel revisor** (em software é o arquiteto; em conteúdo/análise, um revisor
   dedicado que valida contra a spec/critérios antes do gate humano).
-- **Reusar antes de criar**: confira o catálogo local `{{RAIZ}}\squad\_catalogo\roles\` (15 prontos:
-  analista, pm, po, gerente, arquiteto, ux, dev-front/back/dados/mobile, qa, devops, seguranca,
+- **Reusar antes de criar**: confira o catálogo local `{{RAIZ}}\squad\_catalogo\roles\` (16 prontos:
+  analista, pm, po, gerente, arquiteto, ux, dev-front/back/dados/mobile, qa, qa-browser, devops, seguranca,
   marketing, docs — placeholders JÁ resolvidos para este projeto) e os exemplos em
   `{{RAIZ}}\squad\_catalogo\exemplos\` (youtube, pbm-farma, aidc7). Só gere papel novo quando
   nenhum pronto serve.
@@ -43,7 +43,7 @@ Princípios de composição (não negociáveis):
   obrigatória do papel (RAG manual barato: só o índice sempre, o conteúdo sob demanda).
 - **Modelo por papel = escolha do USUÁRIO**: para cada papel, sugira **3 modelos** (melhor
   desempenho · menor custo · melhor custo-benefício) com 1 linha de justificativa cada, apontando
-  leaderboards para ele conferir (ver `best-practices\escolher-modelos.md`). Ele escolhe —
+  leaderboards para ele conferir (ver `squad\_core\best-practices\escolher-modelos.md`). Ele escolhe —
   inclusive fora das sugestões. Registre em `squad\MODELOS.md`.
 
 Apresente a proposta ao humano NESTE formato e **PARE até ele aprovar** (ajuste e reapresente

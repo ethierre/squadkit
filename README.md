@@ -37,6 +37,11 @@ mas os gates deles são instruções em prompt fiscalizadas pelo mesmo LLM que p
 
 ## ⚡ Experimente em 5 minutos (sem configurar nada)
 
+> **Pré-requisitos** (2 min): [git](https://git-scm.com/downloads) e PowerShell — nativo no
+> Windows; no macOS/Linux instale o [PowerShell 7 (`pwsh`)](https://learn.microsoft.com/powershell/scripting/install/installing-powershell).
+> Não é técnico? Peça à sua própria IA: *"instale git e pwsh na minha máquina"* — é o primeiro
+> teste dela. 😉
+
 ```powershell
 git clone https://github.com/ethierre/squadkit && pwsh -File squadkit/demo-squad.ps1
 ```
@@ -81,7 +86,7 @@ o squad passa a saber qual vale.
 
 ### 3. `/montar-squad` — o time se molda ao contexto
 
-O designer propõe a composição (papéis do catálogo de 15 + papéis **gerados sob medida** — gestor
+O designer propõe a composição (papéis do catálogo de 16 + papéis **gerados sob medida** — gestor
 de tráfego? especialista OCR? operações de farmácia?), **você aprova** e, para cada papel, recebe
 **3 sugestões de modelo** (🏆 desempenho · 💰 custo · ⚖️ custo-benefício, via leaderboards) —
 **você escolhe**, inclusive fora da lista.
@@ -119,9 +124,9 @@ O próximo ciclo começa sabendo tudo que este aprendeu.
 ```
 core/            montar-contexto · montar-squad · esteira · fechar-sprint (fonte única, qualquer IDE)
                  + best-practices com whenToUse (modelos, spec, evidência, revisão, dados, conteúdo)
-roles/           15 papéis prontos + ROLE-TEMPLATE (meta-template com invariantes de harness)
+roles/           16 papéis prontos + ROLE-TEMPLATE (meta-template com invariantes de harness)
 adapters/        claude-code · cursor · antigravity · codex/AGENTS.md · vscode · genérico
-scripts/         validar-squad · validar-spec · dashboard (determinísticos, PS 5.1/pwsh)
+scripts/         validar-squad · validar-spec · validar-diff · dashboard · instalar-hook-git
 evals/           cenários golden: bug plantado · spec ambígua · dado sem fonte
 squad/           memória em ARQUIVOS com dono único: board, decisões, bugs, specs, telemetria
 ```
@@ -132,6 +137,14 @@ por grafo de dependências, complexidade >7 fatia antes de despachar, **rédea p
 **orçamento de diff** com reprova automática (`validar-diff.ps1`), **explain-back** obrigatório
 (o dev explica o diff em 5 linhas), review com **camadas cegas** e convergência que pega
 **scope creep** (`não-pedido`). Guarda de git em 3 IDEs (detector de `--no-verify`).
+
+## Glossário de 30 segundos
+
+**Esteira** = o fluxo padrão spec → execução → review → sua aprovação · **Spec/SDD** = o documento
+que define O QUE fazer e como verificar (nada se produz sem um) · **Harness** = as regras impostas
+por código, não por confiança · **Fatos canônicos** = a lista do que VALE quando documentos se
+contradizem · **Rédea** = quanta autonomia cada tarefa dá ao agente · **Explain-back** = o agente
+explica o que fez em 5 linhas antes de você revisar.
 
 ## FAQ rápido
 

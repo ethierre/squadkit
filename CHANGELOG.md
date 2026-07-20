@@ -1,5 +1,24 @@
 # Changelog — SquadKit
 
+## 0.7.1 — 2026-07-19 · Checkup adversarial completo (auditoria de ~89 arquivos, contexto fresco)
+
+- **fix ALTO**: `HISTORICO-SPRINTS.md` → **`HISTORICO.md`** unificado em 6 arquivos (papéis
+  po/pm/analista/arquiteto liam um arquivo que nunca era gerado).
+- **fix ALTO (cross-platform)**: hooks agora usam `{{PWSH}}` resolvido por SO no instalador
+  (powershell.exe no Windows, pwsh no macOS/Linux); anti-burla tolera separadores `/`;
+  pré-requisito documentado no README.
+- Contagens corrigidas (16 papéis; qa-browser na lista do montar-squad e do README) · prefixos de
+  caminho completos no core (`squad\_core\best-practices\…`, `squad\scripts\…`) · fallbacks de
+  dev-mobile/qa-browser na esteira · reviewer agora cita `revisao.md` + critério "template de IA"
+  no próprio papel · `sync-skills` saiu do padrão (virou exemplo opt-in) · seguranca ganhou pasta
+  própria (`squad\seguranca\`) · devs leem `_INDICE.md` (fatos canônicos) · validador de dono
+  único tolerante às duas ordens da frase · AGENTS.md "28+" uniformizado.
+- README: **pré-requisitos para não-técnicos** (git+pwsh, com o truque "peça à sua IA") e
+  **glossário de 30 segundos** (esteira, spec, harness, canon, rédea, explain-back).
+- PERSONALIZACAO reescrita: botões do instalador (§0), enforcement em 3 camadas (§5 — inclui o
+  passo do `instalar-hook-git.ps1` por repo, agora também no fechamento do instalador).
+- ROADMAP podado (itens entregues/duplicados removidos da seção PRÓXIMO).
+
 ## 0.7.0 — 2026-07-19 · Rédea, orçamento de diff, explain-back, guardas de git e modo demo
 
 - **Níveis de rédea por task** (coluna no SPEC §7): `assistida` (humano aprova o PLANO antes do

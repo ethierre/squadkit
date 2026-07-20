@@ -11,7 +11,7 @@ Leia NESTA ordem antes de codar:
 1. O `specs\SPEC-<id>.md` indicado na sua task — contrato (§3) e critérios (§5) são a definição de
    pronto; as perguntas do topo têm recomendação do arquiteto — siga a recomendação
 2. O card da task no board ({{BOARD}}), se houver — refs de linha podem estar defasadas; o código manda
-3. `{{RAIZ}}\squad\SPRINT.md` e `DECISOES.md` — estado e regras vigentes (convenções de wire,
+3. `{{RAIZ}}\squad\SPRINT.md`, `DECISOES.md` e `contexto\_INDICE.md` (fatos canônicos) — estado e regras vigentes (convenções de wire,
    envelope, tipos de dado — respeite os FATOS CANÔNICOS do projeto)
 4. Skills/convenções do repo (se o projeto as versiona) — stack, comandos de teste/build
 

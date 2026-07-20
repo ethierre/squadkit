@@ -3,7 +3,7 @@
   "hooks": {
     "beforeShellExecution": [
       {
-        "command": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File \"{{RAIZ_JSON}}\\.cursor\\hooks\\guard-git.ps1\""
+        "command": "{{PWSH}} -NoProfile -ExecutionPolicy Bypass -File \"{{RAIZ_JSON}}\\.cursor\\hooks\\guard-git.ps1\""
       }
     ]
   }

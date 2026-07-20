@@ -2,6 +2,18 @@
 
 O instalador resolve os placeholders básicos. O que fica por sua conta (ordem recomendada):
 
+## 0. Os botões do instalador (referência rápida)
+
+- `-Interativo` — instalação guiada por 6 perguntas (para quem não quer flags).
+- `-Perfil <nome>` (ver perfis.json) OU `-Papeis a,b,c` — quais papéis instalar; `sob-medida`
+  instala só o arquiteto e deixa o `/montar-squad` desenhar o resto.
+- `-Ide claude,cursor,antigravity,codex,vscode,generico` — adapters instalados (AGENTS.md e
+  `squad\INICIAR.md` vão sempre).
+- Manifesto `squad\.squadkit.json` — gravado na instalação; guarda os parâmetros e o
+  **`diffMaximo`** (orçamento de diff do review, default 400 linhas — ajuste ali).
+- Atualizar depois: `pwsh -File atualizar-squad.ps1 -Destino <pasta>` (sincroniza `_core`,
+  scripts e catálogo sem tocar contexto/equipe/board).
+
 ## 1. Placeholders (o instalador já substitui — confira)
 
 | Placeholder | Significado | Exemplo 7Risk |
@@ -25,11 +37,12 @@ A instalação já traz os papéis do `-Perfil` escolhido (ou da lista `-Papeis`
 
 ## 3. Base de conhecimento (`squad\contexto\`)
 
-É o que faz o squad não errar. Siga o `contexto\README.md`:
-- Despeje os documentos do projeto (visão, arquitetura, contratos, histórias, atas).
-- Monte o `_INDICE.md` (mapa + **FATOS CANÔNICOS** que resolvem contradições entre docs) e o
-  `HISTORICO-SPRINTS.md` (o que foi feito, por quê, para onde vai). Peça ao Claude: "leia o contexto e
-  monte o índice e o histórico como no 7Risk" — é trabalho de 1 sessão.
+É o que faz o squad não errar:
+- Despeje os documentos do projeto em `squad\contexto\` (visão, arquitetura, contratos,
+  histórias, atas — md, docx, planilhas).
+- Rode **`/montar-contexto`** na sua IA: ele entrevista você, lê tudo, caça contradições e gera o
+  `_INDICE.md` (fatos canônicos com evidência) + `HISTORICO.md`, fechando com o Resumo de
+  Entendimento para você confirmar.
 - Credenciais: se colocar arquivo de credenciais no contexto, a regra dos agentes é usar para ACESSO
   e nunca copiar segredo para entregável. Prefira cofre (Key Vault etc.) quando existir.
 
@@ -38,12 +51,21 @@ A instalação já traz os papéis do `-Perfil` escolhido (ou da lista `-Papeis`
 Preencha a seção "herdadas do projeto" com as regras invioláveis locais (convenções de wire/banco,
 branch, "never do"). No 7Risk: camelCase no fio, dinheiro string, NUMERIC(18,2), RLS, develop.
 
-## 5. Hook anti-burla (`.claude\hooks\anti-burla-teste.ps1`)
+## 5. Enforcement anti-burla (3 camadas — ative as que couberem)
 
-Ajuste os PADRÕES DE ARQUIVO DE TESTE à stack do projeto (regex no topo do script). Padrões inclusos:
-`*.spec.ts/js`, `*.test.ts/js`, `*Tests.cs`, `__tests__\`, `tests\*.sql`, `*_test.py/go`.
-O hook LIBERA arquivo de teste ainda não rastreado no git (criado agora pelo dev) — só bloqueia
-alteração de teste que já existia na branch.
+1. **Hook do Claude Code/VS Code** (`.claude\hooks\anti-burla-teste.ps1` + `guard-git.ps1`,
+   instalados com `-Ide claude`): bloqueia alteração de teste rastreado e comandos git com
+   `--no-verify`/`core.hooksPath`. Ajuste os PADRÕES DE ARQUIVO DE TESTE à stack (regex no topo);
+   teste NOVO do próprio dev é liberado.
+2. **Hook git universal (qualquer IDE)** — rode POR REPOSITÓRIO de trabalho:
+   `pwsh -File squad\scripts\instalar-hook-git.ps1 -Repo <caminho-do-clone>` — é a única camada
+   anti-burla para quem usa Cursor/Codex/Antigravity sem os hooks da IDE.
+3. **Hooks de Cursor/Antigravity** (instalados com `-Ide cursor`/`antigravity`): guarda de git
+   nos formatos nativos (`.cursor\hooks.json`, `.agents\hooks.json`) — schemas em beta; confira
+   a doc da sua versão.
+
+Requisito dos hooks: PowerShell (nativo no Windows; macOS/Linux: instale `pwsh` — o instalador já
+grava o executável certo do seu SO).
 
 ## 6. Board/cards (DevOps, GitLab, Jira)
 

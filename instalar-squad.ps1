@@ -144,7 +144,10 @@ foreach ($i in $Ide) {
 }
 
 # 4) placeholders (pares ordenados: hashtable colidiria PROJETO/projeto por case-insensitividade)
+# {{PWSH}} = executavel de PowerShell do SO (hooks precisam dele; macOS/Linux exigem pwsh instalado)
+$pwshExe = if ($PSVersionTable.Platform -eq 'Unix') { 'pwsh' } else { 'powershell.exe' }
 $pares = @(
+    , @('{{PWSH}}', $pwshExe)
     , @('{{PROJETO}}', $Projeto)
     , @('{{projeto}}', $Slug)
     , @('{{RAIZ_JSON}}', ($Destino.TrimEnd('\', '/')).Replace('\', '\\'))
@@ -185,4 +188,6 @@ Write-Host '  1. Abra sua IA na pasta do projeto (qualquer IDE instalada; outra 
 Write-Host '  2. PRIMEIRO: rode montar-contexto (base de conhecimento + fatos canonicos)'
 Write-Host '  3. DEPOIS: rode montar-squad (o time se molda ao contexto; modelos = sua escolha)'
 Write-Host '  4. Teste de fumaca com 1 demanda real e feche com fechar-sprint (telemetria+dashboard)'
+Write-Host '  5. Projetos com codigo: ative o anti-burla universal em cada repositorio de trabalho:'
+Write-Host '     pwsh -File squad\scripts\instalar-hook-git.ps1 -Repo <caminho-do-clone>'
 Write-Host '  Detalhes: PERSONALIZACAO.md do template.'

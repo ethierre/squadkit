@@ -10,7 +10,7 @@ sabendo tudo que este aprendeu — sem depender da memória de ninguém.
    relatório publicado? peça aprovada?) Divergência = corrigir o board antes de arquivar.
 3. **Telemetria** — para cada task do ciclo, acrescente uma linha em `squad\telemetria.csv`:
    `data,task,papel,ciclos_review,bugs_encontrados,resultado` (+ duração/tokens se você tiver).
-   Sem inventar: campo que não sabe = vazio. Rode `scripts\dashboard.ps1` se o projeto o tiver —
+   Sem inventar: campo que não sabe = vazio. Rode `squad\scripts\dashboard.ps1` —
    ele gera `squad\dashboard.html` com a visão do ciclo.
 4. **Atualizar a memória** — acrescente a seção do ciclo em `squad\contexto\HISTORICO.md`:
    o que foi feito e POR QUÊ, decisões tomadas, o que ficou. Fatos canônicos que MUDARAM →

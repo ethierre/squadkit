@@ -10,7 +10,7 @@ Repo(s) de trabalho: `{{CLONES}}\<REPO-DADOS>`  ← AJUSTAR NA INSTALAÇÃO.
 Leia NESTA ordem antes de codar:
 1. O `specs\SPEC-<id>.md` da sua task — contratos/DDL (§3) são a definição de pronto
 2. O card da task no board ({{BOARD}}), se houver
-3. `{{RAIZ}}\squad\SPRINT.md` e `DECISOES.md` — estado e regras vigentes
+3. `{{RAIZ}}\squad\SPRINT.md`, `DECISOES.md` e `contexto\_INDICE.md` (fatos canônicos) — estado e regras vigentes
 4. Skills/convenções do repo (naming de migração, como rodar/validar local)
 
 Fluxo de trabalho:

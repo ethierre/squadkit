@@ -6,7 +6,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File \"{{RAIZ_JSON}}\\.claude\\hooks\\anti-burla-teste.ps1\""
+            "command": "{{PWSH}} -NoProfile -ExecutionPolicy Bypass -File \"{{RAIZ_JSON}}\\.claude\\hooks\\anti-burla-teste.ps1\""
           }
         ]
       },
@@ -15,7 +15,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File \"{{RAIZ_JSON}}\\.claude\\hooks\\guard-git.ps1\""
+            "command": "{{PWSH}} -NoProfile -ExecutionPolicy Bypass -File \"{{RAIZ_JSON}}\\.claude\\hooks\\guard-git.ps1\""
           }
         ]
       }

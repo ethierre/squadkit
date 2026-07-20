@@ -20,7 +20,7 @@ Peça ao Claude: *"leia tudo do contexto e monte o _INDICE.md no padrão do squa
 - **Documentos VIVOS** (o que consultar com confiança, 1 linha cada) e **HISTÓRICOS**.
 - **Documentos fora desta pasta** (caminho absoluto) que são imprescindíveis.
 
-## 3. Monte o `HISTORICO-SPRINTS.md` (a memória viva)
+## 3. Monte o `HISTORICO.md` (a memória viva)
 
 O que foi feito por sprint (e POR QUÊ), estado atual VERIFICADO no código (não no planejado),
 para onde o projeto vai (roadmap/marcos), dívidas e pendências transversais.

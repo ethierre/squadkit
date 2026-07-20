@@ -35,9 +35,11 @@ foreach ($d in $dirs) {
             $avisos += "$rel : menciona acao potencialmente irreversivel sem freio explicito"
         }
 
-        # colisao de pasta de artefato (dono unico)
-        foreach ($m in [regex]::Matches($c, '(?i)NICO escritor[^`]*`([^`]+)`')) {
-            $pasta = $m.Groups[1].Value.ToLower()
+        # colisao de pasta de artefato (dono unico) - tolerante as duas ordens da frase
+        $donos = @()
+        foreach ($m in [regex]::Matches($c, '(?i)NICO escritor[^`]{0,60}`([^`]+)`')) { $donos += $m.Groups[1].Value }
+        foreach ($m in [regex]::Matches($c, '(?i)`([^`]+)`[^`]{0,60}NICO escritor')) { $donos += $m.Groups[1].Value }
+        foreach ($pasta in ($donos | ForEach-Object { $_.ToLower() } | Sort-Object -Unique)) {
             if ($vistos.ContainsKey($pasta) -and $vistos[$pasta] -ne $f.Name) { $erros += "$rel : pasta '$pasta' ja e de $($vistos[$pasta]) (colisao de dono unico)" }
             else { $vistos[$pasta] = $f.Name }
         }

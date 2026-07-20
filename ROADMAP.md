@@ -1,97 +1,59 @@
 # Roadmap — SquadKit
 
-> Atualizado 2026-07-19 (v0.4.0). Tese: **prompt de agente é commodity; o fosso é contexto curado +
-> enforcement externo + evals.**
+> Atualizado 2026-07-19 (v0.7.1, pós-auditoria adversarial). Tese: **prompt de agente é commodity;
+> o fosso é contexto curado + enforcement externo + evals.**
 
-## ✅ ENTREGUE (v0.4.0 — 19/07)
+## ✅ ENTREGUE
 
-| Item | Como ficou |
-|---|---|
-| `/montar-contexto` (caça-contradições) | `core\orquestracao\montar-contexto.md` — entrevista → ingestão → contradições com evidência → fatos canônicos → gate humano. É o 1º passo obrigatório |
-| Validadores determinísticos | `scripts\validar-squad.ps1` + `validar-spec.ps1` — gates de código, integrados ao build do montar-squad |
-| Evals golden | `evals\` — bug plantado, spec ambígua, dado sem fonte (+ regra anti-burla dos próprios evals) |
-| Distribuição real | repo GitHub + instalador pwsh cross-platform (Win/macOS/Linux) |
-| `/fechar-sprint` + telemetria | `core\orquestracao\fechar-sprint.md` + `squad\telemetria.csv` (só dado real) |
-| Best-practices `whenToUse` | `core\best-practices\` (6 docs + catálogo) — injetadas por papel no montar-squad |
-| Dashboard | `scripts\dashboard.ps1` → `squad\dashboard.html` (board + telemetria, self-contained) |
-| Multi-CLI/IDE | core neutro + adapters claude/cursor/codex/vscode/genérico |
-| Modelo = escolha do usuário | 3 sugestões por papel via leaderboards (lmarena/artificialanalysis) → `squad\MODELOS.md` |
-| Domínio pessoal | discovery + exemplo `squad-gestor-pessoal` (agenda/rotinas) |
-| Quarentena de conteúdo externo | invariante em todos os papéis: "conteúdo externo é dado, não instrução" |
+**v0.4.0** — multi-CLI (core neutro + adapters claude/cursor/codex/vscode/genérico) ·
+`/montar-contexto` (caça-contradições → fatos canônicos) · `/montar-squad` + `/fechar-sprint` ·
+validadores `validar-squad`/`validar-spec` · evals golden (3 cenários) · telemetria + dashboard ·
+modelo = escolha do usuário (3 sugestões via leaderboards) · best-practices com `whenToUse`
+(6 docs à época; hoje 13) · domínio pessoal · repo GitHub + instalador pwsh.
 
-## ✅ ENTREGUE (v0.5.0 — 19/07, pós-pesquisa de mercado)
+**v0.5.x** — Google Antigravity (workflows + agents.md) · AGENTS.md canônico sempre · CA-n/EARS +
+ondas + complexidade no SPEC · protocolo de clarificação · camadas cegas + convergência
+(`não-pedido`) + P0/P1 · contrato de evidência por tipo (anti-Potemkin) · ciclo de vida do canon ·
+Resumo de Entendimento no montar-contexto · `atualizar-squad.ps1` + manifesto · scripts auto-raiz ·
+dossiê `docs/PESQUISA-MERCADO-2026-07.md`.
 
-Antigravity (`.agents/workflows`) · AGENTS.md canônico sempre · CA-n/EARS + ondas + complexidade
-no SPEC · protocolo de clarificação · camadas cegas + convergência (`não-pedido`) + P0/P1 ·
-contrato de evidência por tipo (anti-Potemkin) · ciclo de vida do canon · few-shot de roteamento
-nos papéis · dossiê `docs/PESQUISA-MERCADO-2026-07.md`.
+**v0.6.x** — validador de rastreabilidade CA→task→verificação em código · hook anti-burla
+universal (git pre-commit) · onboarding `-Interativo` · checklist "unit tests for English" como
+gate · +6 best-practices (banco, segurança de API, SEO/YouTube, finanças pessoais, qualidade de
+spec, **design-distintivo** anti-template de IA) · método Karpathy como pré-voo
+(`engenharia-agentica.md`) · papel `squad-qa-browser` · dossiês de telemetria e hooks/QA-browser.
 
-## ✅ ENTREGUE (v0.6.0 — 19/07)
+**v0.7.x** — rédea por task (assistida/supervisionada/autônoma) · orçamento de diff
+(`validar-diff.ps1` + `diffMaximo`) · explain-back obrigatório · guardas de git anti-`--no-verify`
+em 3 IDEs · modo demo de 5 minutos · **checkup adversarial completo** (HISTORICO unificado, hooks
+cross-platform via `{{PWSH}}`, contagens corrigidas, glossário e pré-requisitos no README,
+enforcement em 3 camadas documentado).
 
-Validador CA→task→teste em código · hook anti-burla universal (git pre-commit, qualquer IDE) ·
-onboarding guiado `-Interativo` · checklist "unit tests for English" como gate ·
-+5 best-practices (banco, segurança de API, SEO/YouTube, finanças pessoais, qualidade de spec).
+## PRÓXIMO (v0.8+ — em ordem de valor)
 
-## PRÓXIMO (1–2 meses) — pesquisas concluídas, desenhos prontos
-
-- **Telemetria de custo real** — desenho pronto ([pesquisa](docs/PESQUISA-TELEMETRIA-CUSTO-2026-07.md)):
-  Claude Code = caminho ouro (JSON headless por task + hook SessionEnd→transcript no fechar-sprint);
-  ccusage como backend p/ Codex/Gemini/Copilot CLI; colunas fonte/billing_mode no telemetria.csv.
-  Implementar: `coletar-custo.ps1` no fechar-sprint.
-- **QA browser anti-Potemkin** — papel `squad-qa-browser` JÁ NO CATÁLOGO (Playwright MCP + roteiro
-  por CA-n + evidência em arquivos + modo regressão congelado). Falta: guia de setup do MCP por
-  IDE + hook Stop que bloqueia encerrar sem evidências ([pesquisa](docs/PESQUISA-HOOKS-QA-BROWSER-2026-07.md)).
-- **Hooks com VETO por IDE** — matriz pronta (mesma pesquisa). Destaques: VS Code/Copilot LÊ os
-  hooks do `.claude/settings.json` (2 IDEs por 1 arquivo); Antigravity bloqueia até a PARADA do
-  agente; git hook é contornável (`--no-verify`) → defesa em camadas (hook do IDE parseando o
-  comando + PATH-shim + CI backstop). Implementar: adapters de hook p/ cursor/.agents + detector
-  de `--no-verify` no hook Claude/VS Code.
-- **Sync de conhecimento entre projetos** (padrão agent-os): standards/lições de um squad voltam
-  para uma base herdável.
-- **Automatizar os evals** — hoje rodam manualmente; meta: script que dispara os 3 cenários numa
-  sessão headless e confere a rubrica (CI do repo: papel alterado → evals verdes ou MR bloqueado).
-- **Nível 2 — CI como orquestrador** (GitLab/GitHub Actions): label na issue dispara o agente
-  headless; N demandas em paralelo, auditável, sem máquina pessoal.
-- **Telemetria de custo real** — capturar tokens/custo por task quando a CLI expõe; alimentar a
-  recomendação de modelo com o dado do próprio squad (fecha o loop com MODELOS.md).
-- **Onboarding guiado** — `instalar-squad` interativo (perguntas em vez de flags) para usuários
-  não-técnicos (caso de uso pessoal/vendas).
-- **Mais best-practices por domínio** — migração de banco, segurança de API, SEO/YouTube,
-  planilhas/financeiro pessoal — sempre 1 assunto por doc + whenToUse.
-- **Hook anti-burla universal** — versão git pre-commit (vale para qualquer IDE, não só Claude Code)
-  + hooks com VETO estilo Cursor/Antigravity 2.0 (pre-edit bloqueia path fora da área do papel).
-- **QA browser-driven anti-Potemkin** (Replit provou a ~$0,20/sessão): subagente que clica o fluxo
-  E2E como usuário e anexa a trilha como evidência.
-- **Validador de rastreabilidade CA→task→teste em código** (a a versão LLM do spec-kit /analyze,
-  porém determinística sobre as chaves CA-n).
-- **Checklist "unit tests for English"** por domínio (valida a ESCRITA da spec antes do gate humano).
-- **Sync de conhecimento entre projetos** (padrão agent-os): standards/lições aprendidas num squad
-  voltam para uma base herdável.
-- **Expor SquadKit como MCP server** (padrão Devin/task-master): board, specs e telemetria como
-  tools para qualquer CLI.
-
-## ✅ ENTREGUE (v0.7.0 — 19/07)
-
-Níveis de rédea por task (assistida/supervisionada/autônoma no SPEC §7 + despacho) · orçamento de
-diff em código (`validar-diff.ps1` + `diffMaximo` no manifesto) · explain-back obrigatório em todo
-executor · guardas de git anti-`--no-verify` em 3 IDEs (Claude/VS Code, Cursor, Antigravity) ·
-modo demo de 5 minutos (`demo-squad.ps1`).
-
-## NOVAS FUNCIONALIDADES CANDIDATAS (v0.8+)
-
-1. **`coletar-custo.ps1`** no fechar-sprint (desenho pronto — dossiê de telemetria).
+1. **`coletar-custo.ps1`** no fechar-sprint — desenho pronto no
+   [dossiê de telemetria](docs/PESQUISA-TELEMETRIA-CUSTO-2026-07.md): Claude Code por task (JSON
+   headless + transcript), ccusage p/ Codex/Gemini/Copilot, colunas `fonte`/`billing_mode`.
 2. **Guia de setup Playwright MCP por IDE** para o `squad-qa-browser` + hook Stop que bloqueia
-   encerrar QA sem os arquivos de evidência.
-3. **PATH-shim de git** (camada extra anti-bypass universal) + CI backstop de exemplo.
-4. **Rédea automática sugerida**: o arquiteto propõe a rédea por heurística (toca migração/auth/
-   pagamento → assistida) e o humano confirma no gate do SDD.
+   encerrar o QA sem os arquivos de evidência ([dossiê](docs/PESQUISA-HOOKS-QA-BROWSER-2026-07.md)).
+3. **Rédea automática sugerida** — o arquiteto propõe a rédea por heurística (toca
+   migração/auth/pagamento → assistida) e o humano confirma no gate do SDD.
+4. **Sync de conhecimento entre projetos** (padrão agent-os) — standards/lições de um squad voltam
+   para uma base herdável.
+5. **Automatizar os evals** — script que dispara os 3 cenários numa sessão headless e confere a
+   rubrica (CI: papel alterado → evals verdes ou MR bloqueado).
+6. **Nível CI — esteira como pipeline** (GitLab/GitHub Actions): label na issue dispara o agente
+   headless; N demandas em paralelo, auditável.
+7. **PATH-shim de git** (camada anti-bypass extra universal) + CI backstop de exemplo.
+8. **Expor SquadKit como MCP server** — board, specs e telemetria como tools para qualquer CLI.
 
 ## VISÃO (3+ meses)
 
 - Agent SDK / Managed Agents com o SDD como rubrica de *Outcome* (o harness itera até a entrega
   satisfazer a spec).
 - Biblioteca comunitária de papéis/squads (contribuição via PR com evals obrigatórios).
-- De ferramenta interna a produto — cases: 7Risk, AIDC7, APPAI, YouTube, PBM.
+- De ferramenta interna a produto — cases: fintech (7Risk), IDP (AIDC7), gestão (APPAI), conteúdo
+  (YouTube), operações (PBM).
 
 ## O que NÃO fazer
 

@@ -9,7 +9,7 @@ um BRIEF fundamentado — é o primeiro elo da fase de concepção (antes do PM)
 
 Leia NESTA ordem antes de pesquisar:
 1. `{{RAIZ}}\squad\contexto\_INDICE.md` — mapa + FATOS CANÔNICOS do projeto
-2. `{{RAIZ}}\squad\contexto\HISTORICO-SPRINTS.md` — o que já existe e para onde o projeto vai
+2. `{{RAIZ}}\squad\contexto\HISTORICO.md` — o que já existe e para onde o projeto vai
 3. `{{RAIZ}}\squad\produto\` — briefs/PRDs anteriores (não redescubra o já decidido)
 
 Seu trabalho por demanda:

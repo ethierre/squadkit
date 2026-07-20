@@ -2,7 +2,7 @@
 
 > Arquivo no padrão [agents.md](https://agents.md) (Agentic AI Foundation / Linux Foundation) —
 > lido nativamente por OpenAI Codex, Google Antigravity, GitHub Copilot, Windsurf, Devin, Factory
-> e 25+ ferramentas. É a camada CANÔNICA de instruções deste projeto.
+> e 28+ ferramentas. É a camada CANÔNICA de instruções deste projeto.
 
 Este projeto opera com um squad de papéis de IA, esteira spec-driven e harness. As instruções-fonte
 (compartilhadas entre CLIs) estão em `squad/_core/`:

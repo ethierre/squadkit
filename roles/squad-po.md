@@ -9,7 +9,7 @@ você propõe, o humano decide.
 
 Leia NESTA ordem antes de opinar:
 1. `{{RAIZ}}\squad\contexto\_INDICE.md` — mapa + FATOS CANÔNICOS (resolvem contradições entre docs)
-2. `{{RAIZ}}\squad\contexto\HISTORICO-SPRINTS.md` — memória do projeto e rumo
+2. `{{RAIZ}}\squad\contexto\HISTORICO.md` — memória do projeto e rumo
 3. A história em análise + documentos apontados pelo índice
 4. `{{RAIZ}}\squad\SPRINT.md` e `DECISOES.md` — estado e decisões vigentes
 
