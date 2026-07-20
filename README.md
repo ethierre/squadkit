@@ -53,12 +53,16 @@ work. Here the enforcement is **external** (hooks, scripts, evals).
 > **② inside your AI's chat** (Claude Code, the Claude-for-VS-Code panel, Cursor…) → to OPERATE the
 > squad (`executar T-DEMO-1`, `/montar-contexto`…). Installing ≠ operating.
 
-**Step 1 — in the terminal, install the demo:**
+**Step 1 — in the terminal, install the demo** (run from the folder where you want the clone):
 ```powershell
-git clone https://github.com/ethierre/squadkit && pwsh -File squadkit/demo-squad.ps1
+git clone https://github.com/ethierre/squadkit
+# Windows (native PowerShell 5.1 — no PS7 needed):
+powershell -ExecutionPolicy Bypass -File squadkit\demo-squad.ps1
+# macOS/Linux:
+pwsh -File squadkit/demo-squad.ps1
 ```
 Installs an example squad, runs the deterministic gates on the spot, and seeds a ready-to-run task
-(`squadkit-demo/`). *(Windows without PowerShell 7: swap `pwsh` → `powershell`.)*
+in `squadkit-demo/`.
 
 **Step 2 — open your AI INSIDE the demo folder:**
 - **Claude Code (terminal / CMD):** `cd squadkit-demo` then run `claude`
@@ -81,16 +85,22 @@ flowchart LR
     E -->|next cycle| D
 ```
 
-### 1. Install (1 command — Windows/macOS/Linux)
+### 1. Install (run from the folder that contains the `squadkit` clone)
 
 ```powershell
 git clone https://github.com/ethierre/squadkit
-pwsh -File squadkit/instalar-squad.ps1 -Projeto "MyProject" -Destino "C:\myproject" `
-     -Perfil sob-medida -Ide claude,antigravity -Idioma "English"
-# IDEs: claude · cursor · antigravity · codex · vscode · generico
-# Profiles: sob-medida (tailored) ⭐ · enxuto (lean) · dev-completo · produto · plataforma · concepcao · growth · completo
-# -Idioma: which language agents reply in (any). Or run -Interativo (guided questions).
+
+# Windows (native PowerShell 5.1):
+powershell -ExecutionPolicy Bypass -File squadkit\instalar-squad.ps1 -Projeto "MyProject" -Destino "C:\projects\myproject" -Perfil sob-medida -Ide claude
+
+# macOS/Linux:
+pwsh -File squadkit/instalar-squad.ps1 -Projeto "MyProject" -Destino ~/projects/myproject -Perfil sob-medida -Ide claude
 ```
+> - **`-Destino` = your project's folder, NOT inside `squadkit/`** (the installer refuses that).
+> - Simplest path: **`-Interativo`** instead of the flags — it asks 7 plain questions.
+> - `-Ide`: claude · cursor · antigravity · codex · vscode · generico (comma-separated for several).
+> - `-Perfil`: sob-medida ⭐ · enxuto · dev-completo · produto · plataforma · concepcao · growth · completo.
+> - `-Idioma "English"`: language the agents reply in (any; default Portuguese).
 
 > **Using VS Code?** Two different setups: **Claude Code for VS Code** (the Anthropic extension) →
 > use `-Ide claude` (it reads the same `.claude/` folder — skills become slash commands, agents

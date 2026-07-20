@@ -54,12 +54,16 @@ mas os gates deles são instruções em prompt fiscalizadas pelo mesmo LLM que p
 > **② dentro do chat da sua IA** (Claude Code, o painel do Claude no VS Code, Cursor…) → para OPERAR
 > o squad (`executar T-DEMO-1`, `/montar-contexto`…). Instalar ≠ operar.
 
-**Passo 1 — no terminal, instale a demo:**
+**Passo 1 — no terminal, instale a demo** (rode da pasta onde você quer o clone):
 ```powershell
-git clone https://github.com/ethierre/squadkit && pwsh -File squadkit/demo-squad.ps1
+git clone https://github.com/ethierre/squadkit
+# Windows (PowerShell 5.1 nativo — nao precisa do PS7):
+powershell -ExecutionPolicy Bypass -File squadkit\demo-squad.ps1
+# macOS/Linux:
+pwsh -File squadkit/demo-squad.ps1
 ```
-Instala um squad de exemplo, roda os gates determinísticos na hora e semeia uma task pronta
-(`squadkit-demo/`). *(Windows sem PowerShell 7: troque `pwsh` → `powershell`.)*
+Instala um squad de exemplo, roda os gates determinísticos na hora e semeia uma task pronta em
+`squadkit-demo/`.
 
 **Passo 2 — abra sua IA DENTRO da pasta da demo:**
 - **Claude Code (terminal / CMD):** `cd squadkit-demo` e rode `claude`
@@ -82,16 +86,22 @@ flowchart LR
     E -->|próximo ciclo| D
 ```
 
-### 1. Instale (1 comando — Windows/macOS/Linux)
+### 1. Instale (rode da pasta que contém o clone `squadkit`)
 
 ```powershell
 git clone https://github.com/ethierre/squadkit
-pwsh -File squadkit/instalar-squad.ps1 -Projeto "MeuProjeto" -Destino "C:\meuprojeto" `
-     -Perfil sob-medida -Ide claude,antigravity -Idioma "Portugues (Brasil)"
-# IDEs: claude · cursor · antigravity · codex · vscode · generico
-# Perfis: sob-medida ⭐ · enxuto · dev-completo · produto · plataforma · concepcao · growth · completo
-# -Idioma: em que idioma os agentes respondem (qualquer um). Ou rode -Interativo (perguntas guiadas).
+
+# Windows (PowerShell 5.1 nativo):
+powershell -ExecutionPolicy Bypass -File squadkit\instalar-squad.ps1 -Projeto "MeuProjeto" -Destino "C:\projetos\meuprojeto" -Perfil sob-medida -Ide claude
+
+# macOS/Linux:
+pwsh -File squadkit/instalar-squad.ps1 -Projeto "MeuProjeto" -Destino ~/projetos/meuprojeto -Perfil sob-medida -Ide claude
 ```
+> - **`-Destino` = a pasta do SEU projeto, NÃO dentro de `squadkit/`** (o instalador recusa isso).
+> - Caminho mais simples: **`-Interativo`** no lugar das flags — faz 7 perguntas em linguagem clara.
+> - `-Ide`: claude · cursor · antigravity · codex · vscode · generico (separe por vírgula p/ vários).
+> - `-Perfil`: sob-medida ⭐ · enxuto · dev-completo · produto · plataforma · concepcao · growth · completo.
+> - `-Idioma "English"`: idioma em que os agentes respondem (qualquer; padrão Português).
 
 > **Usando VS Code?** São dois setups diferentes: **Claude Code for VS Code** (a extensão da
 > Anthropic) → use `-Ide claude` (ela lê a mesma pasta `.claude/` — skills viram slash commands,
