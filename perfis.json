@@ -6,5 +6,5 @@
   "plataforma": ["gerente", "arquiteto", "devops", "dev-back", "qa", "seguranca"],
   "concepcao": ["analista", "pm", "po", "ux", "arquiteto"],
   "growth": ["pm", "marketing", "ux", "docs"],
-  "completo": ["analista", "pm", "po", "gerente", "arquiteto", "ux", "dev-front", "dev-back", "dev-dados", "dev-mobile", "qa", "devops", "seguranca", "marketing", "docs"]
+  "completo": ["analista", "pm", "po", "gerente", "arquiteto", "ux", "dev-front", "dev-back", "dev-dados", "dev-mobile", "qa", "qa-browser", "devops", "seguranca", "marketing", "docs"]
 }

@@ -32,12 +32,20 @@ Validador CA→task→teste em código · hook anti-burla universal (git pre-com
 onboarding guiado `-Interativo` · checklist "unit tests for English" como gate ·
 +5 best-practices (banco, segurança de API, SEO/YouTube, finanças pessoais, qualidade de spec).
 
-## PRÓXIMO (1–2 meses)
+## PRÓXIMO (1–2 meses) — pesquisas concluídas, desenhos prontos
 
-- **Telemetria de custo real** (pesquisa em andamento: como cada CLI expõe tokens/custo).
-- **QA browser-driven anti-Potemkin** (pesquisa em andamento: Playwright-MCP × browser-use ×
-  capacidades nativas por IDE).
-- **Hooks com VETO por IDE** (pesquisa em andamento: matriz Cursor/Antigravity 2.0/Claude Code).
+- **Telemetria de custo real** — desenho pronto ([pesquisa](docs/PESQUISA-TELEMETRIA-CUSTO-2026-07.md)):
+  Claude Code = caminho ouro (JSON headless por task + hook SessionEnd→transcript no fechar-sprint);
+  ccusage como backend p/ Codex/Gemini/Copilot CLI; colunas fonte/billing_mode no telemetria.csv.
+  Implementar: `coletar-custo.ps1` no fechar-sprint.
+- **QA browser anti-Potemkin** — papel `squad-qa-browser` JÁ NO CATÁLOGO (Playwright MCP + roteiro
+  por CA-n + evidência em arquivos + modo regressão congelado). Falta: guia de setup do MCP por
+  IDE + hook Stop que bloqueia encerrar sem evidências ([pesquisa](docs/PESQUISA-HOOKS-QA-BROWSER-2026-07.md)).
+- **Hooks com VETO por IDE** — matriz pronta (mesma pesquisa). Destaques: VS Code/Copilot LÊ os
+  hooks do `.claude/settings.json` (2 IDEs por 1 arquivo); Antigravity bloqueia até a PARADA do
+  agente; git hook é contornável (`--no-verify`) → defesa em camadas (hook do IDE parseando o
+  comando + PATH-shim + CI backstop). Implementar: adapters de hook p/ cursor/.agents + detector
+  de `--no-verify` no hook Claude/VS Code.
 - **Sync de conhecimento entre projetos** (padrão agent-os): standards/lições de um squad voltam
   para uma base herdável.
 - **Automatizar os evals** — hoje rodam manualmente; meta: script que dispara os 3 cenários numa

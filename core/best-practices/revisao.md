@@ -45,4 +45,5 @@ P2/P3 (estilo, melhoria) vão como notas — não seguram a entrega nem viram ci
 
 Aderência à spec · critérios de verificação intactos (anti-burla) · honestidade de dado ·
 escopo respeitado (convergência acima pega o `não-pedido`) · segredo/PII no entregável · gates de
-ação irreversível preservados.
+ação irreversível preservados · **em telas: "parece template de IA?" é critério P1**
+(ver `design-distintivo.md` — as 3 caras default; exigir o plano de tokens e o screenshot).

@@ -20,6 +20,9 @@ praticas:
   - id: conteudo-criativo
     arquivo: conteudo-criativo.md
     whenToUse: "papéis de conteúdo (copy, social, vídeo, marketing) — brief, voz, honestidade de claim, direitos"
+  - id: design-distintivo
+    arquivo: design-distintivo.md
+    whenToUse: "OBRIGATÓRIA p/ squad-ux, squad-dev-front e squad-dev-mobile em qualquer tela nova ou redesign — anti-template de IA, tokens primeiro, elemento-assinatura, copy como design; canônico do projeto sempre vence"
   - id: qualidade-de-spec
     arquivo: qualidade-de-spec.md
     whenToUse: "arquiteto/especificador antes do gate humano de toda SPEC — checklist que valida a ESCRITA da spec (clareza, gaps, ambiguidade, rastreabilidade)"

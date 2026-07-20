@@ -1,5 +1,16 @@
 # Changelog — SquadKit
 
+## 0.6.1 — 2026-07-19 · Design distintivo + papel qa-browser + 2 dossiês de pesquisa
+
+- **`design-distintivo.md`** (best-practice OBRIGATÓRIA de ux/dev-front/dev-mobile): anti-template
+  de IA — as 3 caras default do design gerado, ancoragem no assunto, plano de tokens antes do
+  código, elemento-assinatura único, copy como material de design, piso de qualidade; "parece
+  template de IA?" vira critério P1 do reviewer. Regra de adaptação: o canônico do projeto vence.
+- **Papel `squad-qa-browser`** no catálogo (16º): QA que CLICA o fluxo E2E via Playwright MCP,
+  roteiro derivado dos CA-n, evidência em arquivos por CA, modo regressão congelado.
+- Dossiês de pesquisa versionados: telemetria de custo por CLI e hooks-com-veto + QA browser
+  (`docs/PESQUISA-*.md`) — desenhos de implementação prontos no ROADMAP.
+
 ## 0.6.0 — 2026-07-19 · Harness a montante: rastreabilidade, hook universal, onboarding e 5 best-practices
 
 - **Validador de rastreabilidade em código** (`validar-spec.ps1` v2): cobertura CA→task→verificação
