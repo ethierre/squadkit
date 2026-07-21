@@ -154,6 +154,19 @@ Validates board vs reality, records telemetry (review cycles, bugs — real data
 history and canonical facts, extracts lessons **with evidence**, and generates the `dashboard.html`.
 The next cycle starts knowing everything this one learned.
 
+## How long does it take? (be honest with yourself)
+
+- **Evaluating (the demo):** ~5 min. Use this to decide if you like it — don't start with a real project.
+- **Setup on a real project** (`/montar-contexto` + `/montar-squad`): 15–20 min in **fast mode**
+  (a minimal, honest context you refine later) up to ~1h **full mode** on a large project with dozens
+  of docs. It's **one-time** and amortizes over every future task.
+- **Per task:** tens of minutes — it's the **price of rigor** (spec + implementation + real tests +
+  evidence + review). Vibe coding is faster and wrong; the squad trades speed for trust. You calibrate:
+  `executar` mode, `autônoma` rein and lower complexity run faster; and tasks speed up as the context matures.
+
+If you want *fast and unverified*, this isn't the tool. If you want *verifiable and repeatable*, the
+minutes you spend are minutes you don't spend debugging a confident hallucination in production.
+
 ## Who it's for
 
 | You are… | Your squad |

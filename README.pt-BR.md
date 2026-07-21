@@ -154,6 +154,20 @@ Valida board vs realidade, registra telemetria (ciclos de review, bugs — só d
 o histórico e os fatos canônicos, extrai lições **com evidência** e gera o `dashboard.html`.
 O próximo ciclo começa sabendo tudo que este aprendeu.
 
+## Quanto tempo leva? (seja honesto consigo)
+
+- **Avaliar (a demo):** ~5 min. Use para decidir se gosta — não comece por um projeto real.
+- **Setup num projeto real** (`/montar-contexto` + `/montar-squad`): 15–20 min no **modo rápido**
+  (um contexto mínimo e honesto que você refina depois) até ~1h no **modo completo** num projeto
+  grande com dezenas de docs. É **uma vez só** e amortiza sobre todas as tasks futuras.
+- **Por task:** dezenas de minutos — é o **preço do rigor** (spec + implementação + testes reais +
+  evidência + review). Vibe coding é mais rápido e erra; o squad troca velocidade por confiança.
+  Você calibra: modo `executar`, rédea `autônoma` e complexidade menor rodam mais rápido; e as tasks
+  aceleram conforme o contexto amadurece.
+
+Se você quer *rápido e não verificado*, esta não é a ferramenta. Se quer *verificável e repetível*,
+os minutos que você gasta são os minutos que não gasta depurando uma alucinação confiante em produção.
+
 ## Para quem é
 
 | Você é… | Seu squad |

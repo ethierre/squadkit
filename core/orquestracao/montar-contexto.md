@@ -9,6 +9,21 @@ erra com confiança. Saída: `squad\contexto\_INDICE.md` (mapa + fatos canônico
 `squad\contexto\HISTORICO.md` (memória e rumo). Artefatos intermediários em `squad\_build\`
 (retome de lá se interromper).
 
+## Dois modos — pergunte ao usuário no início (evita 1h de espera desnecessária)
+
+- **⚡ RÁPIDO (MVP de contexto, ~15-20 min — padrão recomendado):** entreviste, leia só os
+  documentos que o usuário apontar como mais importantes (ou os mais recentes/centrais se ele não
+  souber), extraia os **fatos canônicos essenciais** e as contradições ÓBVIAS, e gere um índice
+  marcado `[PARCIAL]`. O squad JÁ opera com isso — quando uma task tocar uma área não coberta, o
+  contexto é enriquecido sob demanda (o agente sinaliza a lacuna). Comece a trabalhar hoje.
+- **🔍 COMPLETO (varredura total — quando o projeto é grande/crítico ou você tem tempo):** lê tudo,
+  caça TODAS as contradições, valida contra código/board. É o que dá a base definitiva; pode levar
+  ~1h num projeto com dezenas de docs. Pode ser feito depois, evoluindo o `[PARCIAL]`.
+
+Na dúvida, faça o RÁPIDO — contexto parcial honesto (com lacunas marcadas) é melhor que 1h de espera
+antes do primeiro valor. Os passos abaixo valem para os dois; no modo rápido, você reduz o ESCOPO
+(menos docs, contradições óbvias), não o RIGOR (todo fato canônico ainda vem com evidência).
+
 ## Fase 1 — ENTREVISTA (o que é isto e o que você quer)
 
 Pergunte UMA por vez, máximo 8, adaptando ao que a pessoa é (dev sênior OU alguém organizando a

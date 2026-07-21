@@ -1,5 +1,15 @@
 # Changelog — SquadKit
 
+## 0.8.3 — 2026-07-20 · Modo rápido de contexto + expectativa de tempo (telemetria do 1º teste ponta a ponta)
+
+- Teste real (7Risk): ~1h de setup (montar-contexto+squad) e ~40 min/task. Números saudáveis para o
+  rigor, mas a 1h é barreira de abandono e faltava gerenciar expectativa. Ações:
+- **`/montar-contexto` em 2 modos**: ⚡ RÁPIDO (MVP de contexto ~15-20 min, índice `[PARCIAL]`
+  enriquecido sob demanda — padrão) e 🔍 COMPLETO (varredura total ~1h, base definitiva). Reduz o
+  ESCOPO, nunca o RIGOR (todo fato canônico ainda vem com evidência).
+- **README (EN+PT): seção "Quanto tempo leva?"** — demo 5 min; setup one-time 15min–1h; por task
+  dezenas de min como preço do rigor (calibrável). Define a expectativa e o trade-off velocidade×confiança.
+
 ## 0.8.2 — 2026-07-20 · Fluxo contínuo + entrega sem-git (2 bugs de fundo do teste no CMD)
 
 - **fix (fluxo orgânico):** a esteira mandava "feche o chat e abra um novo" para o dev pegar a task
